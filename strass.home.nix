@@ -1,0 +1,1 @@
+/home/strass/.config/home-manager/home.nix
