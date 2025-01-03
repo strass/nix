@@ -1,3 +1,9 @@
+{lib, config, options, pkgs, ...}:
 {
-  description = "Config for fridge display";
+  # Importing other Modules
+  imports = [
+    # ...
+    ./configuration.nix
+  ];
+ 
 }
