@@ -1,3 +1,3 @@
 {
-  description = "Config for framework"
+  description = "Config for framework";
 }

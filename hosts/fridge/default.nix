@@ -1,3 +1,3 @@
 {
-  description = "Config for fridge computer"
+  description = "Config for fridge display";
 }
