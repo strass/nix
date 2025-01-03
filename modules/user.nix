@@ -23,7 +23,7 @@ with lib; {
       group = name;
       uid = 1000;
     };
-    users.groups.${config.user.group} = {};
+    # users.groups.${config.user.group} = {};
 
     # users.users.${config.user.name} = mkAliasDefinitions options.user;
 
