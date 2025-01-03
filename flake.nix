@@ -29,6 +29,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./modules/defaults.nix
+          ./modules/user.nix
           ./hosts/fridge/default.nix
           ./modules/ssh.nix
           ./modules/niri.nix
