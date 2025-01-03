@@ -68,15 +68,15 @@ in {
           focus-ring = {
             enable = false;
             width = 1;
-            active.color = config.modules.desktop.themes.niri.accent;
-            inactive.color = config.modules.desktop.themes.niri.inactive;
+            # active.color = config.modules.desktop.themes.niri.accent;
+            # inactive.color = config.modules.desktop.themes.niri.inactive;
           };
 
           border = {
             enable = true;
             width = 1;
-            active.color = config.modules.desktop.themes.niri.accent;
-            inactive.color = config.modules.desktop.themes.niri.inactive;
+            # active.color = config.modules.desktop.themes.niri.accent;
+            # inactive.color = config.modules.desktop.themes.niri.inactive;
           };
         };
 
