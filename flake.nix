@@ -28,8 +28,8 @@
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
-          ./modules/defaults.nix
           ./modules/user.nix
+          ./modules/defaults.nix
           ./hosts/fridge/default.nix
           ./modules/ssh.nix
           ./modules/niri.nix
