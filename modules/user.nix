@@ -27,7 +27,7 @@ with lib; {
     hm.home.homeDirectory = "/home/strass";
 
     nix.settings = let
-      users = ["root" config.user.name];
+      users = ["root" "strass"];
     in {
       trusted-users = users;
       allowed-users = users;
