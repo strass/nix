@@ -5,7 +5,9 @@
 with lib;
 {
   options = {
-    user = mkOption types.attrs {};
+    user.name = mkOption {
+        type = with types; uniq str;
+    }
   };
 
   config = {
