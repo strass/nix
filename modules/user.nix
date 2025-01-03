@@ -4,6 +4,9 @@
 
 with lib;
 {
+  options = {
+    user = mkOption types.attrs {};
+  };
 
   config = {
     user = rec {
