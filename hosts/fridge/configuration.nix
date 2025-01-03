@@ -10,7 +10,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     <home-manager/nixos>
-    ./cachix.nix
+    # ./cachix.nix
     (fetchTarball "https://github.com/nix-community/nixos-vscode-server/tarball/master")
   ];
 
