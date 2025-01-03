@@ -5,8 +5,9 @@
 with lib;
 {
   options = {
-    user.name = mkOption {
-        type = with types; uniq str;
+    user =  mkOption {
+        type = with types; {};
+      
     };
   };
 
