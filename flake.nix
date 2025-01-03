@@ -2,17 +2,22 @@
   description = "NixOS Config";
 
   inputs = {
-    # NixOS official package source, here using the nixos-24.11 branch
-      nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
-        # home-manager, used for managing user configuration
-      home-manager = {
-        url = "github:nix-community/home-manager/release-24.11";
-        # The `follows` keyword in inputs is used for inheritance.
-        # Here, `inputs.nixpkgs` of home-manager is kept consistent with
-        # the `inputs.nixpkgs` of the current flake,
-        # to avoid problems caused by different versions of nixpkgs.
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
+    nixpkgs.url = "nixpkgs/nixos-24.11";
+    nixpkgs-unstable.url = "nixpkgs/nixpkgs-unstable";
+    # home-manager, used for managing user configuration
+    home-manager = {
+      url = "github:nix-community/home-manager/release-24.11";
+      # The `follows` keyword in inputs is used for inheritance.
+      # Here, `inputs.nixpkgs` of home-manager is kept consistent with
+      # the `inputs.nixpkgs` of the current flake,
+      # to avoid problems caused by different versions of nixpkgs.
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hardware.url = "github:nixos/nixos-hardware";
+    niri.url = "github:sodiboo/niri-flake";
+    waybar.url = "github:Alexays/Waybar";
+    hyprlock.url = "github:hyprwm/hyprlock";
   };
 
   outputs = inputs@{ nixpkgs, home-manager, ... }: {
@@ -26,6 +31,7 @@
           ./modules/defaults.nix
           ./hosts/fridge/default.nix
           ./modules/ssh.nix
+          ./modules/niri.nix
           # ./modules/user.nix # has some libraries I dont have implemented
 
           # make home-manager as a module of nixos
