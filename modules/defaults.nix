@@ -25,6 +25,7 @@ in {
   hm.imports = [
     #inputs.hyprland.homeManagerModules.default
   ];
+  hm.backupFileExtension = "hm-backup";
 
   # Common config for all nixos machines;
   environment.variables = {
