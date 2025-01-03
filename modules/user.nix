@@ -1,13 +1,15 @@
 # Assumes a single-user setup
-
-{ config, pkgs, lib, options, ... }:
-
-with lib;
 {
+  config,
+  pkgs,
+  lib,
+  options,
+  ...
+}:
+with lib; {
   options = {
-    user =  mkOption {
-        type = {};
-      
+    user = mkOption {
+      type = {};
     };
   };
 
@@ -23,25 +25,25 @@ with lib;
     };
     users.groups.${config.user.group} = {};
 
-    users.users.${config.user.name} = mkAliasDefinitions options.user;
+    # users.users.${config.user.name} = mkAliasDefinitions options.user;
 
     home-manager.useUserPackages = true;
     home-manager.useGlobalPkgs = true;
 
-    # hm.home.username = config.user.name;
-    hm.home.homeDirectory = lib.mkForce config.user.home;
+    # # hm.home.username = config.user.name;
+    # hm.home.homeDirectory = lib.mkForce config.user.home;
 
-    nix.settings = let
-      users = ["root" config.user.name];
-    in {
-      trusted-users = users;
-      allowed-users = users;
-    };
+    # nix.settings = let
+    #   users = ["root" config.user.name];
+    # in {
+    #   trusted-users = users;
+    #   allowed-users = users;
+    # };
 
-    users.users.root = {
-      packages = [ pkgs.shadow ];
-      shell = pkgs.shadow;
-      # hashedPassword = "!";
-    };
+    # users.users.root = {
+    #   packages = [ pkgs.shadow ];
+    #   shell = pkgs.shadow;
+    #   # hashedPassword = "!";
+    # };
   };
 }
