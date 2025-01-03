@@ -25,16 +25,16 @@ in {
     systemd.user.services.niri-flake-polkit.enable = false;
     hm.programs.niri = {
       settings = {
-        spawn-at-startup = [
-          { command = [ "${lib.getExe pkgs.xwayland-satellite-unstable}" ]; }
-          { command = [ "${lib.getExe pkgs.networkmanagerapplet}" ]; }
-          { command = [ "${pkgs.deepin.dde-polkit-agent}/lib/polkit-1-dde/dde-polkit-agent" ]; }   # authentication prompts
-          { command = [ "${lib.getExe pkgs.wl-clip-persist} --clipboard primary" ]; } # to fix wl clipboards disappearing
-        ]
-          ++ (map (cmd: { command = [ "sh" "-c" cmd ]; }) config.modules.desktop.execOnStart)
-          ++ (optional (config.modules.desktop.hypridle.enable) ({
-            command = [ "${lib.getExe config.modules.desktop.hypridle.package}" ];
-          }));
+        # spawn-at-startup = [
+        #   { command = [ "${lib.getExe pkgs.xwayland-satellite-unstable}" ]; }
+        #   { command = [ "${lib.getExe pkgs.networkmanagerapplet}" ]; }
+        #   { command = [ "${pkgs.deepin.dde-polkit-agent}/lib/polkit-1-dde/dde-polkit-agent" ]; }   # authentication prompts
+        #   { command = [ "${lib.getExe pkgs.wl-clip-persist} --clipboard primary" ]; } # to fix wl clipboards disappearing
+        # ]
+        #   ++ (map (cmd: { command = [ "sh" "-c" cmd ]; }) config.modules.desktop.execOnStart)
+        #   ++ (optional (config.modules.desktop.hypridle.enable) ({
+        #     command = [ "${lib.getExe config.modules.desktop.hypridle.package}" ];
+        #   }));
 
         # https://github.com/YaLTeR/niri/wiki/Configuration:-Input
         input = {
