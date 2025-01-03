@@ -15,7 +15,7 @@ with lib; {
       description = "zak";
       extraGroups = ["networkmanager" "wheel" "input" "audio" "video" "storage"];
       isNormalUser = true;
-      home = "/home/${name}";
+      home = "/home/strass";
       group = name;
       uid = 1000;
     };
