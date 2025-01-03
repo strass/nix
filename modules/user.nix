@@ -28,7 +28,7 @@ with lib;
     home-manager.useUserPackages = true;
     home-manager.useGlobalPkgs = true;
 
-    hm.home.username = config.user.name;
+    # hm.home.username = config.user.name;
     hm.home.homeDirectory = lib.mkForce config.user.home;
 
     nix.settings = let
