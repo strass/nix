@@ -15,7 +15,7 @@ in {
   imports =
     [
       inputs.home-manager.nixosModules.home-manager
-      (mkAliasOptionModule ["hm"] ["home-manager" "users" config.user.name])
+      (mkAliasOptionModule ["hm"] ["home-manager" "users" "strass"]) # used to be ["home-manager" "users" config.user.name]
   	  # inputs.nix-colors.homeManagerModules.default
       #inputs.hyprland.nixosModules.default
       #inputs.lix-module.nixosModules.default
