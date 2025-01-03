@@ -23,7 +23,7 @@ with lib; {
       group = name;
       uid = 1000;
     };
- users.users.strass.group = "strass";
+ users.users.strass = config.user;
        users.groups.strass = {};
 
     # users.users.${config.user.name} = mkAliasDefinitions options.user;
