@@ -4,3 +4,4 @@
 - https://github.com/Icy-Thought/snowflake
 - https://github.com/georgewhewell/nixos-host/
 - https://github.com/hlissner/dotfiles/
+- https://nixos-and-flakes.thiscute.world/

@@ -13,7 +13,7 @@ with lib.my;
     user = rec {
       name = "strass";
       description = "zak";
-      extraGroups = ["wheel" "input" "audio" "video" "storage"];
+      extraGroups = ["networkmanager" "wheel" "input" "audio" "video" "storage"];
       isNormalUser = true;
       home = "/home/${name}";
       group = name;

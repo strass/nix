@@ -1,0 +1,3 @@
+{
+  description = "Config for framework"
+}
