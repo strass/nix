@@ -15,7 +15,4 @@
     userName = "Zak Strassberg";
     userEmail = "zakstrassberg@gmail.com";
   };
-
-  home.stateVersion = "24.11";
-  programs.home-manager.enable = true;
 }
