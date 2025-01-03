@@ -6,7 +6,7 @@ with lib;
 {
   options = {
     user =  mkOption {
-        type = with types; {};
+        type = {};
       
     };
   };
