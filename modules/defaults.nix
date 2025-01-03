@@ -108,6 +108,7 @@ in {
     # rendering your system unable to rebuild.
     # nix is really cool
     git  
+    alacritty fuzzel firefox cog
   ];
 
   documentation.nixos.enable = false;

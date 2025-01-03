@@ -18,14 +18,6 @@
   networking.hostName = "fridge"; # Define your hostname.
   networking.networkmanager.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.strass = {
-    isNormalUser = true;
-    description = "Zak";
-    extraGroups = ["networkmanager" "wheel"];
-    packages = with pkgs; [ alacritty fuzzel firefox cog];
-  };
-
   # Enable automatic login for the user.
   services.getty.autologinUser = "strass";
 
