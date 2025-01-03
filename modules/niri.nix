@@ -16,14 +16,14 @@ in {
   imports = [ inputs.niri.nixosModules.niri ];
 
   config = mkIf cfg.enable {
-    home-manager.home.packages = [ pkgs.xwayland-satellite-unstable ];
+    hm.home.packages = [ pkgs.xwayland-satellite-unstable ];
     nixpkgs.overlays = [ inputs.niri.overlays.niri ];
     programs.niri = {
       enable = true;
       package = cfg.package;
     };
     systemd.user.services.niri-flake-polkit.enable = false;
-    home-manager.programs.niri = {
+    hm.programs.niri = {
       settings = {
         spawn-at-startup = [
           { command = [ "${lib.getExe pkgs.xwayland-satellite-unstable}" ]; }
