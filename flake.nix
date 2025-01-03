@@ -16,37 +16,14 @@
   };
 
   outputs = inputs@{ nixpkgs, home-manager, ... }: {
-    nix.settings.experimental-features = ["nix-command" "flakes"];
-
-  # Set your time zone.
-  time.timeZone = "America/Los_Angeles";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-  };
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
+  
 
     nixosConfigurations = {
       fridge = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
+          ./modules/defaults.nix
           ./hosts/fridge/default.nix
           ./modules/ssh.nix
           # ./modules/user.nix # has some libraries I dont have implemented
