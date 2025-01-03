@@ -22,6 +22,8 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/fridge/default.nix
+          ./modules/ssh.nix
+          # ./modules/user.nix # has some libraries I dont have implemented
 
           # make home-manager as a module of nixos
           # so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`
