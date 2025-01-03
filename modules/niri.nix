@@ -307,44 +307,7 @@ in {
           "XF86AudioNext".action = sh "${lib.getExe pkgs.playerctl} next";
 
           "Mod+V".action = sh "${lib.getExe pkgs.wezterm} start --class 'clipse' -e '${lib.getExe config.modules.desktop.clipse.package}'";
-        } // (if config.modules.desktop.wob.enable then let
-          wobSock = config.modules.desktop.wob.sockPath;
-        in {
-          "XF86AudioRaiseVolume".action = sh "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 10%+ && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > ${wobSock}";
-          "XF86AudioRaiseVolume".allow-when-locked = true;
-          "XF86AudioLowerVolume".action = sh "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 10%- && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > ${wobSock}";
-          "XF86AudioLowerVolume".allow-when-locked = true;
-          "XF86AudioMute".action        = sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && (wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo 0 > ${wobSock}) || wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > ${wobSock}";
-          "XF86AudioMute".allow-when-locked = true;
-          "XF86MonBrightnessUp".action = sh "${lib.getExe pkgs.brightnessctl} s +5% && ${lib.getExe pkgs.brightnessctl} -m | awk -F, '{ print $4 }' | sed 's/.$//' > ${wobSock}";
-          "XF86MonBrightnessUp".allow-when-locked = true;
-          "XF86MonBrightnessDown".action = sh "${lib.getExe pkgs.brightnessctl} s 5%- && ${lib.getExe pkgs.brightnessctl} -m | awk -F, '{ print $4 }' | sed 's/.$//' > ${wobSock}";
-          "XF86MonBrightnessDown".allow-when-locked = true;
-        } else (if config.modules.desktop.mako.osd then {
-          "XF86AudioRaiseVolume".action = sh "${lib.getExe config.modules.desktop.mako.volumeScript} up";
-          "XF86AudioRaiseVolume".allow-when-locked = true;
-          "XF86AudioLowerVolume".action = sh "${lib.getExe config.modules.desktop.mako.volumeScript} down";
-          "XF86AudioLowerVolume".allow-when-locked = true;
-          "XF86AudioMute".action        = sh "${lib.getExe config.modules.desktop.mako.volumeScript} mute";
-          "XF86AudioMute".allow-when-locked = true;
-          "XF86MonBrightnessUp".action = sh "${lib.getExe config.modules.desktop.mako.backlightScript} up";
-          "XF86MonBrightnessUp".allow-when-locked = true;
-          "XF86MonBrightnessDown".action = sh "${lib.getExe config.modules.desktop.mako.backlightScript} down";
-          "XF86MonBrightnessDown".allow-when-locked = true;
-        } else {
-          "XF86AudioRaiseVolume".action = spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+";
-          "XF86AudioRaiseVolume".allow-when-locked = true;
-          "XF86AudioLowerVolume".action = spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-";
-          "XF86AudioLowerVolume".allow-when-locked = true;
-          "XF86AudioMute".action        = spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle";
-          "XF86AudioMute".allow-when-locked = true;
-          "XF86MonBrightnessUp".action = spawn (lib.getExe pkgs.brightnessctl) "s" "+5%";
-          "XF86MonBrightnessUp".allow-when-locked = true;
-          "XF86MonBrightnessDown".action = spawn (lib.getExe pkgs.brightnessctl) "s" "5%-";
-          "XF86MonBrightnessDown".allow-when-locked = true;
-        })) // (if config.modules.desktop.hyprlock.enable then {
-          "XF86ScreenSaver".action = spawn "${lib.getExe config.modules.desktop.hyprlock.package}";
-        } else {});
+        };
       };
     };
   };
