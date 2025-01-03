@@ -306,7 +306,7 @@ in {
           "XF86AudioPlay".action = sh "${lib.getExe pkgs.playerctl} play-pause";
           "XF86AudioNext".action = sh "${lib.getExe pkgs.playerctl} next";
 
-          "Mod+V".action = sh "${lib.getExe pkgs.wezterm} start --class 'clipse' -e '${lib.getExe config.modules.desktop.clipse.package}'";
+          # "Mod+V".action = sh "${lib.getExe pkgs.wezterm} start --class 'clipse' -e '${lib.getExe config.modules.desktop.clipse.package}'";
         };
       };
     };
