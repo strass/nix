@@ -7,14 +7,10 @@
   ...
 }:
 with lib; {
-  options = {
-    user = mkOption {
-      type = {};
-    };
-  };
+  
 
   config = {
-    user = rec {
+    users.users.strass  =  {
       name = "strass";
       description = "zak";
       extraGroups = ["networkmanager" "wheel" "input" "audio" "video" "storage"];
@@ -23,8 +19,8 @@ with lib; {
       group = name;
       uid = 1000;
     };
- users.users.strass = config.user;
-       users.groups.strass = {};
+
+      #  users.groups.strass = {};
 
     # users.users.${config.user.name} = mkAliasDefinitions options.user;
 
