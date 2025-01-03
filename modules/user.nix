@@ -23,8 +23,9 @@ with lib; {
       group = name;
       uid = 1000;
     };
-    users.groups.strass = {};
-
+ users.users.strass.group = "strass";
+       users.groups.strass = {};
+       
     # users.users.${config.user.name} = mkAliasDefinitions options.user;
 
     home-manager.useUserPackages = true;
