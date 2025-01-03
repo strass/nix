@@ -23,11 +23,7 @@
     isNormalUser = true;
     description = "Zak";
     extraGroups = ["networkmanager" "wheel"];
-    packages = with pkgs; [niri alacritty fuzzel firefox cog];
-  };
-
-  programs.niri = {
-    enable = true;
+    packages = with pkgs; [ alacritty fuzzel firefox cog];
   };
 
   # Enable automatic login for the user.
@@ -44,7 +40,6 @@
     wget
     curl
     htop
-    # niri
   ];
   environment.variables.EDITOR = "vim";
 
