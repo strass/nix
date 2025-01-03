@@ -3,7 +3,6 @@
 { config, pkgs, lib, options, ... }:
 
 with lib;
-with lib.my;
 {
   options = {
     user = mkOpt types.attrs {};
