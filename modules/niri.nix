@@ -48,6 +48,18 @@ in {
             natural-scroll = true;
             #dwt = true;
           };
+          mouse = {
+            off = true;
+          };
+          trackpoint = {
+            off = true;
+          };
+        };
+
+        output."HDMI-A-2" = {
+          mode = "1920x720";
+          scale = 1.5;
+          transform = "90";
         };
 
         environment = {
@@ -58,10 +70,13 @@ in {
 
         # https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
         layout = {
-          gaps = 6;
+          gaps = 16;
 
-          center-focused-column = "on-overflow";
-
+          center-focused-column = "always";
+          preset-column-widths = {
+            # proportion = 1.0;
+          };
+          default-column-width = {};
           focus-ring = {
             enable = false;
             width = 1;
@@ -76,7 +91,12 @@ in {
             # inactive.color = config.modules.desktop.themes.niri.inactive;
           };
         };
-
+    struts = {
+        left =  16;
+        right  = 16;
+	      top =  0;
+        bottom  = 0;
+    };
         hotkey-overlay.skip-at-startup = true;
 
         screenshot-path = null;
