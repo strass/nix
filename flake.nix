@@ -33,18 +33,9 @@
           ./hosts/fridge/default.nix
           ./modules/ssh.nix
           ./modules/niri.nix
-          # ./modules/user.nix # has some libraries I dont have implemented
 
-          # make home-manager as a module of nixos
-          # so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`
+          # make home-manager as a module of nixos so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`
           home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            # home-manager.users.strass = import ./modules/home.nix;
-
-            # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
-          }
         ];
       };
     };

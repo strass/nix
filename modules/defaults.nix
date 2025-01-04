@@ -111,6 +111,7 @@ in {
     git  
     alacritty fuzzel firefox cog
   ];
+  environment.variables.EDITOR = "vim";
 
   documentation.nixos.enable = false;
 }

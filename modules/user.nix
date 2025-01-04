@@ -18,7 +18,7 @@ with lib; {
       uid = 1000;
     };
 
-       users.groups.strass = {};
+    users.groups.strass = {};
 
     home-manager.useUserPackages = true;
     home-manager.useGlobalPkgs = true;
