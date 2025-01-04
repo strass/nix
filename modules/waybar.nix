@@ -4,6 +4,11 @@ with lib;
 let
   cfg = config.modules.desktop.waybar;
 in {
+  options.modules.desktop.execOnStart = mkOption {
+      type = types.listOf types.str;
+      description = "Commands to call upon startup";
+      default = null;
+    };
   options.modules.desktop.waybar = {
     enable = mkEnableOption "Enable Waybar, a highly customizable Wayland bar";
     package = mkOption {
