@@ -35,7 +35,7 @@
     desktop = {
       niri.enable = true;
       waybar.enable = true;
-      execOnStart = [];
+      execOnStart = ["cog http://zaks.pw:2021/activities"];
     };
 
     # software = {

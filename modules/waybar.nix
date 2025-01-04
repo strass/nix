@@ -105,7 +105,6 @@ in {
           margin-right = 6;
           margin-bottom = 0;
           modules-left = [
-            "image#logo"
             "niri/workspaces"
             "niri/window"
           ];
@@ -124,4 +123,4 @@ in {
       };
     };
   };
-}
+} 
