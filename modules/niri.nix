@@ -58,7 +58,7 @@ in {
 
         outputs."HDMI-A-2" = {
           # mode = "1920x720";
-          scale = 1.5;
+          # scale = 1.5;
           transform.rotation = 90;
         };
 
@@ -74,7 +74,7 @@ in {
 
           center-focused-column = "always";
           preset-column-widths = [
-    { proportion = 1.0 ; }
+    { proportion = 1. / 1. ; }
 
     # { fixed = 1920; }
   ];
@@ -95,8 +95,8 @@ in {
     struts = {
         left =  16;
         right  = 16;
-	      top =  0;
-        bottom  = 0;
+	      top =  -16;
+        bottom  = -16;
     };
         };
         hotkey-overlay.skip-at-startup = true;
