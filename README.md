@@ -1,3 +1,6 @@
+# Install Flake
+`sudo nixos-rebuild switch --flake github:strass/nix#fridge --impure --no-write-lock-file  --refresh`
+
 # Prior Art
 - https://git.oat.zone/oat/nix-config
 - https://codeberg.org/kiara/cfg

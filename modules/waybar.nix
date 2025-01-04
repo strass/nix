@@ -99,7 +99,7 @@ in {
           layer = "top";
           position = "top";
           #spacing = 4;
-          height = 28;
+          height = 48;
           margin-top = 6;
           margin-left = 6;
           margin-right = 6;
