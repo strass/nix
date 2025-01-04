@@ -1,4 +1,4 @@
-{ lib, config, pkgs, inputs, system, ... }:
+{ lib, config, pkgs, inputs, ... }:
 
 with lib;
 let
@@ -8,7 +8,7 @@ in {
     enable = mkEnableOption "Enable Waybar, a highly customizable Wayland bar";
     package = mkOption {
       type = types.package;
-      default = inputs.waybar.packages.${system}.default;
+      default = inputs.waybar.packages."x86_64-linux".default;
       example = "pkgs.waybar";
     };
     hostname = mkOption {
