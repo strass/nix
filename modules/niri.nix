@@ -59,7 +59,7 @@ in {
         outputs."HDMI-A-2" = {
           mode = "1920x720";
           scale = 1.5;
-          transform.rotation = "90";
+          transform.rotation = 90;
         };
 
         environment = {
