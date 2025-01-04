@@ -90,13 +90,13 @@ in {
             # active.color = config.modules.desktop.themes.niri.accent;
             # inactive.color = config.modules.desktop.themes.niri.inactive;
           };
-        };
     struts = {
         left =  16;
         right  = 16;
 	      top =  0;
         bottom  = 0;
     };
+        };
         hotkey-overlay.skip-at-startup = true;
 
         screenshot-path = null;
