@@ -74,7 +74,7 @@ in {
 
           center-focused-column = "always";
           preset-column-widths = {
-            # proportion = 1.0;
+            proportion = [1.0];
           };
           default-column-width = {};
           focus-ring = {
