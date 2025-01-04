@@ -26,7 +26,7 @@
     nixosConfigurations = {
       fridge = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs; inherit system; };
         modules = [
           ./modules/user.nix
           ./modules/defaults.nix
