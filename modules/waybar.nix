@@ -114,13 +114,11 @@ in {
           ];
           modules-right = [
             "tray"
-            "niri/language"
           ];
 
     
           "niri/workspaces" = workspaces;
           "niri/window" = window;
-          "niri/language" = language;
           
         };
       };
