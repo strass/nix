@@ -48,12 +48,12 @@ in {
             natural-scroll = true;
             #dwt = true;
           };
-          mouse = {
-            off = true;
-          };
-          trackpoint = {
-            off = true;
-          };
+          # mouse = {
+          #   off = true;
+          # };
+          # trackpoint = {
+          #   off = true;
+          # };
         };
 
         output."HDMI-A-2" = {
