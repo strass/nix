@@ -73,9 +73,11 @@ in {
           gaps = 16;
 
           center-focused-column = "always";
-          preset-column-widths = {
-            proportion = [1.0];
-          };
+          preset-column-widths = [
+    { proportion = 1.0 ; }
+
+    # { fixed = 1920; }
+  ];
           default-column-width = {};
           focus-ring = {
             enable = false;
