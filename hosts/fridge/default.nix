@@ -34,7 +34,7 @@
 
     desktop = {
       niri.enable = true;
-      # waybar.enable = true;
+      waybar.enable = true;
     };
 
     # software = {
