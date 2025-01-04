@@ -22,10 +22,10 @@
 
   outputs = inputs@{ nixpkgs, home-manager, ... }: {
   
-
+system = "x86_64-linux";
     nixosConfigurations = {
       fridge = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        system = system;
         specialArgs = { inherit inputs; inherit system; };
         modules = [
           ./modules/user.nix
