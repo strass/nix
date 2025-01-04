@@ -9,9 +9,6 @@
   inherit (lib.modules) mkAliasOptionModule mkDefault mkIf;
   # inherit (lib.my) mapModulesRec';
 in {
-  # disables Nixpkgs Hyprland module to avoid conflicts
-  #disabledModules = [ "programs/hyprland.nix" ];
-  
   imports =
     [
       inputs.home-manager.nixosModules.home-manager
@@ -19,8 +16,12 @@ in {
   	  # inputs.nix-colors.homeManagerModules.default
       #inputs.hyprland.nixosModules.default
       #inputs.lix-module.nixosModules.default
+
+      # Load my modules
+      ./ssh.nix
+      ./niri.nix
+      ./waybar.nix
     ];
-    # ++ (mapModulesRec' (toString ./modules) import);
 
   hm.imports = [
     #inputs.hyprland.homeManagerModules.default

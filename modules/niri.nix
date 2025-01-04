@@ -211,6 +211,7 @@ in {
           "Mod+D".action = spawn "fuzzel";
 
           "Mod+Q".action = close-window;
+          "Mod+Shift+Q".action = quit;
 
           "Mod+Left".action  = focus-column-left;
           "Mod+Down".action  = focus-window-down;
