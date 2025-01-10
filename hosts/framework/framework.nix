@@ -1,7 +1,7 @@
 {
 hardware, ...
   
-}{
+}: {
   services.fwupd.enable = true;
   services.fwupd.extraRemotes = [ "lvfs-testing" ];
   # Might be necessary once to make the update succeed
