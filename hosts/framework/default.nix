@@ -7,9 +7,9 @@ imports = [
   services.vscode-server.enable = true;
 
   # Bootloader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/nvme0n1";
-  boot.loader.grub.useOSProber = true;
+  # boot.loader.grub.enable = true;
+  # boot.loader.grub.device = "/dev/nvme0n1";
+  # boot.loader.grub.useOSProber = true;
 
   networking.hostName = "framework"; # Define your hostname.
   networking.networkmanager.enable = true;
