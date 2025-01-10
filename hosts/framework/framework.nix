@@ -1,5 +1,5 @@
 {
-
+hardware
   
 }{
   services.fwupd.enable = true;
