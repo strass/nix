@@ -1,6 +1,4 @@
 {
-  description = "Config for framework";
-
 imports = [
     ./hardware.nix
     (fetchTarball "https://github.com/nix-community/nixos-vscode-server/tarball/master")
