@@ -3,7 +3,6 @@
 
 imports = [
     ./hardware.nix
-    ./framework.nix
     (fetchTarball "https://github.com/nix-community/nixos-vscode-server/tarball/master")
   ];
 
