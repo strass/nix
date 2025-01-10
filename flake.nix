@@ -20,7 +20,7 @@
     hyprlock.url = "github:hyprwm/hyprlock";
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, ... }: {
+  outputs = inputs@{ nixpkgs, home-manager, hardware, ... }: {
   
 
     nixosConfigurations = {
