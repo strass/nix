@@ -1,5 +1,10 @@
-{lib, config, options, pkgs, ...}:
 {
+  lib,
+  config,
+  options,
+  pkgs,
+  ...
+}: {
   imports = [
     ./hardware.nix
     (fetchTarball "https://github.com/nix-community/nixos-vscode-server/tarball/master")

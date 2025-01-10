@@ -7,10 +7,8 @@
   ...
 }:
 with lib; {
-  
-
   config = {
-    users.users.strass  =  {
+    users.users.strass = {
       name = "strass";
       description = "zak";
       extraGroups = ["networkmanager" "wheel" "input" "audio" "video" "storage"];
@@ -34,7 +32,7 @@ with lib; {
     };
 
     users.users.root = {
-      packages = [ pkgs.shadow ];
+      packages = [pkgs.shadow];
       shell = pkgs.shadow;
       # hashedPassword = "!";
     };

@@ -1,7 +1,12 @@
-{ lib, config, pkgs, inputs, system, ... }:
-
-with lib;
-let
+{
+  lib,
+  config,
+  pkgs,
+  inputs,
+  system,
+  ...
+}:
+with lib; let
   cfg = config.modules.desktop.niri;
 in {
   options.modules.desktop.niri = {
@@ -13,11 +18,11 @@ in {
     };
   };
 
-  imports = [ inputs.niri.nixosModules.niri ];
+  imports = [inputs.niri.nixosModules.niri];
 
   config = mkIf cfg.enable {
-    hm.home.packages = [ pkgs.xwayland-satellite-unstable ];
-    nixpkgs.overlays = [ inputs.niri.overlays.niri ];
+    hm.home.packages = [pkgs.xwayland-satellite-unstable];
+    nixpkgs.overlays = [inputs.niri.overlays.niri];
     programs.niri = {
       enable = true;
       package = cfg.package;
@@ -25,13 +30,14 @@ in {
     systemd.user.services.niri-flake-polkit.enable = false;
     hm.programs.niri = {
       settings = {
-        spawn-at-startup = [
-          # { command = [ "${lib.getExe pkgs.xwayland-satellite-unstable}" ]; }
-          # { command = [ "${lib.getExe pkgs.networkmanagerapplet}" ]; }
-          # { command = [ "${pkgs.deepin.dde-polkit-agent}/lib/polkit-1-dde/dde-polkit-agent" ]; }   # authentication prompts
-          # { command = [ "${lib.getExe pkgs.wl-clip-persist} --clipboard primary" ]; } # to fix wl clipboards disappearing
-        ]
-          ++ (map (cmd: { command = [ "sh" "-c" cmd ]; }) config.modules.desktop.execOnStart);
+        spawn-at-startup =
+          [
+            # { command = [ "${lib.getExe pkgs.xwayland-satellite-unstable}" ]; }
+            # { command = [ "${lib.getExe pkgs.networkmanagerapplet}" ]; }
+            # { command = [ "${pkgs.deepin.dde-polkit-agent}/lib/polkit-1-dde/dde-polkit-agent" ]; }   # authentication prompts
+            # { command = [ "${lib.getExe pkgs.wl-clip-persist} --clipboard primary" ]; } # to fix wl clipboards disappearing
+          ]
+          ++ (map (cmd: {command = ["sh" "-c" cmd];}) config.modules.desktop.execOnStart);
 
         # https://github.com/YaLTeR/niri/wiki/Configuration:-Input
         input = {
@@ -74,10 +80,10 @@ in {
 
           center-focused-column = "always";
           preset-column-widths = [
-    { proportion = 1. / 1. ; }
+            # { proportion = 1. / 1. ; }
 
-    # { fixed = 1920; }
-  ];
+            # { fixed = 1920; }
+          ];
           default-column-width = {};
           focus-ring = {
             enable = false;
@@ -92,12 +98,12 @@ in {
             # active.color = config.modules.desktop.themes.niri.accent;
             # inactive.color = config.modules.desktop.themes.niri.inactive;
           };
-    struts = {
-        left =  16;
-        right  = 16;
-	      top =  -16;
-        bottom  = -16;
-    };
+          struts = {
+            left = 16;
+            right = 16;
+            top = -16;
+            bottom = -16;
+          };
         };
         hotkey-overlay.skip-at-startup = true;
 
@@ -176,19 +182,24 @@ in {
         # https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
         window-rules = [
           {
-            matches = [{ app-id = "^org\.wezfurlong\.wezterm$"; }];
+            matches = [{app-id = "^org\.wezfurlong\.wezterm$";}];
             default-column-width = {};
           }
           (let
-            allCorners = r: { bottom-left = r; bottom-right = r; top-left = r; top-right = r; };
+            allCorners = r: {
+              bottom-left = r;
+              bottom-right = r;
+              top-left = r;
+              top-right = r;
+            };
           in {
             geometry-corner-radius = allCorners 10.0;
             clip-to-geometry = true;
           })
           {
             matches = [
-              { app-id = "^clipse$"; }
-              { app-id = "^dde-polkit-agent$"; }
+              {app-id = "^clipse$";}
+              {app-id = "^dde-polkit-agent$";}
               #{ app-id = "^rofi-rbw$"; }
             ];
             block-out-from = "screen-capture";
@@ -213,9 +224,9 @@ in {
           "Mod+Q".action = close-window;
           "Mod+Shift+Q".action = quit;
 
-          "Mod+Left".action  = focus-column-left;
-          "Mod+Down".action  = focus-window-down;
-          "Mod+Up".action    = focus-window-up;
+          "Mod+Left".action = focus-column-left;
+          "Mod+Down".action = focus-window-down;
+          "Mod+Up".action = focus-window-up;
           "Mod+Right".action = focus-column-right;
           "Mod+F".action = maximize-column;
         };

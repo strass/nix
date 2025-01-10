@@ -9,19 +9,18 @@
   inherit (lib.modules) mkAliasOptionModule mkDefault mkIf;
   # inherit (lib.my) mapModulesRec';
 in {
-  imports =
-    [
-      inputs.home-manager.nixosModules.home-manager
-      (mkAliasOptionModule ["hm"] ["home-manager" "users" "strass"]) # used to be ["home-manager" "users" config.user.name]
-  	  # inputs.nix-colors.homeManagerModules.default
-      #inputs.hyprland.nixosModules.default
-      #inputs.lix-module.nixosModules.default
+  imports = [
+    inputs.home-manager.nixosModules.home-manager
+    (mkAliasOptionModule ["hm"] ["home-manager" "users" "strass"]) # used to be ["home-manager" "users" config.user.name]
+    # inputs.nix-colors.homeManagerModules.default
+    #inputs.hyprland.nixosModules.default
+    #inputs.lix-module.nixosModules.default
 
-      # Load my modules
-      ./ssh.nix
-      ./niri.nix
-      ./waybar.nix
-    ];
+    # Load my modules
+    ./ssh.nix
+    ./niri.nix
+    ./waybar.nix
+  ];
 
   hm.imports = [
     #inputs.hyprland.homeManagerModules.default
@@ -36,11 +35,11 @@ in {
   nix = {
     package = pkgs.nixVersions.stable;
 
-    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ]; # Enables use of `nix-shell -p ...` etc
+    nixPath = ["nixpkgs=${inputs.nixpkgs}"]; # Enables use of `nix-shell -p ...` etc
     registry.nixpkgs.flake = inputs.nixpkgs; # Make `nix shell` etc use pinned nixpkgs
 
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = ["nix-command" "flakes"];
       auto-optimise-store = true;
       keep-outputs = true;
       keep-derivations = true;
@@ -97,9 +96,11 @@ in {
   };
 
   environment.systemPackages = with pkgs; [
-    unrar unzip
-  	micro
-  	curl wget
+    unrar
+    unzip
+    micro
+    curl
+    wget
     desktop-file-utils
     shared-mime-info
     xdg-user-dirs
@@ -109,8 +110,11 @@ in {
     # on a git repository makes nixos-rebuild break,
     # rendering your system unable to rebuild.
     # nix is really cool
-    git  
-    alacritty fuzzel firefox cog
+    git
+    alacritty
+    fuzzel
+    firefox
+    cog
   ];
   environment.variables.EDITOR = "vim";
 

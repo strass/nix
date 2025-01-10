@@ -20,14 +20,16 @@
     hyprlock.url = "github:hyprwm/hyprlock";
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, hardware, ... }: {
-  
-
+  outputs = inputs @ {
+    nixpkgs,
+    home-manager,
+    hardware,
+    ...
+  }: {
     nixosConfigurations = {
-
       framework = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
+        specialArgs = {inherit inputs;};
         modules = [
           ./modules/user.nix
           ./modules/defaults.nix
@@ -40,7 +42,7 @@
       };
       fridge = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
+        specialArgs = {inherit inputs;};
         modules = [
           ./modules/user.nix
           ./modules/defaults.nix

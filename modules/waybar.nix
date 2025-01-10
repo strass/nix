@@ -1,14 +1,18 @@
-{ lib, config, pkgs, inputs, ... }:
-
-with lib;
-let
+{
+  lib,
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
+with lib; let
   cfg = config.modules.desktop.waybar;
 in {
   options.modules.desktop.execOnStart = mkOption {
-      type = types.listOf types.str;
-      description = "Commands to call upon startup";
-      default = null;
-    };
+    type = types.listOf types.str;
+    description = "Commands to call upon startup";
+    default = null;
+  };
   options.modules.desktop.waybar = {
     enable = mkEnableOption "Enable Waybar, a highly customizable Wayland bar";
     package = mkOption {
@@ -39,7 +43,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    modules.desktop.execOnStart = [ "${lib.getExe cfg.package}" ];
+    modules.desktop.execOnStart = ["${lib.getExe cfg.package}"];
     hm.programs.waybar = {
       enable = true;
       package = cfg.package;
@@ -115,12 +119,10 @@ in {
             "tray"
           ];
 
-    
           "niri/workspaces" = workspaces;
           "niri/window" = window;
-          
         };
       };
     };
   };
-} 
+}
