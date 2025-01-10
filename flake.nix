@@ -35,7 +35,7 @@
 
           # make home-manager as a module of nixos so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`
           home-manager.nixosModules.home-manager
-          hardware.nixosModules.framework-13-inch-11th-gen-intel
+          hardware.nixosModules.framework-11th-gen-intel
         ];
       };
       fridge = nixpkgs.lib.nixosSystem {
