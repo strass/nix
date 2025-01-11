@@ -18,10 +18,27 @@ in {
     };
   };
 
-  imports = [inputs.niri.nixosModules.niri];
+  imports = [
+    inputs.niri.nixosModules.niri
+  ];
+
+  stylix.enable = true;
+  stylix.image = pkgs.fetchurl {
+    url = "https://raw.githubusercontent.com/ng-hai/hyper-rose-pine-next/refs/heads/main/wallpaper/dark/wallpaper-block-wave/themer-wallpaper-block-wave-dark-5120x2880.png";
+    sha256 = "sha256-Q5ZtrIDtPZKOYohNt9NjPF6suV3rcw1HK8mx7+Ll4Ts=";
+  };
+  stylix.polarity = "dark";
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-moon.yaml";
 
   config = mkIf cfg.enable {
-    hm.home.packages = [pkgs.xwayland-satellite-unstable];
+    hm.home.packages = [
+      pkgs.xwayland-satellite-unstable
+      # inputs.swww.packages.${pkgs.system}.swww
+      pkgs.eww
+      # pkgs.hyprlock
+      # pkgs.wleave
+      # pkgs.gammastep
+    ];
     nixpkgs.overlays = [inputs.niri.overlays.niri];
     programs.niri = {
       enable = true;
@@ -32,10 +49,10 @@ in {
       settings = {
         spawn-at-startup =
           [
-            # { command = [ "${lib.getExe pkgs.xwayland-satellite-unstable}" ]; }
+            {command = ["${lib.getExe pkgs.xwayland-satellite-unstable}"];}
             # { command = [ "${lib.getExe pkgs.networkmanagerapplet}" ]; }
-            # { command = [ "${pkgs.deepin.dde-polkit-agent}/lib/polkit-1-dde/dde-polkit-agent" ]; }   # authentication prompts
-            # { command = [ "${lib.getExe pkgs.wl-clip-persist} --clipboard primary" ]; } # to fix wl clipboards disappearing
+            {command = ["${pkgs.deepin.dde-polkit-agent}/lib/polkit-1-dde/dde-polkit-agent"];} # authentication prompts
+            {command = ["${lib.getExe pkgs.wl-clip-persist} --clipboard primary"];} # to fix wl clipboards disappearing
           ]
           ++ (map (cmd: {command = ["sh" "-c" cmd];}) config.modules.desktop.execOnStart);
 
@@ -231,6 +248,18 @@ in {
           "Mod+F".action = maximize-column;
         };
       };
+    };
+
+    hm.programs.eww = {
+      enable = true;
+      configDir = pkgs.fetchFromGitHub {
+        owner = "strass";
+        repo = "nix";
+        sparseCheckout = ["config/eww"];
+      };
+      # enableBashIntegration = true;
+      # enableZshIntegration = true;
+      # enableFishIntegration = true;
     };
   };
 }

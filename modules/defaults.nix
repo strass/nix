@@ -19,7 +19,7 @@ in {
     # Load my modules
     ./ssh.nix
     ./niri.nix
-    ./waybar.nix
+    # ./waybar.nix // Using eww in niri
   ];
 
   hm.imports = [

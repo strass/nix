@@ -18,18 +18,39 @@
     niri.url = "github:sodiboo/niri-flake";
     waybar.url = "github:Alexays/Waybar";
     hyprlock.url = "github:hyprwm/hyprlock";
+    stylix.url = "github:danth/stylix/release-24.11";
   };
 
   outputs = inputs @ {
     nixpkgs,
     home-manager,
     hardware,
+    nixpkgs-unstable,
+    stylix,
     ...
   }: {
+    nix.settings.trusted-users = ["strass"];
+    nixConfig = {
+      # override the default substituters
+      substituters = [
+        "https://cache.nixos.org"
+        "https://nix-community.cachix.org"
+      ];
+      trusted-public-keys = [
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      ];
+    };
+
     nixosConfigurations = {
       framework = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = {inherit inputs;};
+        specialArgs = {
+          inherit inputs;
+          pkgs-unstable = import nixpkgs-unstable {
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+          };
+        };
         modules = [
           ./modules/user.nix
           ./modules/defaults.nix
@@ -38,6 +59,7 @@
           # make home-manager as a module of nixos so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`
           home-manager.nixosModules.home-manager
           hardware.nixosModules.framework-11th-gen-intel
+          stylix.nixosModules.stylix
         ];
       };
       fridge = nixpkgs.lib.nixosSystem {
