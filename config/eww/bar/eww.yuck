@@ -1,7 +1,7 @@
 (defwidget bar []
   (centerbox :orientation "h"
     (workspaces)
-    ()
+    (sidestuff)
     (sidestuff)))
 
 (defwidget sidestuff []

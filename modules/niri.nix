@@ -249,15 +249,7 @@ in {
 
     hm.programs.eww = {
       enable = true;
-      configDir =
-        pkgs.fetchFromGitHub {
-          owner = "strass";
-          repo = "nix";
-          rev = "refs/heads/main";
-          sparseCheckout = ["config/eww/bar"];
-          hash = "";
-        }
-        + "/config/eww/bar"; # TODO: Figure out how to host multiple bars?
+      configDir = ../. + "/config/eww/bar";
       # enableBashIntegration = true;
       # enableZshIntegration = true;
       # enableFishIntegration = true;

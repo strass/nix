@@ -111,6 +111,7 @@
     wget
     pkgs-unstable.ghostty
     direnv
+    discord
   ];
   stylix.enable = true;
   stylix.image = pkgs.fetchurl {
