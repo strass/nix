@@ -124,8 +124,7 @@
 
     desktop = {
       niri.enable = true;
-      waybar.enable = true;
-      # execOnStart = ["cog http://zaks.pw:2021"];
+      execOnStart = ["ghostty"];
     };
   };
 }

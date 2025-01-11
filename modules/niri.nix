@@ -17,6 +17,11 @@ in {
       example = "pkgs.niri";
     };
   };
+  options.modules.desktop.execOnStart = mkOption {
+    type = types.listOf types.str;
+    description = "Commands to call upon startup";
+    default = null;
+  };
 
   imports = [
     inputs.niri.nixosModules.niri
@@ -42,7 +47,7 @@ in {
         spawn-at-startup =
           [
             {command = ["${lib.getExe pkgs.xwayland-satellite-unstable}"];}
-            # { command = [ "${lib.getExe pkgs.networkmanagerapplet}" ]; }
+            {command = ["${lib.getExe pkgs.eww} open-many bar"];}
             {command = ["${pkgs.deepin.dde-polkit-agent}/lib/polkit-1-dde/dde-polkit-agent"];} # authentication prompts
             {command = ["${lib.getExe pkgs.wl-clip-persist} --clipboard primary"];} # to fix wl clipboards disappearing
           ]
@@ -244,11 +249,15 @@ in {
 
     hm.programs.eww = {
       enable = true;
-      configDir = pkgs.fetchFromGitHub {
-        owner = "strass";
-        repo = "nix";
-        sparseCheckout = ["config/eww"];
-      };
+      configDir =
+        pkgs.fetchFromGitHub {
+          owner = "strass";
+          repo = "nix";
+          rev = "refs/heads/main";
+          sparseCheckout = ["config/eww"];
+          hash = "sha256-fJg7g5V+W4W+BkEuoTF6ItoU5aDiXl+Li2QWkrDoxbg=";
+        }
+        + "/config/eww";
       # enableBashIntegration = true;
       # enableZshIntegration = true;
       # enableFishIntegration = true;
