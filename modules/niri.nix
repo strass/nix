@@ -255,7 +255,7 @@ in {
           repo = "nix";
           rev = "refs/heads/main";
           sparseCheckout = ["config/eww/bar"];
-          hash = "sha256-293KLvVrj1s2+g/s11+6Rc1rDaRgP0QNkFpZi0yRn7Q=";
+          hash = "";
         }
         + "/config/eww/bar"; # TODO: Figure out how to host multiple bars?
       # enableBashIntegration = true;
