@@ -125,6 +125,7 @@
 
     desktop = {
       niri.enable = true;
+      waybar.enable = true;
       execOnStart = ["ghostty"];
     };
   };

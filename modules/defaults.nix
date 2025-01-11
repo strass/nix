@@ -19,7 +19,8 @@ in {
     # Load my modules
     ./ssh.nix
     ./niri.nix
-    # ./waybar.nix // Using eww in niri
+    ./waybar.nix
+    ./fonts.nix
   ];
 
   hm.imports = [
@@ -111,7 +112,6 @@ in {
     # rendering your system unable to rebuild.
     # nix is really cool
     git
-    alacritty
     fuzzel
     firefox
     cog

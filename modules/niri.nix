@@ -31,7 +31,6 @@ in {
     hm.home.packages = [
       pkgs.xwayland-satellite-unstable
       # inputs.swww.packages.${pkgs.system}.swww
-      pkgs.eww
       # pkgs.hyprlock
       # pkgs.wleave
       # pkgs.gammastep
@@ -47,7 +46,6 @@ in {
         spawn-at-startup =
           [
             {command = ["${lib.getExe pkgs.xwayland-satellite-unstable}"];}
-            {command = ["${lib.getExe pkgs.eww} open-many bar"];}
             {command = ["${pkgs.deepin.dde-polkit-agent}/lib/polkit-1-dde/dde-polkit-agent"];} # authentication prompts
             {command = ["${lib.getExe pkgs.wl-clip-persist} --clipboard primary"];} # to fix wl clipboards disappearing
           ]
@@ -245,14 +243,6 @@ in {
           "Mod+F".action = maximize-column;
         };
       };
-    };
-
-    hm.programs.eww = {
-      enable = true;
-      configDir = ../. + "/config/eww/bar";
-      # enableBashIntegration = true;
-      # enableZshIntegration = true;
-      # enableFishIntegration = true;
     };
   };
 }

@@ -8,11 +8,6 @@
 with lib; let
   cfg = config.modules.desktop.waybar;
 in {
-  options.modules.desktop.execOnStart = mkOption {
-    type = types.listOf types.str;
-    description = "Commands to call upon startup";
-    default = null;
-  };
   options.modules.desktop.waybar = {
     enable = mkEnableOption "Enable Waybar, a highly customizable Wayland bar";
     package = mkOption {
@@ -110,17 +105,28 @@ in {
           margin-bottom = 0;
           modules-left = [
             "niri/workspaces"
-            "niri/window"
           ];
           modules-center = [
-            "clock"
+            "niri/window"
           ];
           modules-right = [
             "tray"
+            "clock"
           ];
 
           "niri/workspaces" = workspaces;
           "niri/window" = window;
+
+          "clock" = {
+            "format" = "{:%I:%M:%S %p} ";
+            "interval" = 1;
+            "tooltip-format" = "<tt>{calendar}</tt>";
+            "calendar.format.today" = "<span color='#fAfBfC'><b>{}</b></span>";
+            "actions" = {
+              "on-click-right" = "shift_down";
+              "on-click" = "shift_up";
+            };
+          };
         };
       };
     };
