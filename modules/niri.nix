@@ -254,8 +254,8 @@ in {
           owner = "strass";
           repo = "nix";
           rev = "refs/heads/main";
-          sparseCheckout = ["config/eww"];
-          hash = "sha256-fJg7g5V+W4W+BkEuoTF6ItoU5aDiXl+Li2QWkrDoxbg=";
+          sparseCheckout = ["config/eww/bar"];
+          hash = "";
         }
         + "/config/eww";
       # enableBashIntegration = true;
