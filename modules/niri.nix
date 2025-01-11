@@ -4,6 +4,7 @@
   pkgs,
   inputs,
   system,
+  stylix,
   ...
 }:
 with lib; let
