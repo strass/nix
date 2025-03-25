@@ -78,15 +78,18 @@ in {
         };
         workspaces = {
           format = "{icon}";
+          icon-size = 32;
           format-icons = {
-            "1" = "";
-            "2" = "";
-            "3" = "";
-            "4" = "";
-            urgent = "";
-            default = "•";
+            "1" = "󰲡";
+            "2" = "󰲣";
+            "web" = "";
+            "discord" = "";
+            urgent = "\udb84\ude38";
+            default = "\uf4c3";
           };
           persistent-workspaces = {
+            "web" = "";
+            "discord" = "";
             "1" = [];
             "2" = [];
             "3" = [];

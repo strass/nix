@@ -10,7 +10,9 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware.nix
+    (fetchTarball "https://github.com/nix-community/nixos-vscode-server/tarball/master")
   ];
+  services.vscode-server.enable = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -87,6 +89,8 @@
     packages = with pkgs; [
       #  thunderbird
       moonlight-qt
+      bitwarden-desktop
+      bitwarden-cli
     ];
   };
 
@@ -121,11 +125,12 @@
   stylix.polarity = "dark";
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-moon.yaml";
   modules = {
-    # ssh.enable = true;
+    ssh.enable = true;
 
     desktop = {
       niri.enable = true;
       waybar.enable = true;
+      waybar.style = "* { font-family: 'M+1 Nerd Font'; }";
       execOnStart = ["ghostty"];
     };
   };

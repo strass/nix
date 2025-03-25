@@ -121,6 +121,11 @@ in {
 
         screenshot-path = null;
 
+        # workspaces = {
+        #   web = {};
+        #   discord = {};
+        # };
+
         # https://github.com/YaLTeR/niri/wiki/Configuration:-Animations
         animations = {
           shaders.window-resize = ''
@@ -222,6 +227,10 @@ in {
               active.color = "#00000065";
               inactive.color = "#00000065";
             };
+          }
+          {
+            matches = [{app-id = "Discord";}];
+            open-on-workspace = "discord";
           }
         ];
 
