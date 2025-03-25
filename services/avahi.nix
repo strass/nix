@@ -16,7 +16,7 @@
     # };
 
     avahi = {
-      enable = true;
+      enable = false;
       nssmdns4 = true;
       openFirewall = true;
       publish = {

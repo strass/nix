@@ -12,7 +12,15 @@ with lib; {
     users.users.strass = {
       name = "strass";
       description = "zak";
-      extraGroups = ["networkmanager" "wheel" "input" "audio" "video" "storage"];
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+        "input"
+        "audio"
+        "video"
+        "storage"
+        "podman" # is it possible to add conditionally from podman module?
+      ];
       isNormalUser = true;
       uid = 1000;
       # required for auto start before user login

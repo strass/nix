@@ -3,21 +3,22 @@
     enable = true;
 
     staticConfigOptions = {
+      # providers.docker.endpoint = "unix:///tmp/podman.sock"; # docker/podman not working
       entryPoints = {
         web = {
           address = ":80";
           asDefault = true;
-          http.redirections.entrypoint = {
-            to = "websecure";
-            scheme = "https";
-          };
+          # http.redirections.entrypoint = {
+          #   to = "websecure";
+          #   scheme = "https";
+          # };
         };
 
-        websecure = {
-          address = ":443";
-          asDefault = true;
-          http.tls.certResolver = "letsencrypt";
-        };
+        # websecure = {
+        #   address = ":443";
+        #   asDefault = true;
+        #   http.tls.certResolver = "letsencrypt";
+        # };
       };
 
       log = {
@@ -36,9 +37,17 @@
       api.insecure = true;
     };
 
+    # group = "podman";
+
     dynamicConfigOptions = {
       http.routers = {};
       http.services = {};
     };
   };
+
+  networking.firewall.allowedTCPPorts = [
+    8080
+    80
+    443
+  ];
 }
