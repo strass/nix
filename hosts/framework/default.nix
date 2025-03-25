@@ -8,11 +8,9 @@
   ...
 }: {
   imports = [
-    # Include the results of the hardware scan.
     ./hardware.nix
-    (fetchTarball "https://github.com/nix-community/nixos-vscode-server/tarball/master")
+    ../../modules/vscode.nix
   ];
-  services.vscode-server.enable = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
