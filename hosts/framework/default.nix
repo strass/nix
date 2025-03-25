@@ -9,8 +9,8 @@
 }: {
   imports = [
     ./hardware.nix
-    ../../modules/user.nix
     ../../modules/vscode.nix
+    ../../modules/podman.nix
     ../../services/traefik.nix
   ];
 
@@ -122,12 +122,12 @@
   modules = {
     ssh.enable = true;
 
-    desktop = {
-      niri.enable = true;
-      waybar.enable = true;
-      waybar.style = "* { font-family: 'M+1 Nerd Font'; }";
-      execOnStart = ["ghostty"];
-    };
+    # desktop = {
+    #   niri.enable = true;
+    #   waybar.enable = true;
+    #   waybar.style = "* { font-family: 'M+1 Nerd Font'; }";
+    #   execOnStart = ["ghostty"];
+    # };
   };
 
   # Disable the GNOME3/GDM auto-suspend feature that cannot be disabled in GUI!

@@ -4,6 +4,7 @@
   pkgs,
   lib,
   options,
+  inputs,
   ...
 }:
 with lib; {
@@ -14,12 +15,25 @@ with lib; {
       extraGroups = ["networkmanager" "wheel" "input" "audio" "video" "storage"];
       isNormalUser = true;
       uid = 1000;
+      # required for auto start before user login
+      linger = true;
+      # required for rootless container with multiple users
+      autoSubUidGidRange = true;
     };
 
     users.groups.strass = {};
 
     home-manager.useUserPackages = true;
     home-manager.useGlobalPkgs = true;
+    home-manager.users.strass = {
+      pkgs,
+      config,
+      ...
+    }: {
+      imports = [inputs.quadlet-nix.homeManagerModules.quadlet];
+      # This is crucial to ensure the systemd services are (re)started on config change
+      systemd.user.startServices = "sd-switch";
+    };
 
     hm.home.username = "strass";
     hm.home.homeDirectory = "/home/strass";

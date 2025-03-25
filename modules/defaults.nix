@@ -18,9 +18,9 @@ in {
 
     # Load my modules
     ./ssh.nix
-    ./niri.nix
-    ./waybar.nix
-    ./fonts.nix
+    # ./niri.nix
+    # ./waybar.nix
+    # ./fonts.nix
   ];
 
   hm.imports = [

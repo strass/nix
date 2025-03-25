@@ -13,6 +13,8 @@
       # to avoid problems caused by different versions of nixpkgs.
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    quadlet-nix.url = "github:SEIAROTg/quadlet-nix";
+    quadlet-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     hardware.url = "github:nixos/nixos-hardware";
     niri.url = "github:sodiboo/niri-flake";
@@ -27,6 +29,7 @@
     hardware,
     nixpkgs-unstable,
     stylix,
+    quadlet-nix,
     ...
   }: {
     nix.settings.trusted-users = ["strass"];
@@ -60,6 +63,7 @@
           home-manager.nixosModules.home-manager
           hardware.nixosModules.framework-11th-gen-intel
           stylix.nixosModules.stylix
+          quadlet-nix.nixosModules.quadlet
         ];
       };
       fridge = nixpkgs.lib.nixosSystem {
