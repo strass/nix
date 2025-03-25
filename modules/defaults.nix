@@ -17,6 +17,7 @@ in {
     #inputs.lix-module.nixosModules.default
 
     # Load my modules
+    ./avahi.nix
     ./ssh.nix
     # ./niri.nix
     # ./waybar.nix

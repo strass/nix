@@ -136,4 +136,16 @@
   systemd.targets.suspend.enable = false;
   systemd.targets.hibernate.enable = false;
   systemd.targets.hybrid-sleep.enable = false;
+
+  services.netatalk = {
+    enable = true;
+
+    volumes = {
+      "framework" = {
+        "home" = "yes";
+        path = "/home/strass";
+        "valid users" = "strass";
+      };
+    };
+  };
 }
