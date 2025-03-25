@@ -12,6 +12,7 @@
     ../../modules/vscode.nix
     ../../modules/podman.nix
     ../../services/traefik.nix
+    ../../containers/whoami.nix
   ];
 
   # Bootloader.
