@@ -1,4 +1,4 @@
-{
+{config, ...}: {
   services.traefik = {
     enable = true;
 
@@ -33,7 +33,6 @@
       # };
 
       api.dashboard = true;
-      # Access the Traefik dashboard on <Traefik IP>:8080 of your server
       api.insecure = true;
     };
 

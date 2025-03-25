@@ -9,6 +9,7 @@
 }: {
   imports = [
     ./hardware.nix
+    ../../modules/user.nix
     ../../modules/vscode.nix
     ../../services/traefik.nix
   ];
@@ -80,13 +81,8 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.strass = {
-    isNormalUser = true;
-    description = "zak";
-    extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
-      #  thunderbird
       moonlight-qt
       bitwarden-desktop
       bitwarden-cli
@@ -133,4 +129,11 @@
       execOnStart = ["ghostty"];
     };
   };
+
+  # Disable the GNOME3/GDM auto-suspend feature that cannot be disabled in GUI!
+  # If no user is logged in, the machine will power down after 20 minutes.
+  systemd.targets.sleep.enable = false;
+  systemd.targets.suspend.enable = false;
+  systemd.targets.hibernate.enable = false;
+  systemd.targets.hybrid-sleep.enable = false;
 }
