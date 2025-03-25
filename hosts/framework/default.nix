@@ -10,6 +10,7 @@
   imports = [
     ./hardware.nix
     ../../modules/vscode.nix
+    ../../services/traefik.nix
   ];
 
   # Bootloader.
