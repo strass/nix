@@ -137,15 +137,15 @@
   systemd.targets.hibernate.enable = false;
   systemd.targets.hybrid-sleep.enable = false;
 
+  # File sharing
   services.netatalk = {
     enable = true;
 
-    volumes = {
-      "framework" = {
-        "home" = "yes";
-        path = "/home/strass";
-        "valid users" = "strass";
-      };
+    settings = {
+      # Homes = {
+      #   "basedir regex" = "/home";
+      #   path = "strass";
+      # };
     };
   };
 }

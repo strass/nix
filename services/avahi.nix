@@ -6,7 +6,7 @@
   ...
 }: {
   networking.firewall.allowedTCPPorts = [
-    548 # netatalk
+    548 # netatalk (could be only allowed if netatalk enabled)
     636
   ];
 
@@ -15,13 +15,9 @@
     #   enable = true;
     # };
 
-    netatalk = {
-      enable = false;
-    };
-
     avahi = {
       enable = true;
-      nssmdns = true;
+      nssmdns4 = true;
       openFirewall = true;
       publish = {
         enable = true;
