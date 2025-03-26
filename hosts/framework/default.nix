@@ -11,7 +11,14 @@
     ./hardware.nix
     ../../modules/vscode.nix
     ../../modules/podman.nix
+
+    # services
     ../../services/traefik.nix
+    ../../services/redis.nix
+    ../../services/postgres.nix
+    ../../services/mysql.nix
+
+    # containers
     ../../containers/whoami.nix
   ];
 
@@ -143,10 +150,16 @@
     enable = true;
 
     settings = {
-      # Homes = {
-      #   "basedir regex" = "/home";
-      #   path = "strass";
-      # };
+      Global = {
+        "uam list" = "uams_guest.so, uams_clrtxt.so"; # needed for uploads from scanner
+      };
+      Homes = {
+        "basedir regex" = "/home";
+      };
+      public = {
+        path = "/home/strass/public";
+        "read only" = false;
+      };
     };
   };
 }
