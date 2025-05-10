@@ -11,19 +11,24 @@
   ];
 
   services = {
-    # resolved = {
-    #   enable = true;
-    # };
+    resolved = {
+      enable = true;
+    };
 
     avahi = {
-      enable = false;
+      enable = true;
       nssmdns4 = true;
       openFirewall = true;
+      reflector = true;
       publish = {
         enable = true;
+        workstation = true;
         userServices = true;
         addresses = true;
+        hinfo = true;
+        domain = true;
       };
+      browseDomains = ["framework.local"];
     };
   };
 }

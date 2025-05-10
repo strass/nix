@@ -5,7 +5,6 @@
     containers = {
       whoami = {
         autoStart = true;
-
         serviceConfig = {
           RestartSec = "10";
           Restart = "always";
@@ -15,13 +14,13 @@
           exec = "--port=8081";
           autoUpdate = "registry";
           name = "whoami";
-          publishPorts = ["0.0.0.0:8081:8081"]; # Note 0.0.0.0 binding here # would exposePorts be better?
+          publishPorts = ["0.0.0.0:8081:8081"];
           userns = "keep-id";
           hostname = "whoami";
 
           labels = [
             "traefik.enable=true"
-            # "traefik.http.routers.hello.rule=Host'(`hello.cthudson.com`)'"
+            "traefik.http.routers.whoami.rule=Host'(`whoami.framework.local`)'"
             # "traefik.http.middlewares.hello-https-redirect.redirectscheme.scheme="https""
             # "traefik.http.routers.hello.middlewares='hello-https-redirect'"
             # "traefik.http.routers.hello-secure.entrypoints='websecure'"

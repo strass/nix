@@ -13,6 +13,7 @@
     ../../modules/podman.nix
 
     # services
+    ../../services/avahi.nix
     ../../services/traefik.nix
     ../../services/redis.nix
     ../../services/postgres.nix
@@ -151,15 +152,15 @@
 
     settings = {
       Global = {
-        "uam list" = "uams_guest.so, uams_clrtxt.so"; # needed for uploads from scanner
+        # "uam list" = "uams_guest.so, uams_clrtxt.so"; # needed for uploads from scanner
       };
       Homes = {
         "basedir regex" = "/home";
       };
-      public = {
-        path = "/home/strass/public";
-        "read only" = false;
-      };
+      # public = {
+      #   path = "/home/strass/public";
+      #   "read only" = false;
+      # };
     };
   };
 }

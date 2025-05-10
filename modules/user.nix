@@ -12,6 +12,7 @@ with lib; {
     users.users.strass = {
       name = "strass";
       description = "zak";
+      shell = pkgs.fish;
       extraGroups = [
         "networkmanager"
         "wheel"
@@ -28,7 +29,6 @@ with lib; {
       # required for rootless container with multiple users
       autoSubUidGidRange = true;
     };
-
     users.groups.strass = {};
 
     home-manager.useUserPackages = true;
@@ -42,9 +42,36 @@ with lib; {
       # This is crucial to ensure the systemd services are (re)started on config change
       systemd.user.startServices = "sd-switch";
     };
+    programs.fish.enable = true;
+    hm.home = {
+      username = "strass";
+      homeDirectory = "/home/strass";
+      shellAliases = {
+        cd = "zoxide";
+        ls = "eza";
+        top = "btop";
+        cat = "bat";
+      };
+    };
 
-    hm.home.username = "strass";
-    hm.home.homeDirectory = "/home/strass";
+    hm.programs = {
+      fish.enable = true;
+      atuin = {
+        enable = true;
+        enableFishIntegration = true;
+      };
+      autojump = {
+        enable = true;
+        enableFishIntegration = true;
+      };
+      direnv = {
+        enable = true;
+      };
+      eza = {
+        enable = true;
+        enableFishIntegration = true;
+      };
+    };
 
     nix.settings = let
       users = ["root" "strass"];

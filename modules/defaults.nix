@@ -107,6 +107,7 @@ in {
     shared-mime-info
     xdg-user-dirs
     xdg-utils
+    fish
     # fun fact! when using flakes not having
     # git available as a global package while operating
     # on a git repository makes nixos-rebuild break,
@@ -116,7 +117,12 @@ in {
     fuzzel
     firefox
     cog
+    zoxide
+    eza
+    btop
+    bat
   ];
+
   environment.variables.EDITOR = "vim";
 
   documentation.nixos.enable = false;

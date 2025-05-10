@@ -1,9 +1,13 @@
 {config, ...}: {
   services.traefik = {
     enable = true;
+    group = "podman";
 
     staticConfigOptions = {
-      # providers.docker.endpoint = "unix:///tmp/podman.sock"; # docker/podman not working
+      providers.docker = {
+        endpoint = "unix:///var/run/podman/podman.sock";
+        allowEmptyServices = true;
+      };
       entryPoints = {
         web = {
           address = ":80";
@@ -36,8 +40,6 @@
       api.dashboard = true;
       api.insecure = true;
     };
-
-    # group = "podman";
 
     dynamicConfigOptions = {
       http.routers = {};
