@@ -21,6 +21,7 @@
     waybar.url = "github:Alexays/Waybar";
     hyprlock.url = "github:hyprwm/hyprlock";
     stylix.url = "github:danth/stylix/release-24.11";
+    vscode-server.url = "github:nix-community/nixos-vscode-server";
   };
 
   outputs = inputs @ {
@@ -30,6 +31,7 @@
     nixpkgs-unstable,
     stylix,
     quadlet-nix,
+    vscode-server,
     ...
   }: {
     nix.settings.trusted-users = ["strass"];
@@ -64,7 +66,7 @@
           hardware.nixosModules.framework-11th-gen-intel
           stylix.nixosModules.stylix
           quadlet-nix.nixosModules.quadlet
-
+        vscode-server.nixosModules.default
           "${nixpkgs-unstable}/nixos/modules/services/web-apps/olivetin.nix"
         ];
       };
