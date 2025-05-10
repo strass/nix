@@ -18,6 +18,7 @@
     ../../services/redis.nix
     ../../services/postgres.nix
     ../../services/mysql.nix
+    ../../services/olivetin.nix
 
     # containers
     ../../containers/whoami.nix
