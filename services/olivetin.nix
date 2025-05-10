@@ -27,9 +27,9 @@
     ];
   };
 
-  networking.firewall = {
-    allowedTCPPorts = [8200];
-  };
+  # networking.firewall = {
+  #   allowedTCPPorts = [8200];
+  # };
 
   services.traefik.dynamicConfigOptions = {
     http.routers.olivetin = {
@@ -37,13 +37,11 @@
       service = "olivetin";
     };
     http.services.olivetin = {
-      loadBalancer = {
-        servers = [
-          {
-            url = "http://localhost:8200";
-          }
-        ];
-      };
+      loadBalancer.servers = [
+        {
+          url = "http://localhost:8200";
+        }
+      ];
     };
   };
 }

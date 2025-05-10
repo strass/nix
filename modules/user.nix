@@ -47,10 +47,15 @@ with lib; {
       username = "strass";
       homeDirectory = "/home/strass";
       shellAliases = {
-#        cd = "zoxide";
+        #        cd = "zoxide";
         ls = "eza";
-        top = "btop";
+        top = "glances";
         cat = "bat";
+        cp = "xcp";
+        rm = "rip";
+        du = "dust";
+        vi = "nvim";
+        vim = "nvim";
       };
     };
 

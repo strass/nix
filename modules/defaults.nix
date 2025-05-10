@@ -119,11 +119,16 @@ in {
     cog
     zoxide
     eza
-    btop
+    glances
     bat
+    xcp
+    rm-improved
+    dysk
+    dust
+    neovim
   ];
 
-  environment.variables.EDITOR = "vim";
+  environment.variables.EDITOR = "nvim";
 
   documentation.nixos.enable = false;
 
