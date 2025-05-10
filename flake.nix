@@ -64,6 +64,8 @@
           hardware.nixosModules.framework-11th-gen-intel
           stylix.nixosModules.stylix
           quadlet-nix.nixosModules.quadlet
+
+          "${nixpkgs-unstable}/nixos/modules/services/web-apps/olivetin.nix"
         ];
       };
       fridge = nixpkgs.lib.nixosSystem {
