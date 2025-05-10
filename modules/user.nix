@@ -47,7 +47,7 @@ with lib; {
       username = "strass";
       homeDirectory = "/home/strass";
       shellAliases = {
-        cd = "zoxide";
+#        cd = "zoxide";
         ls = "eza";
         top = "btop";
         cat = "bat";
