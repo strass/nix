@@ -9,6 +9,7 @@
 }: {
   imports = [
     ./hardware.nix
+    ./filesharing.nix
     ../../modules/vscode.nix
     ../../modules/podman.nix
 
@@ -96,6 +97,7 @@
       moonlight-qt
       bitwarden-desktop
       bitwarden-cli
+      discord
     ];
   };
 
@@ -120,7 +122,6 @@
     wget
     pkgs-unstable.ghostty
     direnv
-    discord
   ];
   stylix.enable = true;
   stylix.image = pkgs.fetchurl {
@@ -146,22 +147,4 @@
   systemd.targets.suspend.enable = false;
   systemd.targets.hibernate.enable = false;
   systemd.targets.hybrid-sleep.enable = false;
-
-  # File sharing
-  services.netatalk = {
-    enable = true;
-
-    settings = {
-      Global = {
-        # "uam list" = "uams_guest.so, uams_clrtxt.so"; # needed for uploads from scanner
-      };
-      Homes = {
-        "basedir regex" = "/home";
-      };
-      # public = {
-      #   path = "/home/strass/public";
-      #   "read only" = false;
-      # };
-    };
-  };
 }
