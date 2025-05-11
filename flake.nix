@@ -66,7 +66,7 @@
           hardware.nixosModules.framework-11th-gen-intel
           stylix.nixosModules.stylix
           quadlet-nix.nixosModules.quadlet
-        vscode-server.nixosModules.default
+          vscode-server.nixosModules.default
           "${nixpkgs-unstable}/nixos/modules/services/web-apps/olivetin.nix"
         ];
       };
