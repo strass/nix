@@ -6,7 +6,6 @@
   ...
 }: {
   networking.firewall.allowedTCPPorts = [
-    548 # netatalk (could be only allowed if netatalk enabled)
     636
   ];
 
