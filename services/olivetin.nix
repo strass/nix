@@ -2,13 +2,16 @@
   inputs,
   pkgs,
   ...
-}: {
+}: let
+  name = "olivetin";
+  port = 8200;
+in {
   services.olivetin = {
     package = inputs.nixpkgs-unstable.legacyPackages."${pkgs.system}".olivetin;
 
     enable = true;
     settings = {
-      ListenAddressSingleHTTPFrontend = "0.0.0.0:8200";
+      ListenAddressSingleHTTPFrontend = "0.0.0.0:${toString port}";
       actions = [
         {
           id = "hello_world";
@@ -27,19 +30,21 @@
     ];
   };
 
-  # networking.firewall = {
-  #   allowedTCPPorts = [8200];
-  # };
+  networking.firewall = {
+    allowedTCPPorts = [
+      port
+    ];
+  };
 
   services.traefik.dynamicConfigOptions = {
-    http.routers.olivetin = {
-      rule = "Host(`olivetin.framework.local`)";
-      service = "olivetin";
+    http.routers."${name}" = {
+      rule = "Host(`${name}.framework.local`)";
+      service = name;
     };
-    http.services.olivetin = {
+    http.services."${name}" = {
       loadBalancer.servers = [
         {
-          url = "http://localhost:8200";
+          url = "http://localhost:${toString port}";
         }
       ];
     };
