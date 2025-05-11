@@ -10,6 +10,7 @@
   imports = [
     ./hardware.nix
     ./filesharing.nix
+    ../../modules/stylix.nix
     ../../modules/vscode.nix
     ../../modules/podman.nix
 
@@ -31,10 +32,6 @@
 
   networking.hostName = "framework"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -123,13 +120,7 @@
     pkgs-unstable.ghostty
     direnv
   ];
-  stylix.enable = true;
-  stylix.image = pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/ng-hai/hyper-rose-pine-next/refs/heads/main/wallpaper/dark/wallpaper-block-wave/themer-wallpaper-block-wave-dark-5120x2880.png";
-    sha256 = "sha256-Q5ZtrIDtPZKOYohNt9NjPF6suV3rcw1HK8mx7+Ll4Ts=";
-  };
-  stylix.polarity = "dark";
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-moon.yaml";
+
   modules = {
     ssh.enable = true;
 
