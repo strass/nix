@@ -15,11 +15,12 @@
     ../../modules/podman.nix
 
     # services
+    ../../services/auth.pocket-id.nix
     ../../services/avahi.nix
     ../../services/traefik.nix
-    ../../services/redis.nix
-    ../../services/postgres.nix
-    ../../services/mysql.nix
+    ../../services/database.redis.nix
+    ../../services/database.postgres.nix
+    ../../services/database.mysql.nix
     ../../services/olivetin.nix
 
     # containers
