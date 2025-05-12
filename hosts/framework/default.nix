@@ -15,13 +15,14 @@
     ../../modules/podman.nix
 
     # services
-    ../../services/auth.pocket-id.nix
+    # ../../services/auth.pocket-id.nix # only in unstable right now
     ../../services/avahi.nix
     ../../services/traefik.nix
     ../../services/database.redis.nix
     ../../services/database.postgres.nix
     ../../services/database.mysql.nix
     ../../services/olivetin.nix
+    ../../services/ntfy.nix
 
     # containers
     ../../containers/whoami.nix
