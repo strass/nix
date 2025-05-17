@@ -22,6 +22,11 @@
     hyprlock.url = "github:hyprwm/hyprlock";
     stylix.url = "github:danth/stylix/release-24.11";
     vscode-server.url = "github:nix-community/nixos-vscode-server";
+
+    ssh-keys = {
+      url = "https://github.com/strass.keys";
+      flake = false;
+    };
   };
 
   outputs = inputs @ {

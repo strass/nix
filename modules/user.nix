@@ -28,6 +28,8 @@ with lib; {
       linger = true;
       # required for rootless container with multiple users
       autoSubUidGidRange = true;
+
+      openssh.authorizedKeys.keyFiles = [inputs.ssh-keys.outPath];
     };
     users.groups.strass = {};
 
