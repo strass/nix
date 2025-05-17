@@ -11,7 +11,7 @@
     ./hardware.nix
     ./filesharing.nix
 
-    ../../modules/gaming.nix
+    # ../../modules/gaming.nix
     ../../modules/stylix.nix
     ../../modules/vscode.nix
     ../../modules/podman.nix
