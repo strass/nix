@@ -23,8 +23,9 @@
     stylix.url = "github:danth/stylix/release-24.11";
     vscode-server.url = "github:nix-community/nixos-vscode-server";
 
+    # grab ssh public keys from GitHub to be used with `openssh.authorizedKeys.keyFiles = [inputs.ssh-keys.outPath];`
     ssh-keys = {
-      url = "https://github.com/strass.keys";
+      url = "https://github.com/strass.keys"; # https://forgejo.zaks.pw/strass.keys
       flake = false;
     };
   };
