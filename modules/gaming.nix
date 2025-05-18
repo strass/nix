@@ -13,7 +13,7 @@
       ];
     };
     graphics.enable = true;
-    graphics.extraPackages = with pkgs; [vaapiIntel intel-media-driver];
+    graphics.extraPackages = with pkgs; [nvidia-vaapi-driver];
 
     nvidia = {
       # Modesetting is required.
@@ -41,13 +41,6 @@
 
       # Optionally, you may need to select the appropriate driver version for your specific GPU.
       package = config.boot.kernelPackages.nvidiaPackages.stable;
-
-      # prime = {
-      #   # Make sure to use the correct Bus ID values for your system!
-      #   intelBusId = "PCI:0:2:0";
-      #   nvidiaBusId = "PCI:14:0:0";
-      #   # amdgpuBusId = "PCI:54:0:0"; For AMD GPU
-      # };
     };
   };
 
@@ -68,13 +61,21 @@
       extraPackages = with pkgs; [
         mangohud
         gamescope-wsi
+        gamemode
       ];
 
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
     };
   };
-
+  programs.gamemode.enable = true;
+  environment.systemPackages = with pkgs; [
+    # lutris
+    mangohud
+    # pkgs.heroic
+    # pkgs.bottles
+    # dolphin-emu
+  ];
   services.sunshine = {
     enable = true;
     openFirewall = true;
