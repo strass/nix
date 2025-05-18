@@ -18,7 +18,7 @@
     # ./hardware.nix
     inputs.disko.nixosModules.disko
     ./disk-config.nix
-    ../../modules/gaming.nix
+    # ../../modules/gaming.nix
     # ../../modules/stylix.nix
     # ../../modules/vscode.nix
     # ../../modules/podman.nix
@@ -61,10 +61,10 @@
   services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
-  # services.xserver.xkb = {
-  #   layout = "us";
-  #   variant = "";
-  # };
+  services.xserver.xkb = {
+    layout = "us";
+    variant = "";
+  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
