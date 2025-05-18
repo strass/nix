@@ -7,7 +7,7 @@
 }: {
   hardware = {
     graphics.enable = true;
-    graphics.extraPackages = with pkgs; [nvidia-vaapi-driver vpl-gpu-rt];
+    # graphics.extraPackages = with pkgs; [];
 
     nvidia = {
       # Modesetting is required.
@@ -37,16 +37,7 @@
       package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
   };
-  services.xserver.resolutions = [
-    {
-      x = 1920;
-      y = 1080;
-    }
-    {
-      x = 1024;
-      y = 786;
-    }
-  ];
+
   services.xserver.videoDrivers = ["nvidia"];
 
   programs = {
