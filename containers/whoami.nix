@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  inputs,
+  ...
+}: {
   virtualisation.quadlet = let
     inherit (config.virtualisation.quadlet) networks pods;
   in {
@@ -10,6 +14,7 @@
           Restart = "always";
         };
         containerConfig = {
+          imports = [inputs.nix-topology.nixosModules.default];
           image = "docker.io/traefik/whoami:latest";
           exec = "--port=8081";
           autoUpdate = "registry";
@@ -21,12 +26,6 @@
           labels = [
             "traefik.enable=true"
             "traefik.http.routers.whoami.rule=Host'(`whoami.framework.local`)'"
-            # "traefik.http.middlewares.hello-https-redirect.redirectscheme.scheme="https""
-            # "traefik.http.routers.hello.middlewares='hello-https-redirect'"
-            # "traefik.http.routers.hello-secure.entrypoints='websecure'"
-            # "traefik.http.routers.hello-secure.rule=Host'(`hello.cthudson.com`)'"
-            # "traefik.http.routers.hello-secure.tls=true"
-            # "traefik.http.routers.hello-secure.tls.certresolver=lets-encrypt"
             "traefik.http.services.whoami.loadbalancer.server.port=8081"
           ];
         };

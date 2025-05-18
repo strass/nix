@@ -32,8 +32,18 @@
     "nomodeset"
   ];
 
+  topology.self = {
+    name = "Gaming PC";
+    hardware.info = "";
+  };
+
   networking.hostName = "gamer"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  systemd.network.enable = true;
+  systemd.network.networks.eth0 = {
+    matchConfig.Name = "eth0";
+    address = ["192.168.1.123/24"];
+  };
 
   # Enable networking
   networking.networkmanager.enable = true;

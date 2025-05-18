@@ -30,13 +30,22 @@
     ../../containers/whoami.nix
   ];
 
+  topology.self = {
+    name = "Framework";
+    hardware.info = "Framework 13";
+  };
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "framework"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
+  systemd.network.enable = true;
+  systemd.network.networks.eth0 = {
+    matchConfig.Name = "eth0";
+    address = ["192.168.1.71/24"];
+  };
   # Enable networking
   networking.networkmanager.enable = true;
 
