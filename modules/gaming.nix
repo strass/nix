@@ -5,6 +5,14 @@
   inputs,
   ...
 }: {
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [
+      vpl-gpu-rt
+    ];
+    # graphics.extraPackages = with pkgs; [vaapiIntel intel-media-driver];
+  };
+
   programs = {
     appimage = {
       enable = true;
@@ -21,6 +29,9 @@
         mangohud
         gamescope-wsi
       ];
+
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
     };
   };
 
