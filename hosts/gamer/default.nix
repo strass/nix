@@ -29,7 +29,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelParams = [
     "i915.force_probe=1b80"
-    # "nomodeset"
+    "nomodeset"
   ];
 
   networking.hostName = "gamer"; # Define your hostname.
