@@ -43,7 +43,16 @@
       package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
   };
-
+  services.xserver.resolutions = [
+    {
+      x = 1920;
+      y = 1080;
+    }
+    {
+      x = 1024;
+      y = 786;
+    }
+  ];
   services.xserver.videoDrivers = ["nvidia"];
 
   programs = {
