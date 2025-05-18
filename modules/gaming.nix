@@ -5,11 +5,13 @@
   inputs,
   ...
 }: {
-  hardware.opengl = {
-    enable = true;
-    extraPackages = with pkgs; [
-      vpl-gpu-rt
-    ];
+  hardware = {
+    opengl = {
+      enable = true;
+      extraPackages = with pkgs; [
+        vpl-gpu-rt
+      ];
+    };
     graphics.enable = true;
     graphics.extraPackages = with pkgs; [vaapiIntel intel-media-driver];
 
