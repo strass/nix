@@ -6,14 +6,8 @@
   ...
 }: {
   hardware = {
-    opengl = {
-      enable = true;
-      extraPackages = with pkgs; [
-        vpl-gpu-rt
-      ];
-    };
     graphics.enable = true;
-    graphics.extraPackages = with pkgs; [nvidia-vaapi-driver];
+    graphics.extraPackages = with pkgs; [nvidia-vaapi-driver vpl-gpu-rt];
 
     nvidia = {
       # Modesetting is required.
