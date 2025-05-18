@@ -118,6 +118,7 @@
     wget
     pkgs-unstable.ghostty
     direnv
+    sqlite
   ];
 
   modules = {
