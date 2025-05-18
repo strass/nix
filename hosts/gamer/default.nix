@@ -25,10 +25,13 @@
   ];
 
   # Bootloader.
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "nodev";
+  boot.loader.grub.useOSProber = true;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelParams = [
-    "i915.force_probe=1b80"
+    # "i915.force_probe=1b80"
     "nomodeset"
   ];
 
@@ -56,11 +59,25 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  # Ensure gnome-settings-daemon udev rules are enabled.
+  udev.packages = with pkgs; [gnome.gnome-settings-daemon];
   services.xserver = {
+    # Required for DE to launch.
     enable = true;
-    displayManager.gdm.enable = true;
+    displayManager = {
+      gdm = {
+        enable = true;
+        wayland = true;
+      };
+    };
+    # Enable Desktop Environment.
     desktopManager.gnome.enable = true;
   };
+  # services.xserver = {
+  #   enable = true;
+  #   displayManager.gdm.enable = true;
+  #   desktopManager.gnome.enable = true;
+  # };
 
   environment.gnome.excludePackages = with pkgs; [
     gnome-photos
