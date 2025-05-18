@@ -2,6 +2,7 @@
   description = "strass' NixOS configuration";
 
   inputs = {
+    agenix.url = "github:ryantm/agenix";
     nixpkgs.url = "nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "nixpkgs/nixpkgs-unstable";
     # home-manager, used for managing user configuration
@@ -41,6 +42,7 @@
     quadlet-nix,
     vscode-server,
     chaotic,
+    agenix,
     ...
   }: {
     nix.settings.trusted-users = ["strass"];
@@ -66,6 +68,8 @@
           };
         };
         modules = [
+          agenix.nixosModules.default
+
           ./modules/user.nix
           ./modules/defaults.nix
           ./hosts/framework/default.nix

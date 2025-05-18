@@ -7,6 +7,12 @@
   pkgs-unstable,
   ...
 }: {
+  # Not sure why this is needed
+  # TODO: remove
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-33.4.11"
+  ];
+
   imports = [
     ./hardware.nix
     ./filesharing.nix
