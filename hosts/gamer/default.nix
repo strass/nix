@@ -60,7 +60,7 @@
   };
 
   # Ensure gnome-settings-daemon udev rules are enabled.
-  udev.packages = with pkgs; [gnome.gnome-settings-daemon];
+  services.udev.packages = with pkgs; [gnome.gnome-settings-daemon];
   services.xserver = {
     # Required for DE to launch.
     enable = true;
