@@ -18,7 +18,7 @@
     # ./hardware.nix
     inputs.disko.nixosModules.disko
     ./disk-config.nix
-    # ../../modules/gaming.nix
+    ../../modules/gaming.nix
     # ../../modules/stylix.nix
     # ../../modules/vscode.nix
     # ../../modules/podman.nix
