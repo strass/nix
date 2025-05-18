@@ -80,9 +80,6 @@
       gnome-initial-setup
     ]);
   programs.dconf.enable = true;
-  environment.systemPackages = with pkgs; [
-    gnome.gnome-tweaks
-  ];
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -143,6 +140,7 @@
     pkgs-unstable.ghostty
     direnv
     sqlite
+    gnome.gnome-tweaks
   ];
 
   modules = {
