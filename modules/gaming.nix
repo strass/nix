@@ -11,6 +11,7 @@
       binfmt = true;
     };
     mosh = {enable = true;};
+    gamescope.enable = true;
     gamescope.capSysNice = true;
     steam = {
       enable = true;
@@ -21,6 +22,10 @@
         gamescope-wsi
       ];
     };
+  };
+
+  services.sunshine = {
+    enable = true;
   };
 
   environment.sessionVariables = {
