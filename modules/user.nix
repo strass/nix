@@ -87,6 +87,18 @@ with lib; {
       allowed-users = users;
     };
 
+    security.sudo.extraRules = [
+      {
+        users = ["strass"];
+        commands = [
+          {
+            command = "ALL";
+            options = ["SETENV" "NOPASSWD"];
+          }
+        ];
+      }
+    ];
+
     users.users.root = {
       packages = [pkgs.shadow];
       shell = pkgs.shadow;

@@ -2,13 +2,9 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
-}: let
-  chaotic = builtins.getFlake "github:chaotic-cx/nyx/nyxpkgs-unstable";
-  nyxOverlay = chaotic.overlays.default;
-in {
-  nixpkgs.overlays = [nyxOverlay];
-
+}: {
   programs = {
     appimage = {
       enable = true;

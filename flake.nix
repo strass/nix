@@ -16,13 +16,15 @@
     quadlet-nix.url = "github:SEIAROTg/quadlet-nix";
     quadlet-nix.inputs.nixpkgs.follows = "nixpkgs";
 
+    disko.url = "github:nix-community/disko/latest";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
     hardware.url = "github:nixos/nixos-hardware";
     niri.url = "github:sodiboo/niri-flake";
     waybar.url = "github:Alexays/Waybar";
     hyprlock.url = "github:hyprwm/hyprlock";
     stylix.url = "github:danth/stylix/release-24.11";
     vscode-server.url = "github:nix-community/nixos-vscode-server";
-
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     # grab ssh public keys from GitHub to be used with `openssh.authorizedKeys.keyFiles = [inputs.ssh-keys.outPath];`
     ssh-keys = {
       url = "https://github.com/strass.keys"; # https://forgejo.zaks.pw/strass.keys
@@ -38,6 +40,7 @@
     stylix,
     quadlet-nix,
     vscode-server,
+    chaotic,
     ...
   }: {
     nix.settings.trusted-users = ["strass"];
@@ -86,6 +89,10 @@
           };
         };
         modules = [
+          chaotic.nixosModules.nyx-cache
+          chaotic.nixosModules.nyx-overlay
+          chaotic.nixosModules.nyx-registry
+
           ./modules/user.nix
           ./modules/defaults.nix
           ./hosts/gamer/default.nix
