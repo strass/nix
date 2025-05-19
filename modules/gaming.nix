@@ -64,7 +64,7 @@
   };
   programs.gamemode.enable = true;
   environment.systemPackages = with pkgs; [
-    # lutris
+    lutris
     mangohud
     # pkgs.heroic
     # pkgs.bottles
