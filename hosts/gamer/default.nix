@@ -15,8 +15,8 @@
   ];
 
   imports = [
-    # ./hardware.nix
-    inputs.nixos-facter-modules.nixosModules.facter
+    ./hardware.nix
+    # inputs.nixos-facter-modules.nixosModules.facter
 
     inputs.disko.nixosModules.disko
     ./disk-config.nix
@@ -27,7 +27,7 @@
   ];
 
   # config.facter.reportPath = ./facter.json;
-  facter.reportPath = ./facter.json;
+  # facter.reportPath = ./facter.json;
 
   # Bootloader.
   # boot.loader.grub.enable = true;
