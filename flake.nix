@@ -97,6 +97,7 @@
           chaotic.nixosModules.nyx-cache
           chaotic.nixosModules.nyx-overlay
           chaotic.nixosModules.nyx-registry
+          stylix.nixosModules.stylix
 
           ./modules/user.nix
           ./modules/defaults.nix
