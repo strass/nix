@@ -41,7 +41,7 @@
   ];
 
   boot.initrd.kernelModules = ["nvidia"];
-  boot.extraModulePackages = [config.boot.kernelPackages.nvidia_x11];
+  boot.extraModulePackages = [boot.kernelPackages.nvidia_x11];
 
   networking.hostName = "gamer"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -68,28 +68,19 @@
   };
 
   # Ensure gnome-settings-daemon udev rules are enabled.
-  # services.udev.packages = with pkgs; [gnome.gnome-settings-daemon];
-  # services.xserver = {
-  #   # Required for DE to launch.
-  #   enable = true;
-  #   displayManager = {
-  #     gdm = {
-  #       enable = true;
-  #       wayland = true;
-  #     };
-  #   };
-  #   # Enable Desktop Environment.
-  #   desktopManager.gnome.enable = true;
-  # };
-
-  services.xserver.enable = true;
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
-  # services.xserver = {
-  #   enable = true;
-  #   displayManager.gdm.enable = true;
-  #   desktopManager.gnome.enable = true;
-  # };
+  services.udev.packages = with pkgs; [gnome-settings-daemon];
+  services.xserver = {
+    # Required for DE to launch.
+    enable = true;
+    displayManager = {
+      gdm = {
+        enable = true;
+        wayland = true;
+      };
+    };
+    # Enable Desktop Environment.
+    desktopManager.gnome.enable = true;
+  };
 
   environment.gnome.excludePackages = with pkgs; [
     gnome-photos
