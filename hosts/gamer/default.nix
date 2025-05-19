@@ -41,7 +41,7 @@
   ];
 
   boot.initrd.kernelModules = ["nvidia"];
-  boot.extraModulePackages = [boot.kernelPackages.nvidia_x11];
+  boot.extraModulePackages = [config.boot.kernelPackages.nvidia_x11];
 
   networking.hostName = "gamer"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
