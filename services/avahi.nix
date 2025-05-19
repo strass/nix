@@ -3,6 +3,7 @@
   config,
   lib,
   pkgs,
+  fqdn,
   ...
 }: {
   networking.firewall.allowedTCPPorts = [
@@ -16,6 +17,7 @@
 
     avahi = {
       enable = true;
+      domainName = fqdn;
       nssmdns4 = true;
       openFirewall = true;
       reflector = true;
@@ -27,7 +29,6 @@
         hinfo = true;
         domain = true;
       };
-      browseDomains = ["framework.local"];
     };
   };
 }

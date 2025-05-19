@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  fqdn,
+  ...
+}: {
   virtualisation.quadlet = let
     inherit (config.virtualisation.quadlet) networks pods;
   in {
@@ -20,7 +24,7 @@
 
           labels = [
             "traefik.enable=true"
-            "traefik.http.routers.whoami.rule=Host'(`whoami.framework.local`)'"
+            "traefik.http.routers.whoami.rule=Host'(`whoami.${fqdn}`)'"
             # "traefik.http.middlewares.hello-https-redirect.redirectscheme.scheme="https""
             # "traefik.http.routers.hello.middlewares='hello-https-redirect'"
             # "traefik.http.routers.hello-secure.entrypoints='websecure'"

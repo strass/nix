@@ -67,6 +67,7 @@
             system = "x86_64-linux";
             config.allowUnfree = true;
           };
+          fqdn = "framework.local";
         };
         modules = [
           agenix.nixosModules.default
@@ -92,6 +93,7 @@
             system = "x86_64-linux";
             config.allowUnfree = true;
           };
+          fqdn = "gamer.local";
         };
         modules = [
           chaotic.nixosModules.nyx-cache

@@ -1,4 +1,11 @@
-{config, ...}: {
+{
+  config,
+  fqdn,
+  ...
+}: let
+  name = "traefik";
+  port = 8080;
+in {
   services.traefik = {
     enable = true;
     group = "podman";
@@ -44,6 +51,20 @@
     dynamicConfigOptions = {
       http.routers = {};
       http.services = {};
+    };
+  };
+
+  services.traefik.dynamicConfigOptions = {
+    http.routers."${name}" = {
+      rule = "Host(`${name}.${fqdn}`)";
+      service = name;
+    };
+    http.services."${name}" = {
+      loadBalancer.servers = [
+        {
+          url = "http://localhost:${toString port}";
+        }
+      ];
     };
   };
 

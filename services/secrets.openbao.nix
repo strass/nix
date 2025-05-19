@@ -1,9 +1,9 @@
 {
   inputs,
   pkgs,
+  fqdn,
   ...
 }: let
-  domain = "framework.local";
   name = "openbao";
   port = 6200;
   port2 = 6201;
@@ -34,7 +34,7 @@ in {
 
   services.traefik.dynamicConfigOptions = {
     http.routers."${name}" = {
-      rule = "Host(`${name}.${domain}`)";
+      rule = "Host(`${name}.${fqdn}`)";
       service = name;
     };
     http.services."${name}" = {

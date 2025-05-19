@@ -1,16 +1,16 @@
 {
   inputs,
   pkgs,
+  fqdn,
   ...
 }: let
-  domain = "framework.local";
   name = "ntfy";
   port = 8888;
 in {
   services.ntfy-sh = {
     enable = true;
     settings = {
-      base-url = "https://${name}.${domain}";
+      base-url = "https://${name}.${fqdn}";
       listen-http = ":${toString port}";
     };
   };
@@ -23,7 +23,7 @@ in {
 
   services.traefik.dynamicConfigOptions = {
     http.routers."${name}" = {
-      rule = "Host(`${name}.${domain}`)";
+      rule = "Host(`${name}.${fqdn}`)";
       service = name;
     };
     http.services."${name}" = {

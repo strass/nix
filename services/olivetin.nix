@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  fqdn,
   ...
 }: let
   name = "olivetin";
@@ -38,7 +39,7 @@ in {
 
   services.traefik.dynamicConfigOptions = {
     http.routers."${name}" = {
-      rule = "Host(`${name}.framework.local`)";
+      rule = "Host(`${name}.${fqdn}`)";
       service = name;
     };
     http.services."${name}" = {
