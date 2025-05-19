@@ -19,9 +19,6 @@ in {
     # Load my modules
     ../services/avahi.nix
     ./ssh.nix
-    # ./niri.nix
-    # ./waybar.nix
-    # ./fonts.nix
   ];
 
   hm.imports = [
@@ -58,7 +55,7 @@ in {
     };
   };
 
-  system = {
+  system = mkDefault {
     stateVersion = "24.11";
     configurationRevision = with inputs; mkIf (self ? rev) self.rev;
   };
@@ -72,12 +69,12 @@ in {
   # };
 
   # Set your time zone.
-  time.timeZone = "America/Los_Angeles";
+  time.timeZone = mkDefault "America/Los_Angeles";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = mkDefault "en_US.UTF-8";
 
-  i18n.extraLocaleSettings = {
+  i18n.extraLocaleSettings = mkDefault {
     LC_ADDRESS = "en_US.UTF-8";
     LC_IDENTIFICATION = "en_US.UTF-8";
     LC_MEASUREMENT = "en_US.UTF-8";
@@ -90,7 +87,7 @@ in {
   };
 
   # Configure keymap in X11
-  services.xserver.xkb = {
+  services.xserver.xkb = mkDefault {
     layout = "us";
     variant = "";
   };
@@ -127,9 +124,10 @@ in {
     neovim
   ];
 
+  # if I mkDefault this then it conflicts with the nano default from nixos
   environment.variables.EDITOR = "nvim";
 
-  documentation.nixos.enable = false;
+  documentation.nixos.enable = mkDefault false;
 
   nix.optimise.automatic = true;
   nix.optimise.dates = ["03:45"]; # Optional; allows customizing optimisation schedule
