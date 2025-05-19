@@ -11,7 +11,7 @@
     ./hardware.nix
     ./filesharing.nix
 
-    # ../../modules/gaming.nix
+    ../../modules/gnome.nix
     ../../modules/stylix.nix
     ../../modules/vscode.nix
     ../../modules/podman.nix
@@ -40,13 +40,6 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -66,9 +59,6 @@
     #media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
   users.users.strass = {
     packages = with pkgs; [
       moonlight-qt
@@ -78,37 +68,19 @@
     ];
   };
 
-  # Enable automatic login for the user.
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "strass";
-
-  # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
-  systemd.services."getty@tty1".enable = false;
-  systemd.services."autovt@tty1".enable = false;
-
   # Install firefox.
   programs.firefox.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim
-    wget
     pkgs-unstable.ghostty
-    direnv
   ];
 
   modules = {
     ssh.enable = true;
   };
 
-  # Disable the GNOME3/GDM auto-suspend feature that cannot be disabled in GUI!
-  # If no user is logged in, the machine will power down after 20 minutes.
-  systemd.targets.sleep.enable = false;
-  systemd.targets.suspend.enable = false;
-  systemd.targets.hibernate.enable = false;
-  systemd.targets.hybrid-sleep.enable = false;
+  services.xserver.displayManager.gdm.wayland = false;
 }
