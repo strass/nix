@@ -30,12 +30,11 @@
   # facter.reportPath = ./facter.json;
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  boot.initrd.kernelModules = ["nvidia"];
-  boot.extraModulePackages = [config.boot.kernelPackages.nvidia_x11];
   boot = {
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+    initrd.kernelModules = ["nvidia"];
+    extraModulePackages = [config.boot.kernelPackages.nvidia_x11];
     kernelPackages = pkgs-unstable.linuxPackages_latest;
     kernelParams = ["pcie_aspm.policy=performance"];
   };
