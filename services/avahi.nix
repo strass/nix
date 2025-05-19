@@ -17,7 +17,8 @@
 
     avahi = {
       enable = true;
-      domainName = fqdn;
+      # hostName = config.networking.hostName;
+      # domainName = fqdn;
       nssmdns4 = true;
       openFirewall = true;
       reflector = true;
