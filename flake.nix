@@ -98,8 +98,6 @@
           chaotic.nixosModules.nyx-overlay
           chaotic.nixosModules.nyx-registry
 
-          nixos-facter-modules.nixosModules.facter
-
           ./modules/user.nix
           ./modules/defaults.nix
           ./hosts/gamer/default.nix

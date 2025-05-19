@@ -16,6 +16,8 @@
   config.facter.reportPath = ./facter.json;
   imports = [
     # ./hardware.nix
+    inputs.nixos-facter-modules.nixosModules.facter
+
     inputs.disko.nixosModules.disko
     ./disk-config.nix
     ../../modules/gaming.nix
