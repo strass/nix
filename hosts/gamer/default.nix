@@ -13,7 +13,7 @@
   nixpkgs.config.permittedInsecurePackages = [
     "electron-33.4.11"
   ];
-  config.facter.reportPath = ./facter.json;
+
   imports = [
     # ./hardware.nix
     inputs.nixos-facter-modules.nixosModules.facter
@@ -25,6 +25,8 @@
     # ../../modules/vscode.nix
     # ../../modules/podman.nix
   ];
+
+  facter.reportPath = ./facter.json;
 
   # Bootloader.
   boot.loader.grub.enable = true;
