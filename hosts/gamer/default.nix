@@ -26,14 +26,11 @@
     # ../../modules/podman.nix
   ];
 
-  # config.facter.reportPath = ./facter.json;
-  facter.reportPath = ./facter.json;
-
   # Bootloader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "nodev";
-  boot.loader.grub.useOSProber = true;
-  # boot.loader.systemd-boot.enable = true;
+  # boot.loader.grub.enable = true;
+  # boot.loader.grub.device = "nodev";
+  # boot.loader.grub.useOSProber = true;
+  boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelParams = [
     # "i915.force_probe=1b80"
