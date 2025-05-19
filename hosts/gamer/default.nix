@@ -30,15 +30,8 @@
   # facter.reportPath = ./facter.json;
 
   # Bootloader.
-  # boot.loader.grub.enable = true;
-  # boot.loader.grub.device = "nodev";
-  # boot.loader.grub.useOSProber = true;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelParams = [
-    # "i915.force_probe=1b80"
-    # "nomodeset"
-  ];
 
   boot.initrd.kernelModules = ["nvidia"];
   boot.extraModulePackages = [config.boot.kernelPackages.nvidia_x11];
@@ -48,24 +41,6 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-
-  # Set your time zone.
-  time.timeZone = "America/Los_Angeles";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-  };
 
   # Ensure gnome-settings-daemon udev rules are enabled.
   services.udev.packages = with pkgs; [gnome-settings-daemon];
@@ -102,12 +77,6 @@
 
   programs.dconf.enable = true;
 
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
-
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -127,12 +96,8 @@
     #media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
   users.users.strass = {
     packages = with pkgs; [
-      moonlight-qt
       bitwarden-desktop
       bitwarden-cli
       discord
@@ -140,12 +105,12 @@
   };
 
   # Enable automatic login for the user.
-  # services.xserver.displayManager.autoLogin.enable = true;
-  # services.xserver.displayManager.autoLogin.user = "strass";
+  services.xserver.displayManager.autoLogin.enable = true;
+  services.xserver.displayManager.autoLogin.user = "strass";
 
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
-  # systemd.services."getty@tty1".enable = false;
-  # systemd.services."autovt@tty1".enable = false;
+  systemd.services."getty@tty1".enable = false;
+  systemd.services."autovt@tty1".enable = false;
 
   # Install firefox.
   programs.firefox.enable = true;
@@ -156,11 +121,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim
-    wget
     pkgs-unstable.ghostty
-    direnv
-    sqlite
     gnome-tweaks
   ];
 

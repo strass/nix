@@ -55,7 +55,7 @@ in {
     };
   };
 
-  system = mkDefault {
+  system = {
     stateVersion = "24.11";
     configurationRevision = with inputs; mkIf (self ? rev) self.rev;
   };
@@ -122,6 +122,8 @@ in {
     dysk
     dust
     neovim
+    direnv
+    sqlite
   ];
 
   # if I mkDefault this then it conflicts with the nano default from nixos
