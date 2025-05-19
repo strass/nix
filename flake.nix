@@ -2,6 +2,7 @@
   description = "strass' NixOS configuration";
 
   inputs = {
+    nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
     agenix.url = "github:ryantm/agenix";
     nixpkgs.url = "nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "nixpkgs/nixpkgs-unstable";
@@ -96,6 +97,8 @@
           chaotic.nixosModules.nyx-cache
           chaotic.nixosModules.nyx-overlay
           chaotic.nixosModules.nyx-registry
+
+          nixos-facter-modules.nixosModules.facter
 
           ./modules/user.nix
           ./modules/defaults.nix

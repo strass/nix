@@ -13,7 +13,7 @@
   nixpkgs.config.permittedInsecurePackages = [
     "electron-33.4.11"
   ];
-
+  config.facter.reportPath = ./facter.json;
   imports = [
     # ./hardware.nix
     inputs.disko.nixosModules.disko
