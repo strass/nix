@@ -36,7 +36,7 @@
   boot.initrd.kernelModules = ["nvidia"];
   boot.extraModulePackages = [config.boot.kernelPackages.nvidia_x11];
   boot = {
-    kernelPackages = pkgs.unstable.linuxPackages_latest;
+    kernelPackages = pkgs-unstable.linuxPackages_latest;
     kernelParams = ["pcie_aspm.policy=performance"];
   };
 
