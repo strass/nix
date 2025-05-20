@@ -21,9 +21,6 @@
     disko.url = "github:nix-community/disko/latest";
     disko.inputs.nixpkgs.follows = "nixpkgs";
     hardware.url = "github:nixos/nixos-hardware";
-    niri.url = "github:sodiboo/niri-flake";
-    waybar.url = "github:Alexays/Waybar";
-    hyprlock.url = "github:hyprwm/hyprlock";
     stylix.url = "github:danth/stylix/release-24.11";
     vscode-server.url = "github:nix-community/nixos-vscode-server";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
@@ -96,6 +93,8 @@
           fqdn = "gamer.local";
         };
         modules = [
+          hardware.nixosModules.asus-rog-strix-x570e
+
           chaotic.nixosModules.nyx-cache
           chaotic.nixosModules.nyx-overlay
           chaotic.nixosModules.nyx-registry
