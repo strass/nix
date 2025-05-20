@@ -93,7 +93,7 @@
           fqdn = "gamer.local";
         };
         modules = [
-          # hardware.nixosModules.asus-rog-strix-x570e # this causes a no space error for bootloader creation?
+          hardware.nixosModules.asus-rog-strix-x570e # this causes a no space error for bootloader creation?
 
           chaotic.nixosModules.nyx-cache
           chaotic.nixosModules.nyx-overlay
