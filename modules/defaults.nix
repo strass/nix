@@ -124,6 +124,7 @@ in {
     neovim
     direnv
     sqlite
+    just
   ];
 
   # if I mkDefault this then it conflicts with the nano default from nixos
