@@ -5,6 +5,10 @@
   inputs,
   ...
 }: {
+  imports = [
+    ../gaming.sunshine.nix
+  ];
+
   hardware = {
     graphics.enable = true;
     # graphics.extraPackages = with pkgs; [];
@@ -70,12 +74,6 @@
     # pkgs.bottles
     # dolphin-emu
   ];
-  services.sunshine = {
-    enable = true;
-    openFirewall = true;
-    capSysAdmin = true;
-    autoStart = true;
-  };
 
   environment.sessionVariables = {
     PROTON_USE_NTSYNC = "1";
