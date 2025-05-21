@@ -22,7 +22,7 @@
   ];
 
   facter.reportPath = ./facter.json;
-  networking.useNetworkd = false;
+  networking.useNetworkd = false; # using facter without this fails
 
   # Bootloader.
   boot = {
