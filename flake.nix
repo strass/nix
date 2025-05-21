@@ -4,11 +4,11 @@
   inputs = {
     nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
     agenix.url = "github:ryantm/agenix";
-    nixpkgs.url = "nixpkgs/nixos-24.11";
+    nixpkgs.url = "nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "nixpkgs/nixpkgs-unstable";
     # home-manager, used for managing user configuration
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.05";
       # The `follows` keyword in inputs is used for inheritance.
       # Here, `inputs.nixpkgs` of home-manager is kept consistent with
       # the `inputs.nixpkgs` of the current flake,
@@ -21,7 +21,7 @@
     disko.url = "github:nix-community/disko/latest";
     disko.inputs.nixpkgs.follows = "nixpkgs";
     hardware.url = "github:nixos/nixos-hardware";
-    stylix.url = "github:danth/stylix/release-24.11";
+    stylix.url = "github:danth/stylix/release-25.05";
     vscode-server.url = "github:nix-community/nixos-vscode-server";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     # grab ssh public keys from GitHub to be used with `openssh.authorizedKeys.keyFiles = [inputs.ssh-keys.outPath];`
@@ -79,7 +79,6 @@
           stylix.nixosModules.stylix
           quadlet-nix.nixosModules.quadlet
           vscode-server.nixosModules.default
-          "${nixpkgs-unstable}/nixos/modules/services/web-apps/olivetin.nix"
         ];
       };
       gamer = nixpkgs.lib.nixosSystem {
@@ -93,7 +92,7 @@
           fqdn = "gamer.local";
         };
         modules = [
-          hardware.nixosModules.asus-rog-strix-x570e # this causes a no space error for bootloader creation?
+          hardware.nixosModules.asus-rog-strix-x570e # not quite what I have in there but I think it's close enough
 
           chaotic.nixosModules.nyx-cache
           chaotic.nixosModules.nyx-overlay
