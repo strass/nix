@@ -3,11 +3,16 @@
   pkgs,
   ...
 }: {
-  services.xserver.displayManager = {
-    gdm = {
-      enable = true;
-      wayland = lib.mkDefault true;
-      autoSuspend = lib.mkDefault false;
+  services.xserver = {
+    enable = true;
+    # Enable Desktop Environment.
+    desktopManager.gnome.enable = true;
+    displayManager = {
+      gdm = {
+        enable = true;
+        wayland = lib.mkDefault true;
+        autoSuspend = lib.mkDefault false;
+      };
     };
   };
 
