@@ -34,7 +34,12 @@
   boot = {
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
-    initrd.kernelModules = ["nvidia"];
+    initrd.kernelModules = [
+      "nvidia"
+      # "i915"
+      "nvidia_modeset"
+      "nvidia_drm"
+    ];
     extraModulePackages = [config.boot.kernelPackages.nvidia_x11];
     kernelPackages = pkgs-unstable.linuxPackages_latest;
     kernelParams = ["pcie_aspm.policy=performance"];
