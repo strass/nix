@@ -69,7 +69,7 @@
         modules = [
           agenix.nixosModules.default
 
-          ./modules/user.nix
+          ./modules/user.strass.nix
           ./modules/defaults.nix
           ./hosts/framework/default.nix
 
@@ -99,7 +99,7 @@
           chaotic.nixosModules.nyx-registry
           stylix.nixosModules.stylix
 
-          ./modules/user.nix
+          ./modules/user.strass.nix
           ./modules/defaults.nix
           ./hosts/gamer/default.nix
 

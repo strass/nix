@@ -56,7 +56,7 @@ in {
   };
 
   system = {
-    stateVersion = "24.11";
+    stateVersion = "25.05";
     configurationRevision = with inputs; mkIf (self ? rev) self.rev;
   };
   hm.home.stateVersion = config.system.stateVersion;
