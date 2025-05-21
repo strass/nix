@@ -6,7 +6,9 @@
   pkgs,
   pkgs-unstable,
   ...
-}: {
+}: let
+  # paths = import ./config.nix;
+in {
   imports = [
     ./hardware.nix
     ./filesharing.nix
