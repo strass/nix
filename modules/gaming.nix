@@ -6,7 +6,7 @@
   ...
 }: {
   imports = [
-    ../gaming.sunshine.nix
+    ../services/gaming.sunshine.nix
   ];
 
   hardware = {
