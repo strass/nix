@@ -22,6 +22,7 @@
   ];
 
   facter.reportPath = ./facter.json;
+  networking.useNetworkd = false;
 
   # Bootloader.
   boot = {
