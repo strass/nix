@@ -60,6 +60,8 @@
         mangohud
         gamescope-wsi
         gamemode
+        libkrb5
+        keyutils
       ];
 
       remotePlay.openFirewall = true;
