@@ -3,24 +3,20 @@
   pkgs,
   ...
 }: {
-  services.xserver = {
-    # Required for DE to launch.
-    enable = true;
-    displayManager = {
-      gdm = {
-        enable = true;
-        wayland = lib.mkDefault true;
-      };
+  services.xserver.displayManager = {
+    gdm = {
+      enable = true;
+      wayland = lib.mkDefault true;
+      autoSuspend = lib.mkDefault false;
     };
-    # Enable Desktop Environment.
-    desktopManager.gnome.enable = true;
   };
+
   # Ensure gnome-settings-daemon udev rules are enabled.
   services.udev.packages = with pkgs; [gnome-settings-daemon];
 
   # Enable automatic login for the user.
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "strass";
+  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = "strass";
 
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
   systemd.services."getty@tty1".enable = false;
