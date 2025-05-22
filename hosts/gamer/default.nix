@@ -18,7 +18,7 @@
     ../../modules/gaming.nix
     ../../modules/stylix.nix
     # ../../modules/vscode.nix
-    # ../../modules/podman.nix
+    ../../modules/podman.nix
 
     ../../services/avahi.nix
     ../../services/traefik.nix
