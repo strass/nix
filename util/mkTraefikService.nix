@@ -3,6 +3,7 @@
   name,
   fqdn,
   port,
+  host ? "localhost",
   method ? "http",
   extraRouterConfig ? {},
   extraServiceConfig ? {},
@@ -17,10 +18,17 @@
   http.services."${name}" = {
     loadBalancer.servers = [
       {
-        url = "${method}://localhost:${toString port}";
+        url = "${method}://${host}:${toString port}";
       }
     ];
     # Allow additional service configurations
     inherit (extraServiceConfig);
   };
 }
+# To use:
+#   services.traefik.dynamicConfigOptions = mkTraefikService {
+#     name = name;
+#     fqdn = fqdn;
+#     port = port;
+#   };
+

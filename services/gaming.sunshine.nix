@@ -15,6 +15,6 @@ in {
     name = name;
     fqdn = fqdn;
     port = port;
-    method = "https";
+    method = "https"; # still doesn't work
   };
 }
