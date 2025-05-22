@@ -6,6 +6,8 @@
 }: let
   name = "olivetin";
   port = 8200;
+
+  mkTraefikService = import ../util/mkTraefikService.nix;
 in {
   services.olivetin = {
     package = inputs.nixpkgs-unstable.legacyPackages."${pkgs.system}".olivetin;
@@ -26,6 +28,12 @@ in {
     };
   };
 
+  services.traefik.dynamicConfigOptions = mkTraefikService {
+    name = name;
+    fqdn = fqdn;
+    port = port;
+  };
+
   users.users.olivetin = {
     isSystemUser = true;
     home = "/var/lib/olivetin";
@@ -38,19 +46,5 @@ in {
     allowedTCPPorts = [
       port
     ];
-  };
-
-  services.traefik.dynamicConfigOptions = {
-    http.routers."${name}" = {
-      rule = "Host(`${name}.${fqdn}`)";
-      service = name;
-    };
-    http.services."${name}" = {
-      loadBalancer.servers = [
-        {
-          url = "http://localhost:${toString port}";
-        }
-      ];
-    };
   };
 }

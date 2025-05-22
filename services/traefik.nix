@@ -5,6 +5,8 @@
 }: let
   name = "traefik";
   port = 8080;
+
+  mkTraefikService = import ../util/mkTraefikService.nix;
 in {
   services.traefik = {
     enable = true;
@@ -48,28 +50,20 @@ in {
       api.insecure = true;
     };
 
-    dynamicConfigOptions = {
-      http.routers = {};
-      http.services = {};
-    };
+    # dynamicConfigOptions = {
+    #   http.routers = {};
+    #   http.services = {};
+    # };
   };
 
-  services.traefik.dynamicConfigOptions = {
-    http.routers."${name}" = {
-      rule = "Host(`${name}.${fqdn}`)";
-      service = name;
-    };
-    http.services."${name}" = {
-      loadBalancer.servers = [
-        {
-          url = "http://localhost:${toString port}";
-        }
-      ];
-    };
+  services.traefik.dynamicConfigOptions = mkTraefikService {
+    name = name;
+    fqdn = fqdn;
+    port = port;
   };
 
   networking.firewall.allowedTCPPorts = [
-    8080
+    port
     80
     443
   ];

@@ -1,6 +1,8 @@
 {fqdn, ...}: let
   name = "sunshine";
   port = 47990;
+
+  mkTraefikService = import ../util/mkTraefikService.nix;
 in {
   services.sunshine = {
     enable = true;
@@ -9,17 +11,10 @@ in {
     autoStart = true;
   };
 
-  services.traefik.dynamicConfigOptions = {
-    http.routers."${name}" = {
-      rule = "Host(`${name}.${fqdn}`)";
-      service = name;
-    };
-    http.services."${name}" = {
-      loadBalancer.servers = [
-        {
-          url = "https://localhost:${toString port}";
-        }
-      ];
-    };
+  services.traefik.dynamicConfigOptions = mkTraefikService {
+    name = name;
+    fqdn = fqdn;
+    port = port;
+    method = "https";
   };
 }

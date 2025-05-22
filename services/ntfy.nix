@@ -6,6 +6,8 @@
 }: let
   name = "ntfy";
   port = 8888;
+
+  mkTraefikService = import ../util/mkTraefikService.nix;
 in {
   services.ntfy-sh = {
     enable = true;
@@ -21,17 +23,9 @@ in {
     ];
   };
 
-  services.traefik.dynamicConfigOptions = {
-    http.routers."${name}" = {
-      rule = "Host(`${name}.${fqdn}`)";
-      service = name;
-    };
-    http.services."${name}" = {
-      loadBalancer.servers = [
-        {
-          url = "http://localhost:${toString port}";
-        }
-      ];
-    };
+  services.traefik.dynamicConfigOptions = mkTraefikService {
+    name = name;
+    fqdn = fqdn;
+    port = port;
   };
 }
