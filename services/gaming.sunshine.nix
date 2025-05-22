@@ -17,7 +17,7 @@ in {
     http.services."${name}" = {
       loadBalancer.servers = [
         {
-          url = "http://localhost:${toString port}";
+          url = "https://localhost:${toString port}";
         }
       ];
     };
