@@ -19,6 +19,9 @@
     ../../modules/stylix.nix
     # ../../modules/vscode.nix
     # ../../modules/podman.nix
+
+    ../../services/avahi.nix
+    ../../services/traefik.nix
   ];
 
   facter.reportPath = ./facter.json;
