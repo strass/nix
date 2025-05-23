@@ -15,6 +15,7 @@
       };
     };
   };
+  programs.dconf.enable = true;
 
   # Ensure gnome-settings-daemon udev rules are enabled.
   services.udev.packages = with pkgs; [gnome-settings-daemon];
@@ -33,6 +34,10 @@
   systemd.targets.suspend.enable = false;
   systemd.targets.hibernate.enable = false;
   systemd.targets.hybrid-sleep.enable = false;
+
+  environment.systemPackages = with pkgs; [
+    gnome-tweaks
+  ];
 
   # Disable some GNOME applications that are not needed.
   environment.gnome.excludePackages = with pkgs; [

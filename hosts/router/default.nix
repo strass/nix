@@ -9,14 +9,12 @@
   ...
 }: {
   imports = [
-    ./hardware.nix
     inputs.nixos-facter-modules.nixosModules.facter
-
     inputs.disko.nixosModules.disko
     ./disk-config.nix
+
     ../../modules/gnome.nix
     ../../modules/stylix.nix
-
     ../../services/avahi.nix
   ];
 
@@ -28,36 +26,10 @@
     loader.grub.enable = true;
     loader.grub.efiSupport = true;
     loader.grub.efiInstallAsRemovable = true;
-    kernelPackages = pkgs-unstable.linuxPackages_latest;
+    kernelPackages = pkgs-unstable.linuxPackages_hardened;
     kernelParams = ["pcie_aspm.policy=performance"];
   };
-
-  networking.hostName = "router"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Enable networking
-  networking.networkmanager.enable = true;
-
-  programs.dconf.enable = true;
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
+  users.mutableUsers = false;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -66,7 +38,6 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     pkgs-unstable.ghostty
-    gnome-tweaks
   ];
 
   modules = {

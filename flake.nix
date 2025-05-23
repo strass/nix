@@ -107,7 +107,7 @@
           home-manager.nixosModules.home-manager
         ];
       };
-      gamer = nixpkgs.lib.nixosSystem {
+      router = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
           inherit inputs;
