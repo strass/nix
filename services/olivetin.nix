@@ -10,8 +10,6 @@
   mkTraefikService = import ../util/mkTraefikService.nix;
 in {
   services.olivetin = {
-    package = inputs.nixpkgs-unstable.legacyPackages."${pkgs.system}".olivetin;
-
     group = "podman";
     user = "olivetin";
     enable = true;
@@ -36,7 +34,7 @@ in {
 
   users.users.olivetin = {
     isSystemUser = true;
-    home = "/var/lib/olivetin";
+    home = "/var/lib/olivetin"; # todo: can I get logs to go in here?
     packages = with pkgs; [
       wol
     ];

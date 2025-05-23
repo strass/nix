@@ -1,4 +1,10 @@
 # Utility function to simplify adding Traefik service configurations
+# To use:
+#   services.traefik.dynamicConfigOptions = mkTraefikService {
+#     name = name;
+#     fqdn = fqdn;
+#     port = port;
+#   };
 {
   name,
   fqdn,
@@ -25,10 +31,3 @@
     inherit (extraServiceConfig);
   };
 }
-# To use:
-#   services.traefik.dynamicConfigOptions = mkTraefikService {
-#     name = name;
-#     fqdn = fqdn;
-#     port = port;
-#   };
-

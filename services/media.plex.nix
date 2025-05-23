@@ -1,4 +1,9 @@
-{
+{}: let
+  name = "plex";
+  port = 32400;
+
+  mkTraefikService = import ../util/mkTraefikService.nix;
+in {
   nixpkgs.config.allowUnfree = true; # Plex is unfree
 
   services.plex = {
@@ -13,12 +18,13 @@
   };
 
   networking.firewall = {
-    # allowedTCPPorts = [3005 8324 32469 80 443];
+    # allowedTCPPorts = [3005 8324 32469];
     # allowedUDPPorts = [1900 5353 32410 32412 32413 32414];
   };
 
-  services.traefik.dynamicConfigOptions = {
-    http.routers = {};
-    http.services = {};
+  services.traefik.dynamicConfigOptions = mkTraefikService {
+    name = name;
+    fqdn = fqdn;
+    port = port;
   };
 }
