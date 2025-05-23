@@ -107,6 +107,27 @@
           home-manager.nixosModules.home-manager
         ];
       };
+      gamer = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs;
+          pkgs-unstable = import nixpkgs-unstable {
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+          };
+          fqdn = "router.local";
+        };
+        modules = [
+          stylix.nixosModules.stylix
+
+          ./modules/user.strass.nix
+          ./modules/defaults.nix
+          ./hosts/router/default.nix
+
+          # make home-manager as a module of nixos so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`
+          home-manager.nixosModules.home-manager
+        ];
+      };
     };
   };
 }

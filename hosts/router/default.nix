@@ -25,8 +25,9 @@
 
   # Bootloader.
   boot = {
-    loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true;
+    loader.grub.enable = true;
+    loader.grub.efiSupport = true;
+    loader.grub.efiInstallAsRemovable = true;
     kernelPackages = pkgs-unstable.linuxPackages_latest;
     kernelParams = ["pcie_aspm.policy=performance"];
   };
