@@ -26,15 +26,15 @@
     vlans = {
       wan = {
         id = 10;
-        interface = "enp1s0";
+        interface = "enp2s0";
       };
       lan = {
         id = 20;
-        interface = "enp2s0";
+        interface = "enp3s0";
       };
       iot = {
         id = 90;
-        interface = "enp2s0";
+        interface = "enp3s0";
       };
     };
 
@@ -131,7 +131,7 @@
 
   systemd.network.networks.lan = {
     enable = true;
-    matchConfig.Name = "enp2s0";
+    matchConfig.Name = "enp3s0";
 
     networkConfig = {
       Address = "192.168.238.1/24";
@@ -160,7 +160,7 @@
 
   systemd.network.networks.wan = {
     enable = true;
-    matchConfig.Name = "enp1s0";
+    matchConfig.Name = "enp2s0";
 
     networkConfig = {
       DHCP = "ipv4";

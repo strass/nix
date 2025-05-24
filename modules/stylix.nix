@@ -10,6 +10,7 @@
       sha256 = "sha256-Q5ZtrIDtPZKOYohNt9NjPF6suV3rcw1HK8mx7+Ll4Ts=";
     };
     polarity = lib.mkDefault "dark";
+    # https://tinted-theming.github.io/tinted-gallery/
     base16Scheme = lib.mkDefault "${pkgs.base16-schemes}/share/themes/rose-pine-moon.yaml";
   };
 }

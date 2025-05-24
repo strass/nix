@@ -42,7 +42,12 @@
     chaotic,
     agenix,
     ...
-  }: {
+  }: let
+    # dnsConfig = {
+    #   inherit (self) nixosConfigurations;
+    #   extraConfig = import ./config/dns.nix;
+    # };
+  in {
     nix.settings.trusted-users = ["strass"];
     nixConfig = {
       # override the default substituters
@@ -67,7 +72,7 @@
           fqdn = "framework.local";
         };
         modules = [
-          agenix.nixosModules.default
+          hardware.nixosModules.framework-11th-gen-intel
 
           ./modules/user.strass.nix
           ./modules/defaults.nix
@@ -75,10 +80,10 @@
 
           # make home-manager as a module of nixos so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`
           home-manager.nixosModules.home-manager
-          hardware.nixosModules.framework-11th-gen-intel
           stylix.nixosModules.stylix
           quadlet-nix.nixosModules.quadlet
           vscode-server.nixosModules.default
+          agenix.nixosModules.default
         ];
       };
       gamer = nixpkgs.lib.nixosSystem {
