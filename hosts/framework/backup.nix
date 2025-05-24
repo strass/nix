@@ -1,29 +1,32 @@
-{}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   users.users.restic = {
-    isNormalUser = true;
+    isSystemUser = true;
   };
 
-  # security wrapper to give restic the capability to read anything on the filesystem as if it were running as root.
-  security.wrappers.restic = {
-    source = "${pkgs.restic.out}/bin/restic";
-    owner = "restic";
-    group = "users";
-    permissions = "u=rwx,g=,o=";
-    capabilities = "cap_dac_read_search=+ep";
-  };
+  # # security wrapper to give restic the capability to read anything on the filesystem as if it were running as root.
+  # security.wrappers.restic = {
+  #   source = "${pkgs.restic.out}/bin/restic";
+  #   owner = "restic";
+  #   group = "users";
+  #   permissions = "u=rwx,g=,o=";
+  #   capabilities = "cap_dac_read_search=+ep";
+  # };
 
   services.restic = {
-    enable = true;
     backups = {
-      saves = {
-        user = "restic";
+      home = {
+        # user = "restic";
         initialize = true;
-        repository = "rest:http://framework.local:8000/framework/home";
+        repository = "rest:http://localhost:8000/framework/home";
         paths = [
           "/home/strass/"
         ];
         timerConfig = {
-          onCalendar = "hourly";
+          onCalendar = "daily";
         };
         pruneOpts = [
           "--keep-daily 7"
@@ -45,8 +48,9 @@
           ];
           ignoreFile =
             builtins.toFile "ignore"
-            (foldl (a: b: a + "\n" + b) "" ignorePatterns);
+            (lib.foldl (a: b: a + "\n" + b) "" ignorePatterns);
         in ["--exclude-file=${ignoreFile}"];
+        passwordFile = "/home/strass/.cache/restic-pw";
       };
     };
   };

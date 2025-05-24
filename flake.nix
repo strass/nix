@@ -70,6 +70,7 @@
             config.allowUnfree = true;
           };
           fqdn = "framework.local";
+          pathConfig = import ./hosts/framework/config.nix; # better way to do this?
         };
         modules = [
           hardware.nixosModules.framework-11th-gen-intel

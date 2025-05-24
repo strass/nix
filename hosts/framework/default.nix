@@ -27,9 +27,11 @@ in {
     ../../services/database.mysql.nix
     ../../services/olivetin.nix
     ../../services/ntfy.nix
+    ../../services/backup.restic.nix
 
     # containers
     ../../containers/whoami.nix
+    ../../containers/backrest.nix
 
     ./backup.nix
   ];

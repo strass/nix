@@ -1,5 +1,5 @@
-{}: {
-  path.config = {
+{
+  appConfig = {
     root = "/var/lib/";
     caches = "/var/cache/";
     logs = "/var/log/";
@@ -15,7 +15,7 @@
   #   audiobooks = "/mnt/storage/audiobooks/";
   # };
 
-  # paths.backup = {
-  #   root = "/mnt/storage/backup/";
-  # };
+  backup = {
+    restic = "/var/lib/restic/";
+  };
 }
