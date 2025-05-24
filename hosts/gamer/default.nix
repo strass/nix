@@ -72,6 +72,8 @@
     gnome-tweaks
   ];
 
+  home.packages = with pkgs; [prismlauncher];
+
   modules = {
     ssh.enable = true;
   };
