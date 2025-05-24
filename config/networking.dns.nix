@@ -1,10 +1,12 @@
-{
+{}: let
+  dhcp = import ./dhcp.nix;
+in {
   defaultTTL = 86400;
   zones = {
     "framework.local" = {
       "" = {
         a = {
-          data = ["192.168.1.71"];
+          data = [dhcp.ip-assignments.framework];
           ttl = 60;
         };
       };
@@ -12,7 +14,7 @@
     "gamer.local" = {
       "" = {
         a = {
-          data = ["192.168.1.123"];
+          data = [dhcp.ip-assignments.gamer];
           ttl = 60;
         };
       };
@@ -20,7 +22,7 @@
     "router.local" = {
       "" = {
         a = {
-          data = ["192.168.1.92"];
+          data = [dhcp.ip-assignments.router];
           ttl = 60;
         };
       };
@@ -28,7 +30,7 @@
     "hive.local" = {
       "" = {
         a = {
-          data = ["192.168.1.10"];
+          data = [dhcp.ip-assignments.hive];
           ttl = 60;
         };
       };

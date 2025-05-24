@@ -30,6 +30,8 @@ in {
 
     # containers
     ../../containers/whoami.nix
+
+    ./backup.nix
   ];
 
   # Bootloader.
