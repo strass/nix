@@ -26,7 +26,6 @@
     kernelPackages = pkgs-unstable.linuxPackages_hardened;
     kernelParams = ["pcie_aspm.policy=performance"];
   };
-  users.mutableUsers = false;
 
   environment.systemPackages = with pkgs; [
     pkgs-unstable.ghostty

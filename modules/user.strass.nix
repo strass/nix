@@ -9,6 +9,8 @@
 }:
 with lib; {
   config = {
+    users.mutableUsers = mkDefault false;
+
     users.users.strass = {
       name = "strass";
       description = "zak";
