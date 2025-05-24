@@ -30,6 +30,7 @@ in {
   environment.variables = {
     NIXPKGS_ALLOW_UNFREE = "1";
   };
+  nixpkgs.config.allowUnfree = lib.mkDefault true;
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;

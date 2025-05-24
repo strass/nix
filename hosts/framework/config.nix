@@ -1,6 +1,6 @@
 {
   appConfig = {
-    root = "/var/lib/";
+    root = "/var/lib";
     caches = "/var/cache/";
     logs = "/var/log/";
     tmp = "/tmp/";

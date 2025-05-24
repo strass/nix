@@ -1,6 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   config,
   pkgs,
@@ -31,7 +28,7 @@ in {
 
     # containers
     ../../containers/whoami.nix
-    ../../containers/backrest.nix
+    # ../../containers/backrest.nix
 
     ./backup.nix
   ];
@@ -60,9 +57,6 @@ in {
 
   # Install firefox.
   programs.firefox.enable = true;
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
     pkgs-unstable.ghostty
