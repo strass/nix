@@ -29,7 +29,6 @@
     nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
-
     # grab ssh public keys from GitHub to be used with `openssh.authorizedKeys.keyFiles = [inputs.ssh-keys.outPath];`
     ssh-keys = {
       url = "https://github.com/strass.keys"; # https://forgejo.zaks.pw/strass.keys
@@ -169,10 +168,11 @@
     darwinConfigurations = {
       "mac-mini" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
-        modules = [ ./hosts/mac-mini/default.nix
-         ];
+        modules = [
+          home-manager.darwinModules.home-manager
+          ./hosts/mac-mini/default.nix
+        ];
       };
-    
-  };
+    };
   };
 }

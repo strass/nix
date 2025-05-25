@@ -7,6 +7,7 @@ To start a backup: `systemctl start restic-backups-<NAME>.service`
 To restore a backup: `sudo restic-<NAME> snapshots`
 
 # TODO:
+- [x] mac config
 - [ ] impermanence & btrfs
   - https://github.com/nix-community/impermanence
   - https://www.foodogsquared.one/posts/2023-03-24-managing-mutable-files-in-nixos/
