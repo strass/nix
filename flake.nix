@@ -170,7 +170,7 @@
         system = "aarch64-darwin";
         modules = [
           home-manager.darwinModules.home-manager
-          stylix.nixosModules.stylix
+          stylix.darwinModules.stylix
 
           ./hosts/mac-mini/default.nix
         ];
