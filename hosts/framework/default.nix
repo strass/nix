@@ -8,8 +8,9 @@
   # paths = import ./config.nix;
 in {
   imports = [
-    inputs.nixos-facter-modules.nixosModules.facter
+    # inputs.nixos-facter-modules.nixosModules.facter
     # inputs.disko.nixosModules.disko
+    ./hardware.nix
     ./backup.nix
     ./filesharing.nix
     #./disk-config.nix
@@ -36,8 +37,8 @@ in {
     # ../../containers/backrest.nix
   ];
 
-  facter.reportPath = ./facter.json;
-  networking.useNetworkd = false; # using facter without this fails
+  # facter.reportPath = ./facter.json;
+  # networking.useNetworkd = false; # using facter without this fails
   # disko.devices.disk.main.device = "/dev/disk/by-uuid/4e599c36-061a-4d2c-8826-a9df49b25eb4";
 
   # Bootloader.
