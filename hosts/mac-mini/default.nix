@@ -10,11 +10,14 @@
   ];
 
   networking.hostName = "mac-mini";
+  networking.wakeOnLan.enable = true;
+
   nixpkgs.hostPlatform = "aarch64-darwin";
   nix.settings.experimental-features = "nix-command flakes";
   nix.extraOptions = ''
     extra-platforms = aarch64-darwin x86_64-darwin
   '';
+  nix.linux-builder.enable = true;
   nixpkgs.config.allowUnfree = true;
   programs.nix-index.enable = true;
   users.users.strass = {

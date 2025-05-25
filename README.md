@@ -8,6 +8,8 @@ To restore a backup: `sudo restic-<NAME> snapshots`
 
 # TODO:
 - [x] mac config
+  - [ ] garbage collection
+  - [x] linux-builder
 - [ ] impermanence & btrfs
   - https://github.com/nix-community/impermanence
   - https://www.foodogsquared.one/posts/2023-03-24-managing-mutable-files-in-nixos/
@@ -21,6 +23,9 @@ To restore a backup: `sudo restic-<NAME> snapshots`
   - [ ] database backups
   - [ ] research restic providers
 - [ ] vpn & tunnel
+- [ ] distributed builds
+- security
+  - [ ] security.pki.certificateFiles
 
 # Prior Art
 - https://git.oat.zone/oat/nix-config
