@@ -19,7 +19,7 @@
   };
   environment.systemPackages = with pkgs; [
     alejandra
-    git
+    git # still using system git even though this is installed
     neovim
     sqlite
     just
