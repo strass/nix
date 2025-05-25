@@ -5,6 +5,10 @@
   home-manager,
   ...
 }: {
+  imports = [
+    ../../modules/stylix.nix
+  ];
+
   networking.hostName = "mac-mini";
   nixpkgs.hostPlatform = "aarch64-darwin";
   nix.settings.experimental-features = "nix-command flakes";
@@ -20,22 +24,12 @@
   };
   environment.systemPackages = with pkgs; [
     alejandra
-    git # still using system git even though this is installed
+    git
     sqlite
     just
   ];
   programs.fish = {
     enable = true;
-    shellAliases = {
-      ls = "eza";
-      top = "glances";
-      cat = "bat";
-      cp = "xcp";
-      # rm = "rip";
-      du = "dust";
-      vi = "nvim";
-      vim = "nvim";
-    };
   };
 
   # https://davi.sh/blog/2024/11/nix-vscode/
@@ -57,26 +51,57 @@
     home.packages = with pkgs; [neovim eza bat xcp dust glances];
 
     home.sessionVariables = {
-      EDITOR = "vim";
+      EDITOR = "nvim";
     };
 
-    programs.git = {
-      enable = true;
-      userName = "Zak Strassberg";
-      userEmail = "zakstrassberg@gmail.com";
-      ignores = [".DS_Store"];
-      extraConfig = {
-        init.defaultBranch = "main";
-        push.autoSetupRemote = true;
+    programs = {
+      git = {
+        enable = true;
+        userName = "Zak Strassberg";
+        userEmail = "zakstrassberg@gmail.com";
+        ignores = [".DS_Store"];
+        extraConfig = {
+          init.defaultBranch = "main";
+          push.autoSetupRemote = true;
+        };
+        # url = {
+        #   "https://github.com/" = {
+        #     insteadOf = [
+        #       "gh:"
+        #       "github:"
+        #     ];
+        #   };
+        # };
       };
-      # url = {
-      #   "https://github.com/" = {
-      #     insteadOf = [
-      #       "gh:"
-      #       "github:"
-      #     ];
-      #   };
-      # };
+      fish = {
+        enable = true;
+
+        shellAliases = {
+          ls = "eza";
+          top = "glances";
+          cat = "bat";
+          cp = "xcp";
+          # rm = "rip";
+          du = "dust";
+          vi = "nvim";
+          vim = "nvim";
+        };
+      };
+      atuin = {
+        enable = true;
+        enableFishIntegration = true;
+      };
+      autojump = {
+        enable = true;
+        enableFishIntegration = true;
+      };
+      direnv = {
+        enable = true;
+      };
+      eza = {
+        enable = true;
+        enableFishIntegration = true;
+      };
     };
   };
 

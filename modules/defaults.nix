@@ -19,6 +19,7 @@ in {
     # Load my modules
     ../services/avahi.nix
     ./ssh.nix
+    ./home-manager.nix
   ];
 
   hm.imports = [
