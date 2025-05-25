@@ -42,7 +42,6 @@
   };
 
   networking.hostName = "gamer"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -61,8 +60,6 @@
   # Install firefox.
   programs.firefox.enable = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
     pkgs-unstable.ghostty
     gnome-tweaks

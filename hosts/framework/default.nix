@@ -7,9 +7,13 @@
   # paths = import ./config.nix;
 in {
   imports = [
-    ./hardware.nix
+    inputs.nixos-facter-modules.nixosModules.facter
+    inputs.disko.nixosModules.disko
+    ./backup.nix
     ./filesharing.nix
+    ./disk-config.nix
 
+    # Modules
     ../../modules/gnome.nix
     ../../modules/stylix.nix
     ../../modules/vscode.nix
@@ -29,9 +33,11 @@ in {
     # containers
     ../../containers/whoami.nix
     # ../../containers/backrest.nix
-
-    ./backup.nix
   ];
+
+  facter.reportPath = ./facter.json;
+  networking.useNetworkd = false; # using facter without this fails
+  disko.devices.disk.main.device = "/dev/disk/by-uuid/4e599c36-061a-4d2c-8826-a9df49b25eb4";
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
