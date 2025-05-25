@@ -2,6 +2,7 @@
   config,
   pkgs,
   pkgs-unstable,
+  inputs,
   ...
 }: let
   # paths = import ./config.nix;
