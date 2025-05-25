@@ -9,10 +9,10 @@
 in {
   imports = [
     inputs.nixos-facter-modules.nixosModules.facter
-    inputs.disko.nixosModules.disko
+    # inputs.disko.nixosModules.disko
     ./backup.nix
     ./filesharing.nix
-    ./disk-config.nix
+    #./disk-config.nix
 
     # Modules
     ../../modules/gnome.nix
@@ -38,7 +38,7 @@ in {
 
   facter.reportPath = ./facter.json;
   networking.useNetworkd = false; # using facter without this fails
-  disko.devices.disk.main.device = "/dev/disk/by-uuid/4e599c36-061a-4d2c-8826-a9df49b25eb4";
+  # disko.devices.disk.main.device = "/dev/disk/by-uuid/4e599c36-061a-4d2c-8826-a9df49b25eb4";
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
