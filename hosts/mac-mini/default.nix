@@ -20,6 +20,7 @@
   nix.linux-builder.enable = true;
   nixpkgs.config.allowUnfree = true;
   programs.nix-index.enable = true;
+  system.primaryUser = "zakstrassberg";
   users.users.strass = {
     description = "zak";
     name = "strass";
