@@ -1,6 +1,9 @@
 switch:
   nixos-rebuild switch --flake .#$(hostname)
 
+switch-mac:
+  sudo darwin-rebuild switch --flake .#$(hostname)
+
 update:
   nix flake update
 
