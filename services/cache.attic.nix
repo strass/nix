@@ -10,8 +10,8 @@
 in {
   age.secrets.attic-token = {
     file = ../secrets/attic-token.age;
-    owner = "atticd";
-    group = "atticd";
+    # owner = "atticd";
+    # group = "atticd";
   };
 
   services.atticd = {
@@ -22,7 +22,7 @@ in {
 
     settings = {
       listen = "[::]:${toString port}";
-
+      # api-endpoint = "http://${name}.${fqdn}/";
       jwt = {};
 
       # Data chunking
