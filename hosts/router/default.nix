@@ -29,7 +29,6 @@
 
   environment.systemPackages = with pkgs; [
     pkgs-unstable.ghostty
-    statfs
   ];
 
   modules = {
