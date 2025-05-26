@@ -1,47 +1,39 @@
-{inputs, ...}: let
+{
+  inputs,
+  lib,
+  pkgs,
+  config,
+  ...
+}: let
   inherit (builtins) toString;
   inherit (lib.modules) mkAliasOptionModule mkDefault mkIf;
   # inherit (lib.my) mapModulesRec';
 in {
   imports = [
-    #inputs.hyprland.homeManagerModules.default
-    inputs.home-manager.nixosModules.home-manager
-    (mkAliasOptionModule ["hm"] ["home-manager" "users" "strass"]) # used to be ["home-manager" "users" config.user.name]
+    (mkAliasOptionModule ["hm"] ["home-manager" "users" config.system.primaryUser]) # used to be ["home-manager" "users" config.user.name]
   ];
 
+  home-manager.useUserPackages = true;
+  home-manager.useGlobalPkgs = true;
+  home-manager.verbose = true;
   home-manager.backupFileExtension = "hm-backup";
-  hm.home.stateVersion = config.system.stateVersion;
-  hm.home.enableNixpkgsReleaseCheck = false;
   programs.fish.enable = true;
-  hm.home = {
-    username = "strass";
-    homeDirectory = "/home/strass";
-    shellAliases = {
-      #        cd = "zoxide";
-      ls = "eza";
-      top = "glances";
-      cat = "bat";
-      cp = "xcp";
-      rm = "rip";
-      du = "dust";
-      vi = "nvim";
-      vim = "nvim";
-    };
-  };
 
-  home-manager.users.strass = {
-    # this is internal compatibility configuration
-    # for home-manager, don't change this!
-    home.stateVersion = "25.05";
-    # Let home-manager install and manage itself.
-    programs.home-manager.enable = true;
-    home.packages = with pkgs; [neovim eza bat xcp dust glances];
+  hm = {
+    home = {
+      username = config.system.primaryUser;
+      homeDirectory = mkDefault "/home/${config.system.primaryUser}";
+      packages = with pkgs; [neovim eza bat xcp dust glances];
+      sessionVariables = {
+        EDITOR = "nvim";
+      };
 
-    home.sessionVariables = {
-      EDITOR = "nvim";
+      enableNixpkgsReleaseCheck = false;
+      stateVersion = "25.05";
     };
 
     programs = {
+      home-manager.enable = true;
       git = {
         enable = true;
         userName = "Zak Strassberg";
@@ -89,29 +81,6 @@ in {
         enable = true;
         enableFishIntegration = true;
       };
-    };
-  };
-
-  home-manager.useUserPackages = true;
-  home-manager.useGlobalPkgs = true;
-  home-manager.verbose = true;
-
-  hm.programs = {
-    fish.enable = true;
-    atuin = {
-      enable = true;
-      enableFishIntegration = true;
-    };
-    autojump = {
-      enable = true;
-      enableFishIntegration = true;
-    };
-    direnv = {
-      enable = true;
-    };
-    eza = {
-      enable = true;
-      enableFishIntegration = true;
     };
   };
 }

@@ -2,13 +2,14 @@
   config,
   pkgs,
   lib,
-  home-manager,
   ...
 }: {
   imports = [
     ../../modules/stylix.nix
     ../../modules/home-manager.nix
   ];
+
+  hm.home.homeDirectory = "/Users/zakstrassberg";
 
   networking.hostName = "mac-mini";
   networking.wakeOnLan.enable = true;
@@ -22,9 +23,10 @@
   nixpkgs.config.allowUnfree = true;
   programs.nix-index.enable = true;
   system.primaryUser = "zakstrassberg";
-  users.users.strass = {
+  users.users.zakstrassberg = {
     description = "zak";
-    name = "strass";
+    name = "zakstrassberg";
+    home = "/Users/zakstrassberg";
     shell = pkgs.fish;
   };
   environment.systemPackages = with pkgs; [
@@ -43,7 +45,6 @@
   # };
 
   ids.gids.nixbld = 30000; # because my nix version was out of date
-  users.users.zakstrassberg.home = "/Users/zakstrassberg";
 
   system.stateVersion = 6;
 }
