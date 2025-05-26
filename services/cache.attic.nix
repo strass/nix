@@ -1,4 +1,5 @@
 {
+  config,
   fqdn,
   age,
   ...
@@ -11,7 +12,7 @@ in {
     enable = true;
 
     # Replace with absolute path to your environment file
-    environmentFile = age.secrets.attic-token.path;
+    environmentFile = config.age.secrets.attic-token.path;
 
     settings = {
       listen = "[::]:${toString port}";
