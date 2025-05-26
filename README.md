@@ -10,7 +10,7 @@ To restore a backup: `sudo restic-<NAME> snapshots`
 - [x] mac config
   - [ ] garbage collection
   - [x] linux-builder
-- [ ] impermanence & btrfs
+- [x] impermanence & btrfs
   - https://github.com/nix-community/impermanence
   - https://www.foodogsquared.one/posts/2023-03-24-managing-mutable-files-in-nixos/
   - https://mt-caret.github.io/blog/posts/2020-06-29-optin-state.html

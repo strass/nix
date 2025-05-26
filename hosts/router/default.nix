@@ -34,18 +34,24 @@
     ssh.enable = true;
   };
 
-  # services.snapper = {
-  #   enable = true;
-  #   snapshotRootOnBoot = true;
-  #   configs = {
-  #     home = {
-  #       SUBVOLUME = "/home";
-  #       ALLOW_USERS = ["strass"];
-  #       TIMELINE_CREATE = true;
-  #       TIMELINE_CLEANUP = true;
-  #     };
-  #   };
-  # };
+  services.snapper = {
+    enable = true;
+    snapshotRootOnBoot = true;
+    configs = {
+      root = {
+        SUBVOLUME = "/";
+        ALLOW_USERS = ["strass"];
+        TIMELINE_CREATE = true;
+        TIMELINE_CLEANUP = true;
+      };
+      home = {
+        SUBVOLUME = "/home";
+        ALLOW_USERS = ["strass"];
+        TIMELINE_CREATE = true;
+        TIMELINE_CLEANUP = true;
+      };
+    };
+  };
   fileSystems."/persist" = {
     device = "/dev/disk/by-partlabel/disk-nvme0n1-root";
     neededForBoot = true;
@@ -73,21 +79,13 @@
     users.strass = {
       directories = [
         "Downloads"
-        "Music"
-        "Pictures"
         "Documents"
-        "Videos"
-        "VirtualBox VMs"
         {
           directory = ".gnupg";
           mode = "0700";
         }
         {
           directory = ".ssh";
-          mode = "0700";
-        }
-        {
-          directory = ".nixops";
           mode = "0700";
         }
         {
