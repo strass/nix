@@ -8,21 +8,21 @@
   inherit (builtins) toString;
   inherit (lib.modules) mkAliasOptionModule mkDefault mkIf;
   # inherit (lib.my) mapModulesRec';
+  primaryUser = config.system.primaryUser or config.user.name or "strass";
 in {
   imports = [
-    (mkAliasOptionModule ["hm"] ["home-manager" "users" config.system.primaryUser]) # used to be ["home-manager" "users" config.user.name]
+    (mkAliasOptionModule ["hm"] ["home-manager" "users" primaryUser])
   ];
 
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
   home-manager.verbose = true;
   home-manager.backupFileExtension = "hm-backup";
-  programs.fish.enable = true;
 
   hm = {
     home = {
       username = config.system.primaryUser;
-      homeDirectory = mkDefault "/home/${config.system.primaryUser}";
+      homeDirectory = mkDefault "/home/${primaryUser}";
       packages = with pkgs; [neovim eza bat xcp dust glances];
       sessionVariables = {
         EDITOR = "nvim";

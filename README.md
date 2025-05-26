@@ -1,5 +1,5 @@
 # Install Flake
-`sudo nixos-rebuild switch --flake github:strass/nix#fridge --impure --no-write-lock-file  --refresh`
+`sudo nixos-rebuild switch --flake github:strass/nix#framework`
 
 # Restic
 To start a backup: `systemctl start restic-backups-<NAME>.service`
