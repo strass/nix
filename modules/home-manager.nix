@@ -21,7 +21,7 @@ in {
 
   hm = {
     home = {
-      username = config.system.primaryUser;
+      username = primaryUser;
       homeDirectory = mkDefault "/home/${primaryUser}";
       packages = with pkgs; [neovim eza bat xcp dust glances];
       sessionVariables = {
