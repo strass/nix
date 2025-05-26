@@ -1,6 +1,8 @@
 {config, fqdn,...}:let 
 name = "attic";
 port= 9911;
+  mkTraefikService = import ../util/mkTraefikService.nix;
+
 in{
     age.secrets.attic-token.file = ../secrets/attic-token.age;
 
