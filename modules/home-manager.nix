@@ -9,16 +9,12 @@
   inherit (lib.modules) mkAliasOptionModule mkDefault;
   primaryUser = config.system.primaryUser or config.user.name or "strass"; # should the default be nixos?
 in {
-  imports = [
-    (mkAliasOptionModule ["hm"] ["home-manager" "users" primaryUser])
-  ];
-
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
   home-manager.verbose = true;
   home-manager.backupFileExtension = "hm-backup";
 
-  hm = {
+  home-manager.users."${primaryUser}" = {
     home = {
       username = primaryUser;
       homeDirectory = mkDefault "/home/${primaryUser}";

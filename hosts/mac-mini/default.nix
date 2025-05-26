@@ -10,7 +10,13 @@
   ];
 
   system.primaryUser = "zakstrassberg";
-  hm.home.homeDirectory = "/Users/${config.system.primaryUser}";
+  home-manager.users.zakstrassberg.home = {
+    homeDirectory = "/Users/${config.system.primaryUser}";
+    packages = with pkgs; [
+      moonlight-qt
+      # steam
+    ];
+  };
 
   networking.hostName = "mac-mini";
   networking.wakeOnLan.enable = true;
@@ -25,7 +31,7 @@
   users.users."${config.system.primaryUser}" = {
     description = "zak";
     name = config.system.primaryUser;
-    home = hm.home.homeDirectory;
+    home = "/Users/${config.system.primaryUser}";
     shell = pkgs.fish;
   };
   environment.systemPackages = with pkgs; [
@@ -37,11 +43,6 @@
 
   programs.fish.enable = true;
   programs.nix-index.enable = true;
-
-  # https://davi.sh/blog/2024/11/nix-vscode/
-  # programs.vscode = {
-  #   enable = true;
-  # };
 
   ids.gids.nixbld = 30000; # because my nix version was out of date
 
