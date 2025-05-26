@@ -46,7 +46,12 @@
   #     };
   #   };
   # };
-
+  fileSystems."/persist" = {
+    device = "/dev/nvme0n1";
+    neededForBoot = true;
+    fsType = "btrfs";
+    options = ["subvol=persist" "compress=zstd" "noatime"];
+  };
   environment.persistence."/persist" = {
     hideMounts = true;
     directories = [
