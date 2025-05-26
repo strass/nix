@@ -28,6 +28,7 @@ in {
     ../../services/database.redis.nix
     ../../services/database.postgres.nix
     ../../services/database.mysql.nix
+    ../../services/database.garage.nix
     ../../services/olivetin.nix
     ../../services/ntfy.nix
     ../../services/backup.restic.nix
@@ -72,6 +73,4 @@ in {
   modules = {
     ssh.enable = true;
   };
-
-  services.xserver.displayManager.gdm.wayland = false;
 }
