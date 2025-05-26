@@ -1,7 +1,7 @@
 {
   disko.devices = {
     disk = {
-      main = {
+      nvme0n1 = {
         type = "disk";
         device = "/dev/nvme0n1";
         content = {
@@ -21,16 +21,14 @@
               };
             };
             swap = {
-              start = "1G";
-              end = "9G";
+              size = "8G";
               content = {
                 type = "swap";
                 randomEncryption = true;
               };
             };
             root = {
-              start = "9G";
-              end = "100%";
+              size = "100%";
               content = {
                 type = "btrfs";
                 extraArgs = ["-f"];
