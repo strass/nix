@@ -157,6 +157,7 @@
         modules = [
           stylix.nixosModules.stylix
           impermanence.nixosModules.impermanence
+          agenix.nixosModules.default
 
           ./modules/user.strass.nix
           ./modules/defaults.nix
