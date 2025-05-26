@@ -10,8 +10,6 @@
   # inherit (lib.my) mapModulesRec';
 in {
   imports = [
-    inputs.home-manager.nixosModules.home-manager
-    (mkAliasOptionModule ["hm"] ["home-manager" "users" "strass"]) # used to be ["home-manager" "users" config.user.name]
     # inputs.nix-colors.homeManagerModules.default
     #inputs.hyprland.nixosModules.default
     #inputs.lix-module.nixosModules.default
@@ -22,10 +20,16 @@ in {
     ./home-manager.nix
   ];
 
-  hm.imports = [
-    #inputs.hyprland.homeManagerModules.default
-  ];
-  home-manager.backupFileExtension = "hm-backup";
+  # Linux only
+  home-manager.users.strass = {
+    pkgs,
+    config,
+    ...
+  }: {
+    imports = [inputs.quadlet-nix.homeManagerModules.quadlet];
+    # This is crucial to ensure the systemd services are (re)started on config change
+    systemd.user.startServices = "sd-switch";
+  };
 
   # Common config for all nixos machines;
   environment.variables = {
@@ -77,9 +81,6 @@ in {
     stateVersion = "25.05";
     configurationRevision = with inputs; mkIf (self ? rev) self.rev;
   };
-  hm.home.stateVersion = config.system.stateVersion;
-  # Mods, release the spores into his body. thank you
-  hm.home.enableNixpkgsReleaseCheck = false;
 
   # boot = {
   #   kernelPackages = mkDefault pkgs.unstable.linuxPackages_latest;

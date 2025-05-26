@@ -7,6 +7,7 @@
 }: {
   imports = [
     ../../modules/stylix.nix
+    ../../modules/home-manager.nix
   ];
 
   networking.hostName = "mac-mini";
@@ -43,71 +44,6 @@
 
   ids.gids.nixbld = 30000; # because my nix version was out of date
   users.users.zakstrassberg.home = "/Users/zakstrassberg";
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
-  home-manager.verbose = true;
-  home-manager.users.zakstrassberg = {
-    # this is internal compatibility configuration
-    # for home-manager, don't change this!
-    home.stateVersion = "25.05";
-    # Let home-manager install and manage itself.
-    programs.home-manager.enable = true;
-    home.packages = with pkgs; [neovim eza bat xcp dust glances];
-
-    home.sessionVariables = {
-      EDITOR = "nvim";
-    };
-
-    programs = {
-      git = {
-        enable = true;
-        userName = "Zak Strassberg";
-        userEmail = "zakstrassberg@gmail.com";
-        ignores = [".DS_Store"];
-        extraConfig = {
-          init.defaultBranch = "main";
-          push.autoSetupRemote = true;
-        };
-        # url = {
-        #   "https://github.com/" = {
-        #     insteadOf = [
-        #       "gh:"
-        #       "github:"
-        #     ];
-        #   };
-        # };
-      };
-      fish = {
-        enable = true;
-
-        shellAliases = {
-          ls = "eza";
-          top = "glances";
-          cat = "bat";
-          cp = "xcp";
-          # rm = "rip";
-          du = "dust";
-          vi = "nvim";
-          vim = "nvim";
-        };
-      };
-      atuin = {
-        enable = true;
-        enableFishIntegration = true;
-      };
-      autojump = {
-        enable = true;
-        enableFishIntegration = true;
-      };
-      direnv = {
-        enable = true;
-      };
-      eza = {
-        enable = true;
-        enableFishIntegration = true;
-      };
-    };
-  };
 
   system.stateVersion = 6;
 }
