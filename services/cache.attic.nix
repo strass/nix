@@ -4,13 +4,13 @@ port= 9911;
   mkTraefikService = import ../util/mkTraefikService.nix;
 
 in{
-    age.secrets.attic-token.file = ../secrets/attic-token.age;
+    config.age.secrets.attic-token.file = ../secrets/attic-token.age;
 
   services.atticd = {
     enable = true;
 
     # Replace with absolute path to your environment file
-    environmentFile = config.age.secrets.secret1.path;
+    environmentFile = config.age.secrets.attic-token.path;
 
     settings = {
       listen = "[::]:${toString port}";
