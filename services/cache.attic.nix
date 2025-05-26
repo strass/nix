@@ -8,6 +8,12 @@
   port = 9911;
   mkTraefikService = import ../util/mkTraefikService.nix;
 in {
+  age.secrets.attic-token = {
+    file = ../secrets/attic-token.age;
+    owner = "atticd";
+    group = "atticd";
+  };
+
   services.atticd = {
     enable = true;
 
