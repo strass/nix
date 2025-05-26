@@ -34,7 +34,7 @@ with lib; {
       openssh.authorizedKeys.keyFiles = [inputs.ssh-keys.outPath];
     };
     users.groups.strass = {};
-
+    programs.fish.enable = true;
     nix.settings = let
       users = ["root" "strass"];
     in {

@@ -35,9 +35,7 @@
     sqlite
     just
   ];
-  programs.fish = {
-    enable = true;
-  };
+  programs.fish.enable = true;
 
   # https://davi.sh/blog/2024/11/nix-vscode/
   # programs.vscode = {
