@@ -8,6 +8,8 @@
           type = "gpt";
           partitions = {
             ESP = {
+              priority = 1;
+              name = "ESP";
               start = "1MiB";
               end = "1G";
               type = "EF00";
@@ -15,6 +17,7 @@
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
+                mountOptions = ["umask=0077"];
               };
             };
             swap = {

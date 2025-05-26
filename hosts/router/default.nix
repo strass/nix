@@ -23,6 +23,7 @@
     loader.grub.enable = true;
     loader.grub.efiSupport = true;
     loader.grub.efiInstallAsRemovable = true;
+    loader.grub.devices = ["/dev/nvme0n1"];
     kernelPackages = pkgs-unstable.linuxPackages_hardened;
     kernelParams = ["pcie_aspm.policy=performance"];
   };
