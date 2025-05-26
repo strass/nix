@@ -35,7 +35,6 @@
   };
 
   services.snapper = {
-    enable = true;
     snapshotRootOnBoot = true;
     configs = {
       root = {
