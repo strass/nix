@@ -168,6 +168,14 @@
     darwinConfigurations = {
       "mac-mini" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
+        specialArgs = {
+          inherit inputs;
+          pkgs-unstable = import nixpkgs-unstable {
+            system = "aarch64-darwin";
+            config.allowUnfree = true;
+          };
+          # fqdn = "mac-mini.local";
+        };
         modules = [
           home-manager.darwinModules.home-manager
           stylix.darwinModules.stylix

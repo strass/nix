@@ -23,9 +23,9 @@
   nixpkgs.config.allowUnfree = true;
   programs.nix-index.enable = true;
   system.primaryUser = "zakstrassberg";
-  users.users.zakstrassberg = {
+  users.users."${config.system.primaryUser}" = {
     description = "zak";
-    name = "zakstrassberg";
+    name = config.system.primaryUser;
     home = "/Users/zakstrassberg";
     shell = pkgs.fish;
   };

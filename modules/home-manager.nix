@@ -1,13 +1,13 @@
 {
+  lib,
   inputs,
   pkgs,
+  pkgs-unstable,
   config,
   ...
 }: let
-  inherit (builtins) toString;
-  inherit (lib.modules) mkAliasOptionModule mkDefault mkIf;
-  # inherit (lib.my) mapModulesRec';
-  primaryUser = config.system.primaryUser or config.user.name or "strass";
+  inherit (lib.modules) mkAliasOptionModule mkDefault;
+  primaryUser = config.system.primaryUser or config.user.name or "strass"; # should the default be nixos?
 in {
   imports = [
     (mkAliasOptionModule ["hm"] ["home-manager" "users" primaryUser])
@@ -22,7 +22,15 @@ in {
     home = {
       username = primaryUser;
       homeDirectory = mkDefault "/home/${primaryUser}";
-      packages = with pkgs; [neovim eza bat xcp dust glances];
+      packages = with pkgs; [
+        neovim
+        eza
+        bat
+        xcp
+        dust
+        glances
+        # pkgs-unstable.ghostty # marked as broken
+      ];
       sessionVariables = {
         EDITOR = "nvim";
       };
