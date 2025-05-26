@@ -24,6 +24,7 @@
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
     agenix.url = "github:ryantm/agenix";
+    impermanence.url = "github:nix-community/impermanence";
 
     # mac
     nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
@@ -47,6 +48,7 @@
     chaotic,
     agenix,
     nix-darwin,
+    impermanence,
     ...
   }: let
     # dnsConfig = {
@@ -154,6 +156,7 @@
         };
         modules = [
           stylix.nixosModules.stylix
+          impermanence.nixosModules.impermanence
 
           ./modules/user.strass.nix
           ./modules/defaults.nix
