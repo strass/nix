@@ -1,4 +1,4 @@
-{fqdn,...}:let 
+{config, fqdn,...}:let 
 name = "attic";
 port= 9911;
 in{
