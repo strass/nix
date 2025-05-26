@@ -22,7 +22,7 @@ in {
 
     settings = {
       listen = "[::]:${toString port}";
-      # api-endpoint = "http://${name}.${fqdn}/";
+      api-endpoint = "http://${name}.${fqdn}/";
       jwt = {};
 
       # Data chunking
