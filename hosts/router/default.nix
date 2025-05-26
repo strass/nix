@@ -38,7 +38,7 @@
     snapshotRootOnBoot = true;
     configs = {
       root = {
-        SUBVOLUME = "/";
+        SUBVOLUME = "";
         ALLOW_USERS = ["strass"];
         TIMELINE_CREATE = true;
         TIMELINE_CLEANUP = true;
