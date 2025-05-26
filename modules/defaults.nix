@@ -144,6 +144,7 @@ in {
     direnv
     sqlite
     just
+    alejandra
   ];
 
   # if I mkDefault this then it conflicts with the nano default from nixos
