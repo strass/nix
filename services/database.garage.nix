@@ -1,10 +1,10 @@
 {}: let
   port = 9000;
-  dataDir = "/var/lib/minio/data";
-  configDir = "/var/lib/minio/config";
-  certificatesDir = "/var/lib/minio/certificates";
+  dataDir = "/var/lib/garage/data";
+  configDir = "/var/lib/garage/config";
+  certificatesDir = "/var/lib/garage/certificates";
 in {
-  services.minio = {
+  services.garage = {
     enable = true;
     listenAddress = ":9000";
     consoleAddress = ":${toString port}";
