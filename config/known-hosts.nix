@@ -14,6 +14,9 @@
       domainName = "zaks.pw";
       ip = "192.168.1.10";
     };
+    framework = {
+      publicKeys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDyrhHvlLOPJ1UF7r5QgytPa9GHwObXXkQdH/VAJXB4+ zakstrassberg@gmail.com"];
+    };
   };
 
   knownHosts = [
