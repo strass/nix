@@ -13,6 +13,7 @@
     ../../modules/de.gnome.nix
     ../../modules/stylix.nix
     ../../services/avahi.nix
+    ../../services/cache.attic.nix
   ];
 
   facter.reportPath = ./facter.json;
