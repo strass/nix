@@ -1,16 +1,16 @@
-{config, fqdn,...}:let 
+{age, fqdn,...}:let 
 name = "attic";
 port= 9911;
   mkTraefikService = import ../util/mkTraefikService.nix;
 
 in{
-    config.age.secrets.attic-token.file = ../secrets/attic-token.age;
+    age.secrets.attic-token.file = ../secrets/attic-token.age;
 
   services.atticd = {
     enable = true;
 
     # Replace with absolute path to your environment file
-    environmentFile = config.age.secrets.attic-token.path;
+    environmentFile = age.secrets.attic-token.path;
 
     settings = {
       listen = "[::]:${toString port}";
