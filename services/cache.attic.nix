@@ -55,4 +55,11 @@ in {
     fqdn = fqdn;
     port = port;
   };
+
+
+  networking.firewall = {
+    allowedTCPPorts = [
+      port
+    ];
+  };
 }
