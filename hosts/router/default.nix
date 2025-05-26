@@ -47,7 +47,7 @@
   #   };
   # };
   fileSystems."/persist" = {
-    device = "/dev/nvme0n1";
+    device = "/dev/disk/by-partlabel/disk-nvme0n1-root";
     neededForBoot = true;
     fsType = "btrfs";
     options = ["subvol=persist" "compress=zstd" "noatime"];
