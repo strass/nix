@@ -11,7 +11,7 @@
 
     inputs.disko.nixosModules.disko
     ./disk-config.nix
-    ../../modules/gnome.nix
+    ../../modules/de.gnome.nix
     ../../modules/gaming.nix
     ../../modules/stylix.nix
     # ../../modules/vscode.nix

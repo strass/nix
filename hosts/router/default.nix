@@ -10,7 +10,7 @@
     inputs.disko.nixosModules.disko
     ./disk-config.nix
 
-    ../../modules/gnome.nix
+    ../../modules/de.gnome.nix
     ../../modules/stylix.nix
     ../../services/avahi.nix
   ];
