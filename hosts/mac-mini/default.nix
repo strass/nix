@@ -7,6 +7,7 @@
   imports = [
     ../../modules/stylix.nix
     ../../modules/home-manager.nix
+    ../../modules/nix.nix
   ];
 
   system.primaryUser = "zakstrassberg";

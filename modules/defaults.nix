@@ -17,10 +17,11 @@ in {
     # Load my modules
     ../services/avahi.nix
     ./ssh.nix
-    ./home-manager.nix
+    ./home-manager.ni
+    ./nix.nix
   ];
 
-  # Linux only
+  # Linux only (so not in home-manager config)
   home-manager.users.strass = {
     pkgs,
     config,
@@ -30,12 +31,6 @@ in {
     # This is crucial to ensure the systemd services are (re)started on config change
     systemd.user.startServices = "sd-switch";
   };
-
-  # Common config for all nixos machines;
-  environment.variables = {
-    NIXPKGS_ALLOW_UNFREE = "1";
-  };
-  nixpkgs.config.allowUnfree = lib.mkDefault true;
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
@@ -51,30 +46,6 @@ in {
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
     #media-session.enable = true;
-  };
-
-  nix = {
-    package = pkgs.nixVersions.stable;
-
-    nixPath = ["nixpkgs=${inputs.nixpkgs}"]; # Enables use of `nix-shell -p ...` etc
-    registry.nixpkgs.flake = inputs.nixpkgs; # Make `nix shell` etc use pinned nixpkgs
-
-    settings = {
-      experimental-features = ["nix-command" "flakes"];
-      auto-optimise-store = true;
-      keep-outputs = true;
-      keep-derivations = true;
-      substituters = [
-        "https://nix-community.cachix.org"
-        "https://nixpkgs-wayland.cachix.org"
-        "https://hyprland.cachix.org"
-      ];
-      trusted-public-keys = [
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-        "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
-        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-      ];
-    };
   };
 
   system = {
@@ -149,14 +120,4 @@ in {
 
   # if I mkDefault this then it conflicts with the nano default from nixos
   environment.variables.EDITOR = "nvim";
-
-  documentation.nixos.enable = mkDefault false;
-
-  nix.optimise.automatic = true;
-  nix.optimise.dates = ["03:45"]; # Optional; allows customizing optimisation schedule
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 30d";
-  };
 }
