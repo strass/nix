@@ -14,6 +14,10 @@ To restore a backup: `sudo restic-<NAME> snapshots`
   - https://github.com/nix-community/impermanence
   - https://www.foodogsquared.one/posts/2023-03-24-managing-mutable-files-in-nixos/
   - https://mt-caret.github.io/blog/posts/2020-06-29-optin-state.html
+  - [x] btrfs via disko
+  - [x] impermanence setup
+  - [ ] find modified files
+  - [ ] revert subvolume on boot
 - [ ] dns/dhcp
   - both but not declarative? gravity or technitium
   - declarative combo unbound+kea
@@ -26,6 +30,11 @@ To restore a backup: `sudo restic-<NAME> snapshots`
 - [ ] distributed builds
 - security
   - [ ] security.pki.certificateFiles
+  - [ ] https://smallstep.com/blog/build-a-tiny-ca-with-raspberry-pi-yubikey/
+  - https://jamielinux.com/docs/openssl-certificate-authority/
+  - https://easy-rsa.readthedocs.io/en/latest/advanced/
+- nixos on kindle
+  - https://github.com/schuhumi/alpine_kindle/
 
 # Prior Art
 - https://git.oat.zone/oat/nix-config

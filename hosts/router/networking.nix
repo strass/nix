@@ -232,3 +232,162 @@
     hardening = true;
   };
 }
+# https://github.com/philipwilk/nixos/blob/4fec9d73bfa7b1ecb490186522de38d25ee81e69/homelab/router/systemd.nix
+# { config, lib, ... }:
+# let
+#   routerIp = "192.168.1.1";
+#   cfg = config.homelab.router.systemd;
+#   lan = config.homelab.router.devices.lan;
+#   wan = config.homelab.router.devices.wan;
+#   dns4 = "1.1.1.1 9.9.9.9";
+#   dns6 = "2606:4700:4700::1111 2620:fe::fe";
+#   dnsCfg = {
+#     DNS = "${dns6} ${dns4}";
+#     DNSSEC = "yes";
+#     DNSOverTLS = "yes";
+#   };
+# in
+# {
+#   options.homelab.router.systemd = {
+#     enable = lib.mkOption {
+#       type = lib.types.bool;
+#       default = config.homelab.router.enable;
+#       example = true;
+#       description = ''
+#         Whether to enable systemd network configuration.
+#       '';
+#     };
+#     ipRange = lib.mkOption {
+#       type = lib.types.str;
+#       default = "192.168.1.0/16";
+#       example = "192.168.1.0/24";
+#       description = ''
+#         IP4 address range to use for the lan
+#       '';
+#     };
+#   };
+#   config = lib.mkIf cfg.enable {
+#     networking.useDHCP = false;
+#     systemd.network = {
+#       enable = true;
+#       links = {
+#         "link-${wan}" = {
+#           matchConfig.Name = wan;
+#           linkConfig = {
+#             # WAN link is defaulting to 100mbps
+#             # Think it is due to spurious rx errors
+#             # Need to replace the link cable so it doesn't happen in the first place
+#             # but i cba atm
+#             BitsPerSecond = "1G";
+#             Duplex = "full";
+#           };
+#         };
+#         "link-${lan}" = {
+#           matchConfig.Name = lan;
+#           linkConfig = {
+#             # WAN link is defaulting to 100mbps
+#             # Think it is due to spurious rx errors
+#             # Need to replace the link cable so it doesn't happen in the first place
+#             # but i cba atm
+#             BitsPerSecond = "1G";
+#             Duplex = "full";
+#           };
+#         };
+#       };
+#       config.networkConfig.IPv6Forwarding = "yes";
+#       networks = {
+#         "10-${wan}" = {
+#           matchConfig.Name = wan;
+#           networkConfig = lib.mkMerge [
+#             {
+#               DHCP = "yes";
+#               IPv6AcceptRA = "yes";
+#               LinkLocalAddressing = "ipv6";
+#               IPv4Forwarding = "yes";
+#             }
+#             dnsCfg
+#           ];
+#           dhcpV4Config = {
+#             UseHostname = "no";
+#             UseDNS = "no";
+#             UseNTP = "no";
+#             UseSIP = "no";
+#             UseRoutes = "no";
+#             UseGateway = "yes";
+#           };
+#           ipv6AcceptRAConfig = {
+#             UseDNS = "no";
+#             DHCPv6Client = "yes";
+#           };
+#           dhcpV6Config = {
+#             WithoutRA = "solicit";
+#             UseDelegatedPrefix = true;
+#             UseHostname = "no";
+#             UseDNS = "no";
+#             UseNTP = "no";
+#           };
+#           linkConfig.RequiredForOnline = "routable";
+#         };
+#         "15-${lan}" = {
+#           matchConfig.Name = lan;
+#           networkConfig = lib.mkMerge [
+#             {
+#               IPv6AcceptRA = "no";
+#               IPv6SendRA = "yes";
+#               LinkLocalAddressing = "ipv6";
+#               DHCPPrefixDelegation = "yes";
+#               DHCPServer = "yes";
+#               Address = "${routerIp}/16";
+#               IPv4Forwarding = "yes";
+#               IPMasquerade = "ipv4";
+#             }
+#             dnsCfg
+#           ];
+#           dhcpServerConfig = {
+#             EmitRouter = "yes";
+#             EmitDNS = "yes";
+#             DNS = dns4;
+#             EmitNTP = "yes";
+#             NTP = routerIp;
+#             PoolOffset = 100;
+#             ServerAddress = "${routerIp}/16";
+#             UplinkInterface = wan;
+#             DefaultLeaseTimeSec = 1800;
+#           };
+#           dhcpServerStaticLeases = [
+#             # {
+#             #   # Idac for example
+#             #   Address = "192.168.1.50";
+#             #   MACAddress = "54:9f:35:14:57:3e";
+#             # }
+#           ];
+#           linkConfig.RequiredForOnline = "no";
+#           ipv6SendRAConfig = {
+#             EmitDNS = "yes";
+#             DNS = dns6;
+#             EmitDomains = "no";
+#           };
+#           dhcpPrefixDelegationConfig.SubnetId = "0x1";
+#         };
+#       };
+#     };
+#     # Open ports for dhcp server on lan
+#     networking.firewall.interfaces.${lan}.allowedUDPPorts = [
+#       67
+#       68
+#     ];
+#     networking.firewall.allowedTCPPorts = [
+#       80
+#       443
+#       636
+#       389
+#       25
+#       465
+#       993
+#       22420
+#       22
+#       34197
+#     ];
+#   };
+# }
+
