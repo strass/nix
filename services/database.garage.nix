@@ -1,19 +1,17 @@
 {}: let
-  port = 9000;
+  # port = 9000;
   dataDir = "/var/lib/garage/data";
   configDir = "/var/lib/garage/config";
-  certificatesDir = "/var/lib/garage/certificates";
+  # certificatesDir = "/var/lib/garage/certificates";
 in {
   services.garage = {
     enable = true;
-    listenAddress = ":9000";
-    consoleAddress = ":${toString port}";
-    dataDir = dataDir;
-    configDir = configDir;
-    certificatesDir = certificatesDir;
-
-    # TODO: secretify these
-    secretKey = "min";
-    accessKey = "min";
+    environmentFile = "";
+    extraEnvironment = {};
+    logLevel = "info";
+    settings = {
+      metadata_dir = configDir; # fast disk if possible
+      data_dir = dataDir; # can be on slower disk
+    };
   };
 }

@@ -28,7 +28,7 @@ in {
     ../../services/database.redis.nix
     ../../services/database.postgres.nix
     ../../services/database.mysql.nix
-    ../../services/database.garage.nix
+    # ../../services/database.garage.nix
     ../../services/olivetin.nix
     ../../services/ntfy.nix
     ../../services/backup.restic.nix
