@@ -17,7 +17,7 @@ in {
     # Load my modules
     ../services/avahi.nix
     ./ssh.nix
-    ./home-manager.ni
+    ./home-manager.nix
     ./nix.nix
   ];
 
