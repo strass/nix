@@ -16,6 +16,8 @@ in {
 
     # Load my modules
     ../services/avahi.nix
+    ./locale.nix
+    ./sound.nix
     ./ssh.nix
     ./home-manager.nix
     ./nix.nix
@@ -32,22 +34,6 @@ in {
     systemd.user.startServices = "sd-switch";
   };
 
-  # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
-
   system = {
     stateVersion = "25.05";
     configurationRevision = with inputs; mkIf (self ? rev) self.rev;
@@ -57,30 +43,6 @@ in {
   #   kernelPackages = mkDefault pkgs.unstable.linuxPackages_latest;
   #   kernelParams = ["pcie_aspm.policy=performance"];
   # };
-
-  # Set your time zone.
-  time.timeZone = mkDefault "America/Los_Angeles";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = mkDefault "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = mkDefault {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-  };
-
-  # Configure keymap in X11
-  services.xserver.xkb = mkDefault {
-    layout = "us";
-    variant = "";
-  };
 
   environment.systemPackages = with pkgs; [
     inputs.agenix.packages.${system}.default
@@ -94,11 +56,6 @@ in {
     xdg-user-dirs
     xdg-utils
     fish
-    # fun fact! when using flakes not having
-    # git available as a global package while operating
-    # on a git repository makes nixos-rebuild break,
-    # rendering your system unable to rebuild.
-    # nix is really cool
     git
     fuzzel
     firefox
