@@ -14,11 +14,18 @@
 
     optimise = {
       automatic = true;
-      dates = ["03:45"]; # Optional; allows customizing optimisation schedule
+      interval = {
+        Hour = 3;
+        Minute = 15;
+      };
     };
     gc = {
       automatic = true;
-      dates = "weekly";
+      interval = {
+        Weekday = 0;
+        Hour = 0;
+        Minute = 0;
+      }; # weekly
       options = "--delete-older-than 7d";
     };
   };
