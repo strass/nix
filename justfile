@@ -18,4 +18,5 @@ facter:
   github:numtide/nixos-facter -- -o facter.json
 
 iso:
-  nix build .#nixosConfigurations.live.config.system.build.isoImage 
+  nix build .#nixosConfigurations.live.config.system.build.isoImage \
+  --option experimental-features "nix-command flakes" 

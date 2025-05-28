@@ -90,6 +90,10 @@
           home-manager.nixosModules.home-manager
           ./modules/user.strass.nix
           ./modules/defaults.nix
+          {
+            isoImage.makeEfiBootable = true;
+            isoImage.makeUsbBootable = true;
+          }
         ];
       };
       hive = nixpkgs.lib.nixosSystem {
