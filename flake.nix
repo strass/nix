@@ -57,7 +57,7 @@
     # };
   in {
     nix.settings = {
-      trusted-users = ["strass" "builder"]; # TODO: builder user
+      trusted-users = ["root" "strass" "builder"];
       experimental-features = ["nix-command" "flakes"];
       # auto-optimise-store = true;
       keep-outputs = true;
@@ -134,6 +134,7 @@
           hardware.nixosModules.framework-11th-gen-intel
 
           ./modules/user.strass.nix
+          ./modules/user.builder.nix
           ./modules/defaults.nix
           ./hosts/framework/default.nix
 
@@ -164,6 +165,7 @@
           stylix.nixosModules.stylix
 
           ./modules/user.strass.nix
+          ./modules/user.builder.nix
           ./modules/defaults.nix
           ./hosts/gamer/default.nix
 
