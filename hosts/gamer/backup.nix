@@ -13,7 +13,6 @@
   };
 
   services.restic = {
-    enable = true;
     backups = {
       saves = {
         user = "restic";
