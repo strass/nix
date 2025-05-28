@@ -1,13 +1,14 @@
 {
   config,
   pkgs,
+  lib,
   system,
   ...
 }: let
   # TODO: pull from config/known-hosts.nix
   buildMachines = [
     {
-      hostName = "framework";
+      hostName = "framework.local";
       sshUser = "strass";
       system = "x86_64-linux";
       maxJobs = 1;
@@ -15,7 +16,7 @@
       supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
     }
     {
-      hostName = "gamer";
+      hostName = "gamer.local";
       sshUser = "strass";
       system = "x86_64-linux";
       maxJobs = 4;
@@ -26,7 +27,7 @@
 in {
   nix.distributedBuilds = true;
 
-  nix.buildMachines = builtins.filter ({hostName, ...}: hostName != config.networking.hostName) buildMachines;
+  nix.buildMachines = builtins.filter ({hostName, ...}: lib.strings.hasPrefix config.networking.hostName hostName) buildMachines;
 
   nix.extraOptions = ''
     builders-use-substitutes = true

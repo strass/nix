@@ -18,6 +18,7 @@ To restore a backup: `sudo restic-<NAME> snapshots`
   - [x] impermanence setup
   - [ ] find modified files
   - [ ] revert subvolume on boot
+  - [ ] tmpfiles.d https://www.freedesktop.org/software/systemd/man/latest/tmpfiles.d.html
 - [ ] dns/dhcp
   - both but not declarative? gravity or technitium
   - declarative combo unbound+kea

@@ -30,10 +30,12 @@
       # };
       options = "--delete-older-than 7d";
     };
+    settings.experimental-features = ["nix-command" "flakes"];
   };
 
   nixpkgs.config.allowUnfree = lib.mkDefault true;
-  #   environment.variables = {
-  #   NIXPKGS_ALLOW_UNFREE = "1";
-  # };
+    environment.variables = {
+    NIXPKGS_ALLOW_UNFREE = "1";
+    NIXPKGS_ALLOW_UNFREE = "1";
+  };
 }
