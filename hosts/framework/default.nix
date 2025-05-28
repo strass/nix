@@ -16,7 +16,7 @@ in {
     #./disk-config.nix
 
     # Modules
-    ../../modules/de.gnome.nix
+    ../../modules/de.cosmic.nix
     ../../modules/stylix.nix
     ../../modules/vscode.nix
     ../../modules/podman.nix
