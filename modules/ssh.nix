@@ -24,6 +24,7 @@ in {
     firewall.allowedTCPPorts = [22];
   };
 
+  # TODO: grab from config/known-hosts.nix
   config.programs.ssh.knownHosts = {
     framework = {
       hostNames = ["192.168.1.71" "framework.local" "framework"];
