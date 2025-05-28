@@ -36,7 +36,7 @@
       "nvidia_modeset"
       "nvidia_drm"
     ];
-    extraModulePackages = [config.boot.kernelPackages.nvidia_x11];
+    extraModulePackages = [config.boot.kernelPackages.nvidia_x11]; # do I need to change this for wayland?
     # kernelPackages = pkgs-unstable.linuxPackages_latest; # test if this is what is breaking driver builds
     kernelParams = ["pcie_aspm.policy=performance"];
   };

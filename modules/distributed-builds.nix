@@ -8,6 +8,7 @@
   nix.buildMachines = [
     {
       hostName = "framework.local";
+      hostUser = "strass";
       system = "x86_64-linux";
       maxJobs = 1;
       speedFactor = 1;
@@ -15,6 +16,7 @@
     }
     {
       hostName = "gamer.local";
+      hostUser = "strass";
       system = "x86_64-linux";
       maxJobs = 4;
       speedFactor = 2;
