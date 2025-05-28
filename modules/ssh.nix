@@ -21,4 +21,19 @@ in {
     };
     networking.firewall.allowedTCPPorts = [22];
   };
+
+  programs.ssh.knownHosts = {
+    framework = {
+      hostNames = ["192.168.1.71" "framework.local" "framework"];
+      publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDyrhHvlLOPJ1UF7r5QgytPa9GHwObXXkQdH/VAJXB4+";
+    };
+    gamer = {
+      hostNames = ["192.168.1.123" "gamer.local" "gamer"];
+      publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILG/pdJKfHUsHVD04Fx87BwCyHeBg5Z57AjLUxT4rTh2 strass@gamer";
+    };
+    router = {
+      hostNames = ["192.168.1.92" "router.local" "router"];
+      publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK0Z4CCxWItAGBy00QzkmaYQtBdHdmyEVlVNLhzw7WMn";
+    };
+  };
 }

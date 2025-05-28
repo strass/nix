@@ -17,6 +17,11 @@
     framework = {
       publicKeys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDyrhHvlLOPJ1UF7r5QgytPa9GHwObXXkQdH/VAJXB4+ zakstrassberg@gmail.com"];
     };
+    gamer = {
+      hostName = "gamer";
+      userName = "strass";
+      publicKeys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILG/pdJKfHUsHVD04Fx87BwCyHeBg5Z57AjLUxT4rTh2 strass@gamer"];
+    };
   };
 
   knownHosts = [
