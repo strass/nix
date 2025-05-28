@@ -10,8 +10,8 @@ in {
     enable = mkEnableOption "Enable ssh";
   };
 
-  config = mkIf cfg.enable {
-    services.openssh = {
+  config.services = mkIf cfg.enable {
+    openssh = {
       enable = true;
       ports = [22];
       settings = {
@@ -19,10 +19,12 @@ in {
         UseDns = true;
       };
     };
-    networking.firewall.allowedTCPPorts = [22];
+  };
+  config.networking = mkIf cfg.enable {
+    firewall.allowedTCPPorts = [22];
   };
 
-  programs.ssh.knownHosts = {
+  config.programs.ssh.knownHosts = {
     framework = {
       hostNames = ["192.168.1.71" "framework.local" "framework"];
       publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDyrhHvlLOPJ1UF7r5QgytPa9GHwObXXkQdH/VAJXB4+";
