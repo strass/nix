@@ -6,15 +6,13 @@
   ...
 }: {
   imports = [
-    ./hardware.nix # TODO: take this out?
     inputs.nixos-facter-modules.nixosModules.facter
-
     inputs.disko.nixosModules.disko
     ./disk-config.nix
+
     ../../modules/de.gnome.nix
     ../../modules/gaming.nix
     ../../modules/stylix.nix
-    # ../../modules/vscode.nix
     ../../modules/podman.nix
 
     # ./backup.nix
@@ -29,12 +27,11 @@
     loader.efi.canTouchEfiVariables = true;
     initrd.kernelModules = [
       "nvidia"
-      # "i915"
       "nvidia_modeset"
       "nvidia_drm"
     ];
     extraModulePackages = [config.boot.kernelPackages.nvidia_x11]; # do I need to change this for wayland?
-    # kernelPackages = pkgs-unstable.linuxPackages_latest; # test if this is what is breaking driver builds
+    kernelPackages = pkgs-unstable.linuxPackages_latest; # test if this is what is breaking driver builds
     kernelParams = ["pcie_aspm.policy=performance"];
   };
 
