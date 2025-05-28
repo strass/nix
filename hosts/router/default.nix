@@ -12,6 +12,7 @@
 
     ../../modules/de.gnome.nix
     ../../modules/stylix.nix
+    ../../modules/podman.nix
 
     ../../services/traefik.nix
     ../../services/nix.cache.nix
