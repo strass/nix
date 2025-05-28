@@ -79,6 +79,19 @@
     };
 
     nixosConfigurations = {
+      live = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs;
+          fqdn = "live.local";
+        };
+        modules = [
+          (nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix")
+          home-manager.nixosModules.home-manager
+          ./modules/user.strass.nix
+          ./modules/defaults.nix
+        ];
+      };
       hive = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {

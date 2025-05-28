@@ -16,3 +16,6 @@ facter:
   --option extra-substituters https://numtide.cachix.org \
   --option extra-trusted-public-keys numtide.cachix.org-1:2ps1kLBUWjxIneOy1Ik6cQjb41X0iXVXeHigGmycPPE= \
   github:numtide/nixos-facter -- -o facter.json
+
+iso:
+  nix build .#nixosConfigurations.live.config.system.build.isoImage 
