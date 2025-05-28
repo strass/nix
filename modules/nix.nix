@@ -14,18 +14,20 @@
 
     optimise = {
       automatic = true;
-      interval = {
-        Hour = 3;
-        Minute = 15;
-      };
+      dates = ["03:45"];
+      # interval = {
+      #   Hour = 3;
+      #   Minute = 15;
+      # };
     };
     gc = {
       automatic = true;
-      interval = {
-        Weekday = 0;
-        Hour = 0;
-        Minute = 0;
-      }; # weekly
+      dates = "weekly";
+      # interval = {
+      #   Weekday = 0;
+      #   Hour = 0;
+      #   Minute = 0;
+      # };
       options = "--delete-older-than 7d";
     };
   };
