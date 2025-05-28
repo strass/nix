@@ -21,6 +21,7 @@ in {
     ./ssh.nix
     ./home-manager.nix
     ./nix.nix
+    ./distributed-builds.nix
   ];
 
   # Linux only (so not in home-manager config)
