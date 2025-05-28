@@ -12,7 +12,9 @@
 
     ../../modules/de.gnome.nix
     ../../modules/stylix.nix
-    ../../services/avahi.nix
+
+    ../../services/traefik.nix
+    ../../services/nix.cache.nix
     # ../../services/cache.attic.nix
   ];
 

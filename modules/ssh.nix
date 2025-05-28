@@ -36,7 +36,7 @@ in {
     };
     router = {
       hostNames = ["192.168.1.92" "router.local" "router"];
-      publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK0Z4CCxWItAGBy00QzkmaYQtBdHdmyEVlVNLhzw7WMn";
+      publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFlrsIvuSBHfQakJTUELXUZbXasCpa8CS1KD9czSTKMW strass@nixos";
     };
   };
 }

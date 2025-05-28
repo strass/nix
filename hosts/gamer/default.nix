@@ -17,9 +17,6 @@
     # ../../modules/vscode.nix
     ../../modules/podman.nix
 
-    ../../services/avahi.nix
-    ../../services/traefik.nix
-
     # ./backup.nix
   ];
 
