@@ -56,7 +56,7 @@
     #   extraConfig = import ./config/dns.nix;
     # };
   in {
-    nix.settings.trusted-users = ["strass"];
+    nix.settings.trusted-users = ["strass" "builder"]; # TODO: builder user
     nixConfig = {
       experimental-features = ["nix-command" "flakes"];
       # auto-optimise-store = true;
