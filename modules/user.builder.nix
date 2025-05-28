@@ -14,5 +14,5 @@
     isSystemUser = true;
     # openssh.authorizedKeys.keyFiles = [inputs.ssh-keys.outPath];
   };
-  users.groups.builder = {};
+  users.users.groups.builder = {};
 }
