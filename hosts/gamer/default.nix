@@ -20,7 +20,7 @@
     ../../services/avahi.nix
     ../../services/traefik.nix
 
-    ./backup.nix
+    # ./backup.nix
   ];
 
   facter.reportPath = ./facter.json;
