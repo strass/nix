@@ -1,4 +1,4 @@
-{}: {
+{pkgs, ...}: {
   users.users.restic = {
     isNormalUser = true;
   };
