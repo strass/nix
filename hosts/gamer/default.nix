@@ -66,7 +66,7 @@
   ];
 
   # Minecraft launcher
-  hm.home.packages = with pkgs; [prismlauncher];
+  # hm.home.packages = with pkgs; [prismlauncher];
 
   modules = {
     ssh.enable = true;
