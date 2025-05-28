@@ -5,7 +5,6 @@
 }: {
   services.xserver = {
     enable = true;
-    # Enable Desktop Environment.
     desktopManager.gnome.enable = true;
     displayManager = {
       gdm = {
