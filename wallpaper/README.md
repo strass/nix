@@ -1,0 +1,1 @@
+nix run github:ozwaldorf/lutgen-rs apply -- --palette=atelier-sulphurpool *
