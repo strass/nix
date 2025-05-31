@@ -8,6 +8,7 @@
     ../../modules/stylix.nix
     ../../modules/home-manager.nix
     ../../modules/nix.nix
+    ../../modules/ssh.nix
   ];
 
   system.primaryUser = "zakstrassberg";
@@ -23,7 +24,6 @@
   networking.wakeOnLan.enable = true;
   nixpkgs.config.allowUnfree = true;
   nixpkgs.hostPlatform = "aarch64-darwin";
-  nix.settings.experimental-features = "nix-command flakes";
   nix.extraOptions = ''
     extra-platforms = aarch64-darwin x86_64-darwin
   '';
