@@ -8,6 +8,7 @@
     ../../modules/stylix.nix
     ../../modules/home-manager.nix
     # ../../modules/nix.nix
+    ../../modules/fonts.nix
   ];
 
   system.primaryUser = "zakstrassberg";
