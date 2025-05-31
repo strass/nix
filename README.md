@@ -16,7 +16,8 @@ To restore a backup: `sudo restic-<NAME> snapshots`
   - https://mt-caret.github.io/blog/posts/2020-06-29-optin-state.html
   - [x] btrfs via disko
   - [x] impermanence setup
-  - [ ] find modified files
+  - [x] find modified files `cruft.sh`
+    - [ ] how to implement script?
   - [ ] revert subvolume on boot
   - [ ] tmpfiles.d https://www.freedesktop.org/software/systemd/man/latest/tmpfiles.d.html
 - [ ] dns/dhcp
@@ -24,6 +25,7 @@ To restore a backup: `sudo restic-<NAME> snapshots`
   - declarative combo unbound+kea
 - backups
   - [x] restic backups
+  - [ ] local backup replication
   - [ ] offsite backups
   - [ ] database backups
   - [ ] research restic providers
@@ -44,3 +46,6 @@ To restore a backup: `sudo restic-<NAME> snapshots`
 - https://github.com/georgewhewell/nixos-host/
 - https://github.com/hlissner/dotfiles/
 - https://nixos-and-flakes.thiscute.world/
+- https://github.com/Atemu/nixos-config/
+- https://github.com/chewblacka/nixos
+- https://gitlab.com/Zaney/zaneyos/
