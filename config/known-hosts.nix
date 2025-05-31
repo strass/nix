@@ -28,7 +28,8 @@ rec {
     };
   };
 
-  knownHosts = builtins.listToAttrs (builtins.map (host: let
+  knownHosts =
+    builtins.map (host: let
       parts = builtins.split " " key;
       keyType = builtins.elemAt parts 0;
       comment =
@@ -48,7 +49,7 @@ rec {
       };
     })
     builtins.filter (entry: entry.publicKeys != [])
-    (builtins.attrValues hosts));
+    (builtins.attrValues hosts);
 
   authorizedKeys = builtins.concatLists (builtins.attrValues (builtins.mapAttrs (_: host: host.publicKeys) hosts));
 }
