@@ -31,6 +31,7 @@ with lib; {
       # required for rootless container with multiple users
       autoSubUidGidRange = true;
 
+      # imports from github profile
       openssh.authorizedKeys.keyFiles = [inputs.ssh-keys.outPath];
     };
     users.groups.strass = {};

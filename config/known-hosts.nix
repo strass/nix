@@ -30,4 +30,5 @@
       publicKeys = [hosts.hive.publicKey];
     }
   ];
+  authorizedKeys = builtins.concatLists (builtins.attrValues (builtins.mapAttrs (_: host: host.publicKeys) hosts));
 }
