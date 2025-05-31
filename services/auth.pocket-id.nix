@@ -6,6 +6,8 @@
 }: let
   name = "pocket-id";
   port = 3000;
+
+  mkTraefikService = import ../util/mkTraefikService.nix;
 in {
   services.pocket-id = {
     enable = true;
