@@ -66,7 +66,6 @@ in {
     glances
     bat
     xcp
-    rm-improved
     dysk
     dust
     neovim

@@ -63,7 +63,6 @@ in {
           top = "glances";
           cat = "bat";
           cp = "xcp";
-          # rm = "rip";
           du = "dust";
           vi = "nvim";
           vim = "nvim";
