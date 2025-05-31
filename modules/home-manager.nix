@@ -30,7 +30,7 @@ in {
       sessionVariables = {
         EDITOR = "nvim";
       };
-
+      shell.enableFishIntegration = true;
       enableNixpkgsReleaseCheck = false;
       stateVersion = "25.05";
     };
@@ -80,6 +80,20 @@ in {
         enable = true;
       };
       eza = {
+        enable = true;
+        enableFishIntegration = true;
+        colors = "auto";
+        extraOptions = ["--icons auto"];
+      };
+      television = {
+        enable = true;
+        enableFishIntegration = true;
+      };
+      starship = {
+        enable = true;
+        enableFishIntegration = true;
+      };
+      ghostty = {
         enable = true;
         enableFishIntegration = true;
       };
