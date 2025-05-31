@@ -7,10 +7,11 @@ echo "Written to root since the last boot"
 
 set -euo pipefail
 
-OLD_TRANSID=$(sudo btrfs subvolume find-new /mnt/root-blank 9999999)
+SUBVOLUME="/home"
+OLD_TRANSID=$(sudo btrfs subvolume find-new ${SUBVOLUME} 9999999)
 OLD_TRANSID=${OLD_TRANSID#transid marker was }
 
-sudo btrfs subvolume find-new "/home" "$OLD_TRANSID" |
+sudo btrfs subvolume find-new ${SUBVOLUME} "$OLD_TRANSID" |
 sed '$d' |
 cut -f17- -d' ' |
 sort |
