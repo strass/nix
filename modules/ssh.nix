@@ -5,7 +5,6 @@
 }:
 with lib; let
   cfg = config.modules.ssh;
-  hosts = import ../config/known-hosts.nix;
 in {
   options.modules.ssh = {
     enable = mkEnableOption "Enable ssh";
@@ -19,7 +18,6 @@ in {
         PasswordAuthentication = false;
         UseDns = true;
       };
-      authorizedKeys.keys = hosts.authorizedKeys;
     };
   };
   config.networking = mkIf cfg.enable {
