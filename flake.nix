@@ -25,7 +25,7 @@
     nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
     agenix.url = "github:ryantm/agenix";
     impermanence.url = "github:nix-community/impermanence";
-    nix-wallpaper.url = "github:lunik1/nix-wallpaper";
+    lutgen-rs.url = "github:ozwaldorf/lutgen-rs";
 
     # mac
     nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";

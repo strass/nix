@@ -42,6 +42,10 @@
   environment.gnome.excludePackages = with pkgs; [
     gnome-photos
     gnome-tour
+    # gnome-weather
+    # gnome-videos
+    # gnome-audio-player
+    # gnome-camera
     gedit # text editor
     cheese # webcam tool
     gnome-music
