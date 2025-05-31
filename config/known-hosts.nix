@@ -1,4 +1,4 @@
-{
+rec {
   hosts = {
     router = {
       hostName = "router";
