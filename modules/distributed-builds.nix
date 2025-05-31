@@ -9,7 +9,7 @@
   buildMachines = [
     {
       hostName = "framework.local";
-      sshUser = "strass";
+      sshUser = "builder";
       system = "x86_64-linux";
       maxJobs = 1;
       speedFactor = 1;
@@ -17,7 +17,7 @@
     }
     {
       hostName = "gamer.local";
-      sshUser = "strass";
+      sshUser = "builder";
       system = "x86_64-linux";
       maxJobs = 4;
       speedFactor = 2;
