@@ -1,4 +1,4 @@
-{}: {
+{...}: {
   fileSystems."/persist" = {
     device = "/dev/disk/by-partlabel/disk-nvme0n1-root";
     neededForBoot = true;
