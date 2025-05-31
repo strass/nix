@@ -80,4 +80,5 @@ in {
   environment.variables.EDITOR = "nvim";
 
   systemd.services.nix-daemon.environment.TMPDIR = "/var/tmp/";
+  documentation.nixos.enable = false;
 }
