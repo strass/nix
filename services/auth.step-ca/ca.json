@@ -1,0 +1,45 @@
+{
+	"root": "/Users/zakstrassberg/.step/certs/root_ca.crt",
+	"federatedRoots": null,
+	"crt": "/Users/zakstrassberg/.step/certs/intermediate_ca.crt",
+	"key": "/Users/zakstrassberg/.step/secrets/intermediate_ca_key",
+	"insecureAddress": "",
+	"dnsNames": [
+		"step-ca.framework.local"
+	],
+	"logger": {
+		"format": "text"
+	},
+	"db": {
+		"type": "badgerv2",
+		"dataSource": "/var/lib/step-ca/db",
+		"badgerFileLoadingMode": ""
+	},
+	"authority": {
+		"provisioners": [
+			{
+				"type": "JWK",
+				"name": "zakstrassberg@gmail.com",
+				"key": {
+					"use": "sig",
+					"kty": "EC",
+					"kid": "iRd356UfriQ7BjC98gCg60v-NfmcO1F1lOH86cJb4Vo",
+					"crv": "P-256",
+					"alg": "ES256",
+					"x": "fUkjGQR9wkzgXqWz2dPrM4EKHCvwW0dZIjrwbBJZ1MA",
+					"y": "VBcKOqDZSDX7QguPbrFAURGCvOBSiVNzjU3AKrZfBDU"
+				},
+				"encryptedKey": "eyJhbGciOiJQQkVTMi1IUzI1NitBMTI4S1ciLCJjdHkiOiJqd2sranNvbiIsImVuYyI6IkEyNTZHQ00iLCJwMmMiOjYwMDAwMCwicDJzIjoiMW1EbTh2bWhoYXpIX1RYWXVSUDdOZyJ9.mSC61eQo4EQQXiVGprooYTkmcTtjV8mxG829rtsGYPoNclJdPgEiRQ.gtZ2W4d8duL7b63q.ggQdMtWWdyxXmAjtNUVb5sXQgXK0Spg9_LNj_YOWgtWGATEnuJbNjIMxhDPuIJ1Twu1_27e2GHvNZwRJCxOQ4bzmfYgjn7APwbysD7K9Tf4kp71_qZ9dPlm-WTV1fO_1L2_IfpYZ4iFEELVZ-5LKq76snES-3h1twDeW0D_6CyItzMNSiyJ_OpGbDc9ZCFfDGAGxy9E1dD8qbJW4it1XFCaztWBg62rM2hs_vPEH9N0fiN9i5rHViXeAgle5rc9I3BIiueL53UI3g_7ww3J5beYA8ZQOy7-WkNgu5HkvfiNkZAVWC0ialAgs4WRuM59OHOYo0p00W4fBzMIHdYE.5hZhme90dbzfmBUWdGfgwQ"
+			}
+		]
+	},
+	"tls": {
+		"cipherSuites": [
+			"TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256",
+			"TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256"
+		],
+		"minVersion": 1.2,
+		"maxVersion": 1.3,
+		"renegotiation": false
+	}
+}
