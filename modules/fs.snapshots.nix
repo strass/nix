@@ -1,4 +1,4 @@
-{}: {
+{...}: {
   # A snapshot is not a backup: snapshots work by use of BTRFS’ copy-on-write behaviour.
   # A snapshot and the original it was taken from initially share all of the same data blocks.
   # If that data is damaged in some way (cosmic rays, bad disk sector, accident with dd to the disk),
