@@ -15,7 +15,11 @@ rec {
       ip = "192.168.1.10";
     };
     framework = {
-      publicKeys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDyrhHvlLOPJ1UF7r5QgytPa9GHwObXXkQdH/VAJXB4+ zakstrassberg@gmail.com" "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCjzA46DOhnvOtdOK/KdVPeQvbD7UyLyzMNAktGjDE3deX3thO/Q/9tgT89mK4SH52lHm/bcS6fg/RzvC0d7kbuqjw/l/LYCV/ZK0uEhXqk1vrZzCTEhL5o7kv7ZQAkoCdwVdZdTgAffdvhMDXKBtUNtLp/GnTCrF7ck0T/wn7kYJLoOn1pGQJ7Y2acwOGJAv60aI8b14LRO3nvrzrVFqPoZcosDT9rknBnxlLIIGLz/UmhzOQeSi7Bp2RhLzoXPiLcMS3oNxLeGvks+1KuAXmsMlLLLXCGu0Pkf5uaEWwIyk9B9fv19YEEsV5h3LcdM3j7P9VJ0SlxX5odOBZrREydyR8/I6oKauYs8E/Qc7IWqRXGb5xQAZkseZOl5z1JgzATuwgFqDIfBxg13gPpMry8r6N/U+zIhK1O7OA4iCmpgaqmkRtmgQmRU0NZ2/Ad3KFKTSHHpxgNRy8q7d9bL3EJUBsF6PbPvr50dfdH7go6xur2DwVzQFa3osOEeAC29ucEfpsYQ2Bf5Recvo5pj9pPST3nfH/gYYwlgBDfva+acTioee8dyAMo8ptoTyxAN2Xf6zgVY9GNF/E7c6QfzkuW5/32amWCjlsmjZuDvT47NEa20m1qk5+QTSfYrQNGQ1UDpwF+vBOlATRBFt+WgGZynNZsVW8Z9RfeNfsRNOdudw=="];
+      publicKeys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDWPWB0xjBd2vyDAT+kHcQJ/aiuPm5qjOEmGPTcjQdVe root@framework"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDyrhHvlLOPJ1UF7r5QgytPa9GHwObXXkQdH/VAJXB4+ zakstrassberg@gmail.com"
+        "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCjzA46DOhnvOtdOK/KdVPeQvbD7UyLyzMNAktGjDE3deX3thO/Q/9tgT89mK4SH52lHm/bcS6fg/RzvC0d7kbuqjw/l/LYCV/ZK0uEhXqk1vrZzCTEhL5o7kv7ZQAkoCdwVdZdTgAffdvhMDXKBtUNtLp/GnTCrF7ck0T/wn7kYJLoOn1pGQJ7Y2acwOGJAv60aI8b14LRO3nvrzrVFqPoZcosDT9rknBnxlLIIGLz/UmhzOQeSi7Bp2RhLzoXPiLcMS3oNxLeGvks+1KuAXmsMlLLLXCGu0Pkf5uaEWwIyk9B9fv19YEEsV5h3LcdM3j7P9VJ0SlxX5odOBZrREydyR8/I6oKauYs8E/Qc7IWqRXGb5xQAZkseZOl5z1JgzATuwgFqDIfBxg13gPpMry8r6N/U+zIhK1O7OA4iCmpgaqmkRtmgQmRU0NZ2/Ad3KFKTSHHpxgNRy8q7d9bL3EJUBsF6PbPvr50dfdH7go6xur2DwVzQFa3osOEeAC29ucEfpsYQ2Bf5Recvo5pj9pPST3nfH/gYYwlgBDfva+acTioee8dyAMo8ptoTyxAN2Xf6zgVY9GNF/E7c6QfzkuW5/32amWCjlsmjZuDvT47NEa20m1qk5+QTSfYrQNGQ1UDpwF+vBOlATRBFt+WgGZynNZsVW8Z9RfeNfsRNOdudw== root@nixos"
+      ];
     };
     gamer = {
       hostName = "gamer";
@@ -24,11 +28,17 @@ rec {
     };
   };
 
-  knownHosts = [
-    {
-      hostNames = [hosts.hive.domainName hosts.hive.ip];
-      publicKeys = [hosts.hive.publicKey];
-    }
-  ];
+  knownHosts =
+    builtins.filter (entry: entry.publicKeys != [])
+    (builtins.map (host: {
+        hostNames = builtins.filter (n: n != null) [
+          host.domainName or null
+          host.hostName or null
+          host.ip or null
+        ];
+        publicKeys = host.publicKeys;
+      })
+      (builtins.attrValues hosts));
+
   authorizedKeys = builtins.concatLists (builtins.attrValues (builtins.mapAttrs (_: host: host.publicKeys) hosts));
 }
