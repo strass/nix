@@ -30,9 +30,10 @@ rec {
 
   knownHosts = builtins.listToAttrs (
     builtins.concatLists (
-      builtins.mapAttrsToList (
-        hostId: host: let
-          hostNames = builtins.filter (n: n != null) [
+      builtins.map (
+        hostId: let
+          host = hosts.${hostId};
+          hostNames = builtins.filter (x: x != null) [
             host.ip or null
             host.domainName or null
             host.hostName or null
@@ -40,15 +41,15 @@ rec {
         in
           builtins.imap0 (
             i: key: let
-              keyParts = builtins.split " " key;
-              keyType = builtins.elemAt keyParts 0;
+              parts = builtins.split " " key;
+              keyType = builtins.elemAt parts 0;
               comment =
-                if (builtins.length keyParts >= 3)
-                then builtins.elemAt keyParts 2
+                if builtins.length parts >= 3
+                then builtins.elemAt parts 2
                 else "key${toString i}";
-              sanitizedComment = builtins.replaceStrings ["@" "." " "] ["_" "_" "_"] comment;
+              sanitized = builtins.replaceStrings ["@" "." " "] ["_" "_" "_"] comment;
             in {
-              name = "${hostId}-${builtins.substring 4 (builtins.stringLength keyType) keyType}-${sanitizedComment}";
+              name = "${hostId}-${builtins.substring 4 (builtins.stringLength keyType) keyType}-${sanitized}";
               value = {
                 inherit hostNames;
                 publicKey = key;
@@ -56,8 +57,7 @@ rec {
             }
           )
           host.publicKeys
-      )
-      hosts
+      ) (builtins.attrNames hosts)
     )
   );
 
