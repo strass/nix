@@ -27,7 +27,7 @@
 in {
   nix.distributedBuilds = true;
 
-  nix.buildMachines = builtins.filter ({hostName, ...}: lib.strings.hasPrefix config.networking.hostName hostName) buildMachines;
+  nix.buildMachines = builtins.filter ({hostName, ...}: !lib.strings.hasPrefix config.networking.hostName hostName) buildMachines;
 
   nix.extraOptions = ''
     builders-use-substitutes = true
