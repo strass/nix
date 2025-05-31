@@ -21,7 +21,7 @@
       # domainName = fqdn;
       nssmdns4 = true;
       openFirewall = true;
-      reflector = true;
+      # reflector = true;
       publish = {
         enable = true;
         workstation = true;
@@ -29,6 +29,9 @@
         addresses = true;
         hinfo = true;
         domain = true;
+      };
+      extraServiceFiles = {
+        ssh = lib.mkIf config.services.openssh.enable "${pkgs.avahi}/etc/avahi/services/ssh.service";
       };
     };
   };

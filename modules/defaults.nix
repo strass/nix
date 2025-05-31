@@ -78,4 +78,6 @@ in {
 
   # if I mkDefault this then it conflicts with the nano default from nixos
   environment.variables.EDITOR = "nvim";
+
+  systemd.services.nix-daemon.environment.TMPDIR = "/var/tmp/";
 }
