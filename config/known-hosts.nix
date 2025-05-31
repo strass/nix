@@ -28,17 +28,27 @@ rec {
     };
   };
 
-  knownHosts =
-    builtins.filter (entry: entry.publicKeys != [])
-    (builtins.map (host: {
+  knownHosts = builtins.listToAttrs (builtins.map (host: let
+      parts = builtins.split " " key;
+      keyType = builtins.elemAt parts 0;
+      comment =
+        if builtins.length parts >= 3
+        then builtins.elemAt parts 2
+        else "key${toString i}";
+      sanitized = builtins.replaceStrings ["@" "." " "] ["_" "_" "_"] comment;
+    in {
+      name = "${hostId}-${builtins.substring 4 (builtins.stringLength keyType) keyType}-${sanitized}";
+      value = {
         hostNames = builtins.filter (n: n != null) [
           host.domainName or null
           host.hostName or null
           host.ip or null
         ];
         publicKeys = host.publicKeys;
-      })
-      (builtins.attrValues hosts));
+      };
+    })
+    builtins.filter (entry: entry.publicKeys != [])
+    (builtins.attrValues hosts));
 
   authorizedKeys = builtins.concatLists (builtins.attrValues (builtins.mapAttrs (_: host: host.publicKeys) hosts));
 }
