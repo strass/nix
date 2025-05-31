@@ -16,7 +16,7 @@
     # dina-font
     proggyfonts
     pkgs.nerd-fonts.fira-code
-    # pkgs.nerd-fonts.mplus
+    pkgs.nerd-fonts.meslo-lg
   ];
   fonts.fontconfig.enable = true;
   fonts.fontconfig.defaultFonts = {
