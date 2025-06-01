@@ -36,6 +36,10 @@ with lib; {
     };
     users.groups.strass = {};
     programs.fish.enable = true;
+    programs.fish.promptInit = ''      function fish_greeting
+        cat /etc/motd
+      end
+    '';
     nix.settings = let
       users = ["root" "strass"];
     in {
