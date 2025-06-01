@@ -66,12 +66,7 @@ in {
     };
     environment = {
       # Is this the right way to get btrfs into the path?
-      PATH = lib.mkMerge [
-        (lib.mkBefore (lib.makeBinPath [
-          pkgs.btrfs-progs
-          pkgs.gnused
-        ]))
-      ];
+      PATH = "$PATH:${lib.makeBinPath [pkgs.btrfs-progs]}";
     };
   };
 
