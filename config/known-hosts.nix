@@ -49,7 +49,7 @@ rec {
         name = "${hostId}-${keyType}-${sanitized}";
         value = {
           publicKey = key;
-          hosts = builtins.filter (x: x != null) [hostId host.domainName or null host.ip or null];
+          hostNames = builtins.filter (x: x != null) [hostId host.domainName or null host.ip or null];
         };
       })
       host.publicKeys)
