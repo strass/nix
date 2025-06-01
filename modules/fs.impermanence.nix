@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   cruftScript = pkgs.writeShellScriptBin "find-changed" (builtins.readFile ../scripts/cruft.sh);
   motdScript = pkgs.writeShellScriptBin "update-motd" ''
     #!/bin/sh
