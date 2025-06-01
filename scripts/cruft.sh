@@ -3,8 +3,7 @@
 # https://github.com/chewblacka/nixos/blob/main/scripts/cruft.sh
 SUBVOLUME="/home"
 
-echo "Script to list all the non-persistent cruft"
-echo "Written to ${SUBVOLUME} since the last boot"
+echo "Changed files in ${SUBVOLUME} since the last boot"
 [ "$(id -u)" != 0 ] && exec sudo "$0"
 echo "Updated $(date)"
 
@@ -25,6 +24,6 @@ while read path; do
   elif [ -d "$path" ]; then
     : # The path is a directory, ignore
   else
-    echo "$SUBVOLUME/$path"
+    echo "${SUBVOLUME}${path}"
   fi
 done
