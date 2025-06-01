@@ -1,6 +1,6 @@
-#! /usr/bin/env nix-shell
-#! nix-shell -i bash -p btrfs-progs
-# https://github.com/chewblacka/nixos/blob/main/scripts/cruft.sh
+#!/usr/bin/env bash
+# fs-diff.sh
+# https://github.com/chewblacka/nixos/blob/main/scripts/cruft.sh  
 SUBVOLUME="/home"
 
 echo "Changed files in ${SUBVOLUME} since the last boot"
