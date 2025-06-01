@@ -66,7 +66,7 @@ in {
     };
     environment = {
       # Is this the right way to get btrfs into the path?
-      PATH = "$PATH:${lib.makeBinPath [pkgs.btrfs-progs]}";
+      PATH = lib.mkForce "$PATH:${lib.makeBinPath [pkgs.btrfs-progs]}";
     };
   };
 
