@@ -62,8 +62,9 @@ in {
     description = "Update /etc/motd with dynamic content";
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "PATH='$PATH:${lib.makeBinPath [pkgs.btrfs-progs]}' ${motdScript}/bin/update-motd";
+      ExecStart = "${motdScript}/bin/update-motd";
     };
+    path = [pkgs.btrfs-progs];
   };
 
   # Systemd timer that runs the service every hour
