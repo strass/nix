@@ -64,7 +64,7 @@ in {
       Type = "oneshot";
       ExecStart = "${motdScript}/bin/update-motd";
     };
-    path = [pkgs.btrfs-progs];
+    path = [pkgs.btrfs-progs pkgs.gawk];
   };
 
   # Systemd timer that runs the service every hour
