@@ -62,7 +62,7 @@ in {
     description = "Update /etc/motd with dynamic content";
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "PATH=$PATH:${lib.makeBinPath [pkgs.btrfs-progs]} ${motdScript}/bin/update-motd";
+      ExecStart = "PATH='$PATH:${lib.makeBinPath [pkgs.btrfs-progs]}' ${motdScript}/bin/update-motd";
     };
   };
 
