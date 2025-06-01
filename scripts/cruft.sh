@@ -8,7 +8,7 @@ echo ""
 
 # Extract subvolumes, normalize paths
 ALL_SUBVOLUMES=$(
-  sudo btrfs subvolume list -a / | awk '
+  btrfs subvolume list -a / | awk '
 {
   path = $NF
   gsub("^<FS_TREE>/@", "", path)
@@ -24,15 +24,15 @@ for SUBVOLUME in $ALL_SUBVOLUMES; do
   echo "------------------------------------------"
 
   # Try to get transid; skip subvolume if it fails
-  if ! OLD_TRANSID_OUTPUT=$(sudo btrfs subvolume find-new "${SUBVOLUME}" 9999999 2>/dev/null); then
-    echo "⚠️  Skipping: Not a valid sudo btrfs subvolume or inaccessible"
+  if ! OLD_TRANSID_OUTPUT=$(btrfs subvolume find-new "${SUBVOLUME}" 9999999 2>/dev/null); then
+    echo "⚠️  Skipping: Not a valid btrfs subvolume or inaccessible"
     echo ""
     continue
   fi
 
   OLD_TRANSID=${OLD_TRANSID_OUTPUT#transid marker was }
 
-  CHANGED=$(sudo btrfs subvolume find-new "${SUBVOLUME}" "$OLD_TRANSID" 2>/dev/null |
+  CHANGED=$(btrfs subvolume find-new "${SUBVOLUME}" "$OLD_TRANSID" 2>/dev/null |
     sed '$d' | cut -f17- -d' ' | sort -u |
     while read -r path; do
       full_path="/$path"
