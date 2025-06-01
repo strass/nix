@@ -1,28 +1,53 @@
 #!/usr/bin/env bash
-# fs-diff.sh
-# https://github.com/chewblacka/nixos/blob/main/scripts/cruft.sh  
-SUBVOLUME="/home"
-
-echo "Changed files in ${SUBVOLUME} since the last boot"
-echo "Updated $(date)"
-
 set -euo pipefail
 
-OLD_TRANSID=$(btrfs subvolume find-new ${SUBVOLUME} 9999999)
-OLD_TRANSID=${OLD_TRANSID#transid marker was }
+echo "📅 Changed files since last boot"
+echo "Generated $(date)"
+echo "------------------------------------------"
+echo ""
 
-btrfs subvolume find-new ${SUBVOLUME} "$OLD_TRANSID" |
-sed '$d' |
-cut -f17- -d' ' |
-sort |
-uniq |
-while read path; do
-  path="/$path"
-  if [ -L "$path" ]; then
-    : # The path is a symbolic link, so is probably handled by NixOS already
-  elif [ -d "$path" ]; then
-    : # The path is a directory, ignore
-  else
-    echo "${SUBVOLUME}${path}"
+# Extract subvolumes, normalize paths
+ALL_SUBVOLUMES=$(
+  sudo btrfs subvolume list -a / | awk '
+{
+  path = $NF
+  gsub("^<FS_TREE>/@", "", path)
+  gsub("^@", "", path)
+  # Fix paths like "var-log" → "var/log"
+  gsub("-", "/", path) # fallback: convert other dashes to slashes
+  # sub("^/+", "", path)
+  print path
+}' | sort -u
+)
+
+for SUBVOLUME in $ALL_SUBVOLUMES; do
+  echo "🔍 ${SUBVOLUME}"
+  echo "------------------------------------------"
+
+  # Try to get transid; skip subvolume if it fails
+  if ! OLD_TRANSID_OUTPUT=$(sudo btrfs subvolume find-new "${SUBVOLUME}" 9999999 2>/dev/null); then
+    echo "⚠️  Skipping: Not a valid sudo btrfs subvolume or inaccessible"
+    echo ""
+    continue
   fi
+
+  OLD_TRANSID=${OLD_TRANSID_OUTPUT#transid marker was }
+
+  CHANGED=$(sudo btrfs subvolume find-new "${SUBVOLUME}" "$OLD_TRANSID" 2>/dev/null |
+    sed '$d' | cut -f17- -d' ' | sort -u |
+    while read -r path; do
+      full_path="/$path"
+      if [[ -L "$full_path" || -d "$full_path" ]]; then
+        continue
+      fi
+      echo "${SUBVOLUME}${full_path}"
+    done)
+
+  if [[ -n "$CHANGED" ]]; then
+    echo "$CHANGED"
+  else
+    echo "✅ No changed files."
+  fi
+
+  echo ""
 done
