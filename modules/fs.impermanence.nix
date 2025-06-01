@@ -65,7 +65,8 @@ in {
       ExecStart = "${motdScript}/bin/update-motd";
     };
     environment = {
-      PATH = lib.makeBinPath [pkgs.coreutils pkgs.btrfs-progs];
+      # Is this the right way to get btrfs into the path?
+      PATH = lib.mkForce lib.makeBinPath [pkgs.coreutils pkgs.btrfs-progs];
     };
   };
 
