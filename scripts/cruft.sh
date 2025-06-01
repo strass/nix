@@ -11,7 +11,7 @@ set -euo pipefail
 OLD_TRANSID=$(btrfs subvolume find-new ${SUBVOLUME} 9999999)
 OLD_TRANSID=${OLD_TRANSID#transid marker was }
 
-btrfs subvolume find-new ${SUBVOLUME} "$OLD_TRANSID" |
+/run/current-system/sw/bin/btrfs subvolume find-new ${SUBVOLUME} "$OLD_TRANSID" |
 sed '$d' |
 cut -f17- -d' ' |
 sort |
