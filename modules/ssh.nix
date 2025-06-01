@@ -26,7 +26,6 @@ in {
     firewall.allowedTCPPorts = [22];
   };
 
-  # TODO: grab from config/known-hosts.nix (only if publicKey is listed)
   # TODO: easy way to nixos-anywhere one of these hosts without having to comment out the host that will be remade
-  config.programs.ssh.knownHosts = traceSeq hosts.knownHosts hosts.knownHosts;
+  config.programs.ssh.knownHosts = builtins.attrValues (hosts.knownHosts);
 }

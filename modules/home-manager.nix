@@ -83,7 +83,7 @@ in {
         enable = true;
         enableFishIntegration = true;
         colors = "auto";
-        extraOptions = ["--icons auto"];
+        extraOptions = ["--icons=auto"];
       };
       television = {
         enable = true;

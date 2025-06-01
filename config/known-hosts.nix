@@ -1,3 +1,4 @@
+# nix eval --expr 'import ./config/known-hosts.nix' --json --impure | jq .knownHosts
 rec {
   hosts = {
     router = {
@@ -28,30 +29,31 @@ rec {
     };
   };
 
-  knownHosts = builtins.attrValues (
-    builtins.mapAttrs (hostId: value: {
-      name = hostId;
-      value =
-        builtins.map (
-          key: let
-            parts = builtins.split " " key; # how do I get rid of empty lists here? [ "ssh-ed25519" [ ] "...key..." [ ] "root@framework" ]
-            keyType = builtins.elemAt (builtins.split "-" (builtins.elemAt parts 0)) 2; # if we do fix that, the element here will go down
-            comment =
-              if builtins.length parts >= 4
-              then builtins.elemAt parts 4
-              else "TODO"; # I'd like to get the index here
-            sanitized = builtins.replaceStrings ["@" "." " "] ["_" "_" "_"] comment;
-          in {
-            name = "${hostId}-${keyType}-${sanitized}";
-            value = {
-              publicKey = key;
-              hosts = [hostId "TODO: host.domain" "TODO: host.ip"]; # How do I get the host here? I am missing something about how to get values when mapping
-            };
-          }
-        )
-        value.publicKeys;
-    })
-    hosts
+  knownHosts = builtins.listToAttrs (
+    builtins.concatMap
+    (hostId: let
+      host = hosts.${hostId};
+    in
+      builtins.map
+      (key: let
+        host = hosts.${hostId};
+
+        parts = builtins.filter (x: x != []) (builtins.split " " key);
+        keyType = builtins.elemAt (builtins.split "-" (builtins.elemAt parts 0)) 2;
+        comment =
+          if builtins.length parts >= 3
+          then builtins.elemAt parts 2
+          else "TODO"; # I'd like to get the index here
+        sanitized = builtins.replaceStrings ["@" "." " "] ["_" "_" "_"] comment;
+      in {
+        name = "${hostId}-${keyType}-${sanitized}";
+        value = {
+          publicKey = key;
+          hosts = builtins.filter (x: x != null) [hostId host.domainName or null host.ip or null];
+        };
+      })
+      host.publicKeys)
+    (builtins.attrNames hosts)
   );
 
   authorizedKeys = builtins.concatLists (builtins.attrValues (builtins.mapAttrs (_: host: host.publicKeys) hosts));

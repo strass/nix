@@ -3,7 +3,9 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  hosts = import ../../config/known-hosts.nix;
+in {
   imports = [
     ../../modules/stylix.nix
     ../../modules/home-manager.nix
@@ -45,6 +47,7 @@
 
   programs.fish.enable = true;
   programs.nix-index.enable = true;
+  programs.ssh.knownHosts = builtins.attrValues (hosts.knownHosts);
 
   ids.gids.nixbld = 30000; # because my nix version was out of date
 
