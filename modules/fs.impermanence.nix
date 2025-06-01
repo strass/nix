@@ -1,4 +1,10 @@
-{...}: {
+{...}: let
+  cruftScript = pkgs.writeShellScriptBin "find-changed" (builtins.readFile ../scripts/cruft.sh);
+  motdScript = pkgs.writeShellScriptBin "update-motd" ''
+    #!/bin/sh
+    echo "$(${cruftScript}/bin/find-changed)" > /etc/motd
+  '';
+in {
   fileSystems."/persist" = {
     device = "/dev/disk/by-partlabel/disk-nvme0n1-root";
     neededForBoot = true;
@@ -46,27 +52,24 @@
       ];
     };
   };
-}
-# #!/usr/bin/env bash
-# # fs-diff.sh
-# # https://serverfault.com/questions/399894/does-btrfs-have-an-efficient-way-to-compare-snapshots
-# # sudo mkdir /mnt ; sudo mount -o subvol=/ /dev/sda3 /mnt ; ./fs-diff.sh
-# set -euo pipefail
-# OLD_TRANSID=$(sudo btrfs subvolume find-new /mnt/root-blank 9999999)
-# OLD_TRANSID=${OLD_TRANSID#transid marker was }
-# sudo btrfs subvolume find-new "/mnt/root" "$OLD_TRANSID" |
-# sed '$d' |
-# cut -f17- -d' ' |
-# sort |
-# uniq |
-# while read path; do
-#   path="/$path"
-#   if [ -L "$path" ]; then
-#     : # The path is a symbolic link, so is probably handled by NixOS already
-#   elif [ -d "$path" ]; then
-#     : # The path is a directory, ignore
-#   else
-#     echo "$path"
-#   fi
-# done
 
+  # Systemd service that runs the script
+  systemd.services.update-motd = {
+    description = "Update /etc/motd with dynamic content";
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${motdScript}/bin/update-motd";
+    };
+  };
+
+  # Systemd timer that runs the service every hour
+  systemd.timers.update-motd = {
+    description = "Run update-motd every hour";
+    wantedBy = ["timers.target"];
+    timerConfig = {
+      OnBootSec = "5min";
+      OnUnitActiveSec = "1h";
+      Persistent = true;
+    };
+  };
+}
