@@ -1,5 +1,5 @@
-#!/usr/bin/env bash
-# fs-diff.sh
+#! /usr/bin/env nix-shell
+#! nix-shell -i bash -p btrfs-progs
 # https://github.com/chewblacka/nixos/blob/main/scripts/cruft.sh
 SUBVOLUME="/home"
 
