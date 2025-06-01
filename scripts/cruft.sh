@@ -4,15 +4,14 @@
 SUBVOLUME="/home"
 
 echo "Changed files in ${SUBVOLUME} since the last boot"
-[ "$(id -u)" != 0 ] && exec sudo "$0"
 echo "Updated $(date)"
 
 set -euo pipefail
 
-OLD_TRANSID=$(sudo btrfs subvolume find-new ${SUBVOLUME} 9999999)
+OLD_TRANSID=$(btrfs subvolume find-new ${SUBVOLUME} 9999999)
 OLD_TRANSID=${OLD_TRANSID#transid marker was }
 
-sudo btrfs subvolume find-new ${SUBVOLUME} "$OLD_TRANSID" |
+btrfs subvolume find-new ${SUBVOLUME} "$OLD_TRANSID" |
 sed '$d' |
 cut -f17- -d' ' |
 sort |
