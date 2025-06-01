@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
 # fs-diff.sh
 # https://github.com/chewblacka/nixos/blob/main/scripts/cruft.sh
+SUBVOLUME="/home"
+
 echo "Script to list all the non-persistent cruft"
-echo "Written to root since the last boot"
+echo "Written to ${SUBVOLUME} since the last boot"
 [ "$(id -u)" != 0 ] && exec sudo "$0"
+echo "Updated $(date)"
 
 set -euo pipefail
 
-SUBVOLUME="/home"
 OLD_TRANSID=$(sudo btrfs subvolume find-new ${SUBVOLUME} 9999999)
 OLD_TRANSID=${OLD_TRANSID#transid marker was }
 
@@ -23,6 +25,6 @@ while read path; do
   elif [ -d "$path" ]; then
     : # The path is a directory, ignore
   else
-    echo "$path"
+    echo "$SUBVOLUME/$path"
   fi
 done
