@@ -62,11 +62,7 @@ in {
     description = "Update /etc/motd with dynamic content";
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "${motdScript}/bin/update-motd";
-    };
-    environment = {
-      # Is this the right way to get btrfs into the path?
-      PATH = lib.mkForce "$PATH:${lib.makeBinPath [pkgs.btrfs-progs]}";
+      ExecStart = "PATH=$PATH:${lib.makeBinPath [pkgs.btrfs-progs]} ${motdScript}/bin/update-motd";
     };
   };
 
