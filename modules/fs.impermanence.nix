@@ -53,19 +53,15 @@ in {
   #   };
   # };
 
-  environment.systemPackages = with pkgs; [
-    btrfs-progs
-  ];
-
   # Systemd service that runs the script
   systemd.services.update-motd = {
     description = "Update /etc/motd with dynamic content";
     serviceConfig = {
       Type = "oneshot";
       ExecStart = "${motdScript}/bin/update-motd";
-      User = "root";
-      Group = "root";
-      # PermissionsStartOnly = true;
+    };
+    environment = {
+      PATH = lib.makeBinPath [pkgs.coreutils pkgs.btrfs-progs];
     };
   };
 
