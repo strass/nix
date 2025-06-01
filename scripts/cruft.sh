@@ -15,7 +15,6 @@ ALL_SUBVOLUMES=$(
   gsub("^@", "", path)
   # Fix paths like "var-log" → "var/log"
   gsub("-", "/", path) # fallback: convert other dashes to slashes
-  # sub("^/+", "", path)
   print path
 }' | sort -u
 )

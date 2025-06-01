@@ -9,7 +9,7 @@
     inputs.nixos-facter-modules.nixosModules.facter
     inputs.disko.nixosModules.disko
     ./disk-config.nix
-    # ../../modules/fs.impermanence.nix
+    ../../modules/fs.impermanence.nix
 
     ../../modules/de.gnome.nix
     ../../modules/gaming.nix
