@@ -63,6 +63,9 @@ in {
     serviceConfig = {
       Type = "oneshot";
       ExecStart = "${motdScript}/bin/update-motd";
+      User = "root";
+      Group = "root";
+      # PermissionsStartOnly = true;
     };
   };
 
