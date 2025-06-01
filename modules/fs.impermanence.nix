@@ -53,6 +53,10 @@ in {
   #   };
   # };
 
+  environment.systemPackages = with pkgs; [
+    btrfs-progs
+  ];
+
   # Systemd service that runs the script
   systemd.services.update-motd = {
     description = "Update /etc/motd with dynamic content";
