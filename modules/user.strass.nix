@@ -41,7 +41,7 @@ with lib; {
       end
     '';
     nix.settings = let
-      users = ["root" "strass"];
+      users = ["root" "strass" "builder"];
     in {
       trusted-users = users;
       allowed-users = users;
