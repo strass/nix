@@ -15,6 +15,8 @@ in {
     description = "builder";
     shell = pkgs.fish;
     isSystemUser = true;
+    createHome = true;
+    home = "/var/tmp/builder";
     # Builder can be accessed by any of my known hosts
     openssh.authorizedKeys.keys = hosts.authorizedKeys;
   };
