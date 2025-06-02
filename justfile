@@ -1,5 +1,5 @@
 switch:
-  nixos-rebuild switch --flake .#$(hostname)
+  nixos-rebuild switch --flake .#$(hostname) --use-remote-sudo
 
 switch-mac:
   sudo darwin-rebuild switch --flake .#$(hostname)
