@@ -17,7 +17,7 @@ To restore a backup: `sudo restic-<NAME> snapshots`
   - [x] btrfs via disko
   - [x] impermanence setup
   - [x] find modified files `cruft.sh`
-    - [ ] how to implement script?
+    - [x] how to implement script?
   - [ ] revert subvolume on boot
   - [ ] tmpfiles.d https://www.freedesktop.org/software/systemd/man/latest/tmpfiles.d.html
 - [ ] dns/dhcp
@@ -28,9 +28,9 @@ To restore a backup: `sudo restic-<NAME> snapshots`
   - [ ] local backup replication
   - [ ] offsite backups
   - [ ] database backups
-  - [ ] research restic providers
+  - [x] research restic providers
 - [ ] vpn & tunnel
-- [ ] distributed builds
+- [x] distributed builds
 - security
   - [ ] security.pki.certificateFiles
   - [ ] https://smallstep.com/blog/build-a-tiny-ca-with-raspberry-pi-yubikey/
