@@ -113,7 +113,7 @@
     lutris
     mangohud
     vkbasalt
-    scopebuddy
+    # scopebuddy
 
     # pkgs.heroic
     # pkgs.bottles
