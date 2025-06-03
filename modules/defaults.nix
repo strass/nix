@@ -40,12 +40,17 @@ in {
     configurationRevision = with inputs; mkIf (self ? rev) self.rev;
   };
 
+  services = {
+    fwupd.enable = true;
+  };
+
   # boot = {
   #   kernelPackages = mkDefault pkgs.unstable.linuxPackages_latest;
   #   kernelParams = ["pcie_aspm.policy=performance"];
   # };
 
   environment.systemPackages = with pkgs; [
+    lact
     inputs.agenix.packages.${system}.default
     unrar
     unzip

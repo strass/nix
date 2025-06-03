@@ -63,8 +63,36 @@
       binfmt = true;
     };
     mosh = {enable = true;};
-    gamescope.enable = true;
-    gamescope.capSysNice = true;
+    gamescope = {
+      enable = true;
+      # capSysNice = true;
+      env = {
+        # SDL_VIDEODRIVER = "x11";
+      };
+      args = [
+        "-h 1080"
+        "-w 1920"
+        "-H 1080"
+        "-W 1920"
+        # "--adaptive-sync"
+      ];
+    };
+    gamemode = {
+      enable = true;
+      # enableRenice = true;
+      # settings = {
+      #   general = {
+      #     renice = 10;
+      #     reaper_freq = 5;
+      #     desiredgov = "performance";
+      #     igpu_desiredgov = "powersave";
+      #     igpu_power_threshold = 0.3;
+      #   };
+      #   custom = {
+      #     start = "${pkgs.libnotify}/bin/notify-send 'GameMode started'";
+      #     end = "${pkgs.libnotify}/bin/notify-send 'GameMode ended'";
+      #   };
+    };
     steam = {
       enable = true;
       gamescopeSession.enable = true;
@@ -81,10 +109,12 @@
       dedicatedServer.openFirewall = true;
     };
   };
-  programs.gamemode.enable = true;
   environment.systemPackages = with pkgs; [
     lutris
     mangohud
+    vkbasalt
+    scopebuddy
+
     # pkgs.heroic
     # pkgs.bottles
     # dolphin-emu
