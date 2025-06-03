@@ -55,4 +55,11 @@
     NIXPKGS_ALLOW_UNFREE = "1";
   };
   programs.command-not-found.dbPath = "/nix/var/nix/programs.sqlite";
+
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 10d --keep 5";
+    flake = "github:strass/nix";
+  };
 }
