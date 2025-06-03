@@ -10,8 +10,18 @@
   ];
 
   hardware = {
-    graphics.enable = true;
-    # graphics.extraPackages = with pkgs; [];
+    graphics = {
+      enable = true;
+      # enable32Bit = true;
+      # driSupport = true;
+      # driSupport32Bit = true;
+      extraPackages = with pkgs; [
+        vulkan-loader
+        vulkan-validation-layers
+        vulkan-extension-layer
+        libva
+      ];
+    };
 
     nvidia = {
       # Modesetting is required.
@@ -40,6 +50,9 @@
       # Optionally, you may need to select the appropriate driver version for your specific GPU.
       package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
+
+    steam-hardware.enable = true;
+    xpadneo.enable = true;
   };
 
   services.xserver.videoDrivers = ["nvidia"];
