@@ -20,6 +20,7 @@
         vulkan-validation-layers
         vulkan-extension-layer
         libva
+        vkbasalt
       ];
     };
 
@@ -54,9 +55,6 @@
     steam-hardware.enable = true;
     xpadneo.enable = true;
   };
-
-  # Whether to use latest Mesa drivers.
-  chaotic.mesa-git.enable = true;
 
   services.xserver.videoDrivers = ["nvidia"];
   programs = {

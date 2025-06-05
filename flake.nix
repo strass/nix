@@ -164,9 +164,9 @@
         modules = [
           hardware.nixosModules.asus-rog-strix-x570e # not quite what I have in there but I think it's close enough
 
-          chaotic.nixosModules.nyx-cache
-          chaotic.nixosModules.nyx-overlay
-          chaotic.nixosModules.nyx-registry
+          # chaotic.nixosModules.nyx-cache
+          # chaotic.nixosModules.nyx-overlay
+          # chaotic.nixosModules.nyx-registry
           stylix.nixosModules.stylix
 
           ./modules/user.strass.nix
