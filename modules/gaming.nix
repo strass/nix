@@ -55,8 +55,10 @@
     xpadneo.enable = true;
   };
 
-  services.xserver.videoDrivers = ["nvidia"];
+  # Whether to use latest Mesa drivers.
+  chaotic.mesa-git.enable = true;
 
+  services.xserver.videoDrivers = ["nvidia"];
   programs = {
     appimage = {
       enable = true;
@@ -65,7 +67,7 @@
     mosh = {enable = true;};
     gamescope = {
       enable = true;
-      # capSysNice = true;
+      capSysNice = true;
       env = {
         # SDL_VIDEODRIVER = "x11";
       };
