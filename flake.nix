@@ -201,6 +201,27 @@
           home-manager.nixosModules.home-manager
         ];
       };
+        beelink = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs;
+          pkgs-unstable = import nixpkgs-unstable {
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+          };
+          fqdn = "beelink.local";
+        };
+        modules = [
+          stylix.nixosModules.stylix
+
+          ./modules/user.strass.nix
+          ./modules/defaults.nix
+          ./hosts/beelink/default.nix
+
+          # make home-manager as a module of nixos so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`
+          home-manager.nixosModules.home-manager
+        ];
+      };
     };
 
     darwinConfigurations = {
