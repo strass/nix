@@ -1,11 +1,26 @@
 {
-  services.vscode-server.enable = true;
-  # nixpkgs.config.allowUnfree = true;
-  # # https://davi.sh/blog/2024/11/nix-vscode/
+  services.vscode-server = {
+    enable = true;
+    enableFHS = true;
+  };
+
   # programs.vscode = {
   #   enable = true;
+  #   mutableExtensionsDir = true;
+
+  #   profiles.default = {
+  #     enableUpdateCheck = false;
+  #     enableExtensionUpdateCheck = false;
+
+  #     extensions = with pkgs.vscode-marketplace; [
+  #       mkhl.direnv
+  #       jnoortheen.nix-ide
+  #       #...
+  #     ];
+
+  #     userSettings = {
+  #       # ...
+  #     };
+  #   };
   # };
-  #   nixpkgs.overlays = [
-  #   inputs.nix-vscode-extensions.overlays.default
-  # ];
 }
