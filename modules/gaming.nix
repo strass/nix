@@ -95,15 +95,15 @@
     };
     steam = {
       enable = true;
-      gamescopeSession.enable = true;
+      # gamescopeSession.enable = true;
       extraCompatPackages = with pkgs; [proton-ge-bin];
-      extraPackages = with pkgs; [
-        mangohud
-        gamescope-wsi
-        gamemode
-        libkrb5
-        keyutils
-      ];
+      # extraPackages = with pkgs; [
+      #   mangohud
+      #   gamescope-wsi
+      #   gamemode
+      #   libkrb5
+      #   keyutils
+      # ];
 
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
@@ -112,7 +112,7 @@
   environment.systemPackages = with pkgs; [
     lutris
     mangohud
-    vkbasalt
+    # vkbasalt
     # scopebuddy
 
     # pkgs.heroic
