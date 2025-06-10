@@ -30,20 +30,20 @@
 
   services.home-assistant = {
     enable = true;
-    package =
-      pkgs-unstable.home-assistant.override
-      ({
-        extraPackages = py: with py; [];
-        packageOverrides = final: prev: {
-          certifi = prev.certifi.override {
-            cacert = pkgs.cacert.override {
-              # extraCertificateFiles = [./my_custom_root_ca.crt];
-            };
-          };
-        };
-      }).overrideAttrs (oldAttrs: {
-        doInstallCheck = false;
-      });
+    package = pkgs-unstable.home-assistant;
+      # pkgs-unstable.home-assistant.override
+      # ({
+      #   extraPackages = py: with py; [];
+      #   packageOverrides = final: prev: {
+      #     certifi = prev.certifi.override {
+      #       cacert = pkgs.cacert.override {
+      #         # extraCertificateFiles = [./my_custom_root_ca.crt];
+      #       };
+      #     };
+      #   };
+      # }).overrideAttrs (oldAttrs: {
+      #   doInstallCheck = false;
+      # });
     # opt-out from declarative configuration management
     config = null;
     lovelaceConfig = null;
@@ -56,18 +56,18 @@
     #   "radio_browser"
     # ];
 
-    extraPackages = ps: with ps; [psycopg2];
-    config.recorder.db_url = "postgresql://@/hass";
+    # extraPackages = ps: with ps; [psycopg2];
+    # config.recorder.db_url = "postgresql://@/hass";
   };
 
-  services.postgresql = {
-    enable = true;
-    ensureDatabases = ["hass"];
-    ensureUsers = [
-      {
-        name = "hass";
-        ensureDBOwnership = true;
-      }
-    ];
-  };
+  # services.postgresql = {
+  #   enable = true;
+  #   ensureDatabases = ["hass"];
+  #   ensureUsers = [
+  #     {
+  #       name = "hass";
+  #       ensureDBOwnership = true;
+  #     }
+  #   ];
+  # };
 }
