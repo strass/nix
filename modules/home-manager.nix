@@ -45,15 +45,9 @@ in {
         extraConfig = {
           init.defaultBranch = "main";
           push.autoSetupRemote = true;
+          url."https://github.com/".insteadOf = "gh:";
+          url."https://github.com/strass/".insteadOf = "strass:";
         };
-        # url = {
-        #   "https://github.com/" = {
-        #     insteadOf = [
-        #       "gh:"
-        #       "github:"
-        #     ];
-        #   };
-        # };
       };
       fish = {
         enable = true;
@@ -84,6 +78,7 @@ in {
         enableFishIntegration = true;
         colors = "auto";
         extraOptions = ["--icons=auto"];
+        git = true;
       };
       television = {
         enable = true;
