@@ -68,4 +68,6 @@
   };
 
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/atelier-forest.yaml";
+
+  home-manager.users.strass.programs.starship.settings.hostname.ssh_symbol = "🎮 ";
 }
