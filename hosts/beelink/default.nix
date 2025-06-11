@@ -33,7 +33,8 @@ in {
     ssh.enable = true;
   };
   networking.hostName = "beelink";
-  services.avahi.hostName = "home-assistant.local";
+  services.avahi.hostName = "home-assistant";
+  services.avahi.domainName = "home-assistant.local";
 
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/atelier-forest.yaml";
 
