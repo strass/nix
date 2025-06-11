@@ -74,6 +74,10 @@ in {
     fqdn = "local";
   };
 
+  networking.firewall = {
+    allowedTCPPorts = [8123];
+  };
+
   # services.postgresql = {
   #   enable = true;
   #   ensureDatabases = ["hass"];
