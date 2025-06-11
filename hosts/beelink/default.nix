@@ -13,6 +13,7 @@ in {
     inputs.disko.nixosModules.disko
     ./disk-config.nix
 
+    ../../modules/stylix.nix
     ../../modules/podman.nix
     ../../services/traefik.nix
   ];
@@ -53,7 +54,7 @@ in {
     # opt-out from declarative configuration management
     config = null;
     lovelaceConfig = null;
-    openFirewall = true;
+    # openFirewall = true; # openFirewall can only be used with a declarative config
     # configure the path to your config directory
     configDir = "/var/lib/home-assistant";
     # specify list of components required by your configuration
