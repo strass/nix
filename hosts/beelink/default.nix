@@ -33,6 +33,8 @@ in {
     ssh.enable = true;
   };
   networking.hostName = "beelink";
+  avahi.hostName = "home-assistant.local";
+
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/atelier-forest.yaml";
 
   services.home-assistant = {
@@ -77,7 +79,6 @@ in {
   networking.firewall = {
     allowedTCPPorts = [8123];
   };
-
   # services.postgresql = {
   #   enable = true;
   #   ensureDatabases = ["hass"];
