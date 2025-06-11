@@ -3,12 +3,18 @@
   pkgs,
   pkgs-unstable,
   inputs,
+  # fqdn,
   ...
-}: {
+}: let
+  mkTraefikService = import ../util/mkTraefikService.nix;
+in {
   imports = [
     inputs.nixos-facter-modules.nixosModules.facter
     inputs.disko.nixosModules.disko
     ./disk-config.nix
+
+    ../../modules/podman.nix
+    ../../services/traefik.nix
   ];
 
   facter.reportPath = ./facter.json;
@@ -59,6 +65,12 @@
 
     # extraPackages = ps: with ps; [psycopg2];
     # config.recorder.db_url = "postgresql://@/hass";
+  };
+
+  services.traefik.dynamicConfigOptions = mkTraefikService {
+    name = "home-assistant";
+    port = 8123;
+    fqdn = "local";
   };
 
   # services.postgresql = {
