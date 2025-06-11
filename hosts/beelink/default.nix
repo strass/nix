@@ -25,25 +25,25 @@
   modules = {
     ssh.enable = true;
   };
-
+  networking.hostname = "beelink";
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/atelier-forest.yaml";
 
   services.home-assistant = {
     enable = true;
     package = pkgs-unstable.home-assistant;
-      # pkgs-unstable.home-assistant.override
-      # ({
-      #   extraPackages = py: with py; [];
-      #   packageOverrides = final: prev: {
-      #     certifi = prev.certifi.override {
-      #       cacert = pkgs.cacert.override {
-      #         # extraCertificateFiles = [./my_custom_root_ca.crt];
-      #       };
-      #     };
-      #   };
-      # }).overrideAttrs (oldAttrs: {
-      #   doInstallCheck = false;
-      # });
+    # pkgs-unstable.home-assistant.override
+    # ({
+    #   extraPackages = py: with py; [];
+    #   packageOverrides = final: prev: {
+    #     certifi = prev.certifi.override {
+    #       cacert = pkgs.cacert.override {
+    #         # extraCertificateFiles = [./my_custom_root_ca.crt];
+    #       };
+    #     };
+    #   };
+    # }).overrideAttrs (oldAttrs: {
+    #   doInstallCheck = false;
+    # });
     # opt-out from declarative configuration management
     config = null;
     lovelaceConfig = null;
