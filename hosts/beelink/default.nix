@@ -31,7 +31,7 @@ in {
   modules = {
     ssh.enable = true;
   };
-  networking.hostname = "beelink";
+  networking.hostName = "beelink";
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/atelier-forest.yaml";
 
   services.home-assistant = {
