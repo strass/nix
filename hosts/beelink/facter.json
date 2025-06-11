@@ -23,8 +23,8 @@
     },
     "bluetooth": [
       {
-        "index": 23,
-        "attached_to": 35,
+        "index": 25,
+        "attached_to": 37,
         "class_list": [
           "usb",
           "bluetooth"
@@ -107,8 +107,8 @@
         "module_alias": "usb:v8087p0A2Ad0001dcE0dsc01dp01icE0isc01ip01in00"
       },
       {
-        "index": 29,
-        "attached_to": 35,
+        "index": 31,
+        "attached_to": 37,
         "class_list": [
           "usb",
           "bluetooth"
@@ -495,6 +495,91 @@
         "module_alias": "pci:v00008086d00001604sv00008086sd00001604bc06sc00i00"
       }
     ],
+    "cdrom": [
+      {
+        "index": 23,
+        "attached_to": 20,
+        "class_list": [
+          "cdrom",
+          "usb",
+          "scsi",
+          "block_device"
+        ],
+        "bus_type": {
+          "hex": "0084",
+          "name": "SCSI",
+          "value": 132
+        },
+        "slot": {
+          "bus": 2,
+          "number": 0
+        },
+        "base_class": {
+          "hex": "0106",
+          "name": "Mass Storage Device",
+          "value": 262
+        },
+        "sub_class": {
+          "hex": "0002",
+          "name": "CD-ROM",
+          "value": 2
+        },
+        "pci_interface": {
+          "hex": "0003",
+          "name": "DVD",
+          "value": 3
+        },
+        "vendor": {
+          "hex": "04c5",
+          "name": "iODD",
+          "value": 1221
+        },
+        "device": {
+          "hex": "2028",
+          "name": "Virtual CDRom",
+          "value": 8232
+        },
+        "serial": "M242A00002443",
+        "model": "iODD Virtual CDRom",
+        "sysfs_id": "/class/block/sr0",
+        "sysfs_bus_id": "2:0:0:0",
+        "sysfs_device_link": "/devices/pci0000:00/0000:00:14.0/usb3/3-2/3-2:1.0/host2/target2:0:0/2:0:0:0",
+        "unix_device_name": "/dev/sr0",
+        "unix_device_number": {
+          "type": 98,
+          "major": 11,
+          "minor": 0,
+          "range": 1
+        },
+        "unix_device_names": [
+          "/dev/cdrom",
+          "/dev/disk/by-id/usb-iODD_Virtual_CDRom_M242A00002443-0:0",
+          "/dev/disk/by-label/nixos-25.05-x86_64",
+          "/dev/disk/by-path/pci-0000:00:14.0-usb-0:2:1.0-scsi-0:0:0:0",
+          "/dev/disk/by-path/pci-0000:00:14.0-usbv3-0:2:1.0-scsi-0:0:0:0",
+          "/dev/disk/by-uuid/1980-01-01-00-00-00-00",
+          "/dev/root",
+          "/dev/sr0"
+        ],
+        "unix_device_name2": "/dev/sg1",
+        "unix_device_number2": {
+          "type": 99,
+          "major": 21,
+          "minor": 1,
+          "range": 1
+        },
+        "driver": "usb-storage",
+        "driver_module": "usb_storage",
+        "drivers": [
+          "sr",
+          "usb-storage"
+        ],
+        "driver_modules": [
+          "sr_mod",
+          "usb_storage"
+        ]
+      }
+    ],
     "cpu": [
       {
         "architecture": "x86_64",
@@ -613,7 +698,7 @@
           "srbds",
           "mmio_unknown"
         ],
-        "bogo": 3990.49,
+        "bogo": 3990.53,
         "cache": 3072,
         "units": 16,
         "physical_id": 0,
@@ -634,6 +719,98 @@
     "disk": [
       {
         "index": 22,
+        "attached_to": 20,
+        "class_list": [
+          "disk",
+          "usb",
+          "scsi",
+          "block_device"
+        ],
+        "bus_type": {
+          "hex": "0084",
+          "name": "SCSI",
+          "value": 132
+        },
+        "slot": {
+          "bus": 2,
+          "number": 0
+        },
+        "base_class": {
+          "hex": "0106",
+          "name": "Mass Storage Device",
+          "value": 262
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Disk",
+          "value": 0
+        },
+        "vendor": {
+          "hex": "04c5",
+          "name": "iODD",
+          "value": 1221
+        },
+        "device": {
+          "hex": "2028",
+          "name": "External HDD",
+          "value": 8232
+        },
+        "serial": "M242A00002443",
+        "model": "iODD External HDD",
+        "sysfs_id": "/class/block/sdb",
+        "sysfs_bus_id": "2:0:0:1",
+        "sysfs_device_link": "/devices/pci0000:00/0000:00:14.0/usb3/3-2/3-2:1.0/host2/target2:0:0/2:0:0:1",
+        "unix_device_name": "/dev/sdb",
+        "unix_device_number": {
+          "type": 98,
+          "major": 8,
+          "minor": 16,
+          "range": 16
+        },
+        "unix_device_names": [
+          "/dev/disk/by-id/ata-MST1000-256_M242A00002443",
+          "/dev/disk/by-id/usb-iODD_External_HDD_M242A00002443-0:1",
+          "/dev/disk/by-path/pci-0000:00:14.0-usb-0:2:1.0-scsi-0:0:0:1",
+          "/dev/disk/by-path/pci-0000:00:14.0-usbv3-0:2:1.0-scsi-0:0:0:1",
+          "/dev/sdb"
+        ],
+        "unix_device_name2": "/dev/sg2",
+        "unix_device_number2": {
+          "type": 99,
+          "major": 21,
+          "minor": 2,
+          "range": 1
+        },
+        "resources": [
+          {
+            "type": "disk_geo",
+            "cylinders": 31130,
+            "heads": 255,
+            "sectors": 63,
+            "size": "0x0",
+            "geo_type": "logical"
+          },
+          {
+            "type": "size",
+            "unit": "sectors",
+            "value_1": 500118192,
+            "value_2": 512
+          }
+        ],
+        "driver": "usb-storage",
+        "driver_module": "usb_storage",
+        "drivers": [
+          "sd",
+          "usb-storage"
+        ],
+        "driver_modules": [
+          "sd_mod",
+          "usb_storage"
+        ],
+        "module_alias": "usb:v04C5p2028d0001dc00dsc00dp00ic08isc06ip50in00"
+      },
+      {
+        "index": 24,
         "attached_to": 8,
         "class_list": [
           "disk",
@@ -659,23 +836,18 @@
           "name": "Disk",
           "value": 0
         },
-        "vendor": {
-          "hex": "0000",
-          "name": "M.2",
-          "value": 0
-        },
         "device": {
           "hex": "0000",
-          "name": "SSD 128GB",
+          "name": "TS512GMTS830S",
           "value": 0
         },
         "revision": {
           "hex": "0000",
-          "name": "XKR",
+          "name": "Y1KB",
           "value": 0
         },
-        "serial": "GSMB2183081018",
-        "model": "M.2 SSD 128GB",
+        "serial": "J297380621",
+        "model": "TS512GMTS830S",
         "sysfs_id": "/class/block/sda",
         "sysfs_bus_id": "1:0:0:0",
         "sysfs_device_link": "/devices/pci0000:00/0000:00:1f.2/ata2/host1/target1:0:0/1:0:0:0",
@@ -687,16 +859,16 @@
           "range": 16
         },
         "unix_device_names": [
-          "/dev/disk/by-id/ata-M.2_SSD_128GB_GSMB2183081018",
+          "/dev/disk/by-id/ata-TS512GMTS830S_J297380621",
+          "/dev/disk/by-id/wwn-0x57c3548265c58f0d",
           "/dev/disk/by-path/pci-0000:00:1f.2-ata-2",
           "/dev/disk/by-path/pci-0000:00:1f.2-ata-2.0",
           "/dev/sda"
         ],
-        "rom_id": "0x80",
         "resources": [
           {
             "type": "disk_geo",
-            "cylinders": 15566,
+            "cylinders": 62260,
             "heads": 255,
             "sectors": 63,
             "size": "0x0",
@@ -705,7 +877,7 @@
           {
             "type": "size",
             "unit": "sectors",
-            "value_1": 250069680,
+            "value_1": 1000215216,
             "value_2": 512
           }
         ],
@@ -787,7 +959,7 @@
           },
           {
             "type": "irq",
-            "base": 50,
+            "base": 51,
             "triggered": 0,
             "enabled": true
           },
@@ -821,7 +993,7 @@
           "command": 1031,
           "header_type": 0,
           "secondary_bus": 0,
-          "irq": 50,
+          "irq": 51,
           "prog_if": 0
         },
         "driver": "i915",
@@ -838,7 +1010,93 @@
     ],
     "hub": [
       {
-        "index": 26,
+        "index": 27,
+        "attached_to": 37,
+        "class_list": [
+          "usb",
+          "hub"
+        ],
+        "bus_type": {
+          "hex": "0086",
+          "name": "USB",
+          "value": 134
+        },
+        "slot": {
+          "bus": 0,
+          "number": 0
+        },
+        "base_class": {
+          "hex": "010a",
+          "name": "Hub",
+          "value": 266
+        },
+        "vendor": {
+          "hex": "413c",
+          "name": "Dell",
+          "value": 16700
+        },
+        "device": {
+          "hex": "1003",
+          "name": "Dell USB Keyboard Hub",
+          "value": 4099
+        },
+        "revision": {
+          "hex": "0000",
+          "name": "2.00",
+          "value": 0
+        },
+        "model": "Dell USB Keyboard Hub",
+        "sysfs_id": "/devices/pci0000:00/0000:00:14.0/usb2/2-1/2-1:1.0",
+        "sysfs_bus_id": "2-1:1.0",
+        "resources": [
+          {
+            "type": "baud",
+            "speed": 12000000,
+            "bits": 0,
+            "stop_bits": 0,
+            "parity": 0,
+            "handshake": 0
+          }
+        ],
+        "detail": {
+          "device_class": {
+            "hex": "0009",
+            "name": "hub",
+            "value": 9
+          },
+          "device_subclass": {
+            "hex": "0000",
+            "name": "per_interface",
+            "value": 0
+          },
+          "device_protocol": 0,
+          "interface_class": {
+            "hex": "0009",
+            "name": "hub",
+            "value": 9
+          },
+          "interface_subclass": {
+            "hex": "0000",
+            "name": "per_interface",
+            "value": 0
+          },
+          "interface_protocol": 0,
+          "interface_number": 0,
+          "interface_alternate_setting": 0
+        },
+        "hotplug": "usb",
+        "driver": "hub",
+        "driver_module": "usbcore",
+        "drivers": [
+          "hub"
+        ],
+        "driver_modules": [
+          "usbcore"
+        ],
+        "module_alias": "usb:v413Cp1003d0200dc09dsc00dp00ic09isc00ip00in00"
+      },
+      {
+        "index": 28,
         "attached_to": 20,
         "class_list": [
           "usb",
@@ -915,93 +1173,7 @@
         "module_alias": "usb:v1D6Bp0003d0614dc09dsc00dp03ic09isc00ip00in00"
       },
       {
-        "index": 30,
-        "attached_to": 35,
-        "class_list": [
-          "usb",
-          "hub"
-        ],
-        "bus_type": {
-          "hex": "0086",
-          "name": "USB",
-          "value": 134
-        },
-        "slot": {
-          "bus": 0,
-          "number": 0
-        },
-        "base_class": {
-          "hex": "010a",
-          "name": "Hub",
-          "value": 266
-        },
-        "vendor": {
-          "hex": "413c",
-          "name": "Dell",
-          "value": 16700
-        },
-        "device": {
-          "hex": "1003",
-          "name": "Dell USB Keyboard Hub",
-          "value": 4099
-        },
-        "revision": {
-          "hex": "0000",
-          "name": "2.00",
-          "value": 0
-        },
-        "model": "Dell USB Keyboard Hub",
-        "sysfs_id": "/devices/pci0000:00/0000:00:14.0/usb2/2-2/2-2:1.0",
-        "sysfs_bus_id": "2-2:1.0",
-        "resources": [
-          {
-            "type": "baud",
-            "speed": 12000000,
-            "bits": 0,
-            "stop_bits": 0,
-            "parity": 0,
-            "handshake": 0
-          }
-        ],
-        "detail": {
-          "device_class": {
-            "hex": "0009",
-            "name": "hub",
-            "value": 9
-          },
-          "device_subclass": {
-            "hex": "0000",
-            "name": "per_interface",
-            "value": 0
-          },
-          "device_protocol": 0,
-          "interface_class": {
-            "hex": "0009",
-            "name": "hub",
-            "value": 9
-          },
-          "interface_subclass": {
-            "hex": "0000",
-            "name": "per_interface",
-            "value": 0
-          },
-          "interface_protocol": 0,
-          "interface_number": 0,
-          "interface_alternate_setting": 0
-        },
-        "hotplug": "usb",
-        "driver": "hub",
-        "driver_module": "usbcore",
-        "drivers": [
-          "hub"
-        ],
-        "driver_modules": [
-          "usbcore"
-        ],
-        "module_alias": "usb:v413Cp1003d0200dc09dsc00dp00ic09isc00ip00in00"
-      },
-      {
-        "index": 31,
+        "index": 32,
         "attached_to": 18,
         "class_list": [
           "usb",
@@ -1088,8 +1260,8 @@
         "module_alias": "usb:v1D6Bp0002d0614dc09dsc00dp00ic09isc00ip00in00"
       },
       {
-        "index": 34,
-        "attached_to": 31,
+        "index": 36,
+        "attached_to": 32,
         "class_list": [
           "usb",
           "hub"
@@ -1172,7 +1344,7 @@
         "module_alias": "usb:v8087p8001d0003dc09dsc00dp01ic09isc00ip00in00"
       },
       {
-        "index": 35,
+        "index": 37,
         "attached_to": 20,
         "class_list": [
           "usb",
@@ -1261,8 +1433,8 @@
     ],
     "keyboard": [
       {
-        "index": 27,
-        "attached_to": 30,
+        "index": 38,
+        "attached_to": 27,
         "class_list": [
           "keyboard",
           "usb"
@@ -1302,8 +1474,8 @@
           "value": 0
         },
         "model": "Dell USB Keyboard",
-        "sysfs_id": "/devices/pci0000:00/0000:00:14.0/usb2/2-2/2-2.1/2-2.1:1.0",
-        "sysfs_bus_id": "2-2.1:1.0",
+        "sysfs_id": "/devices/pci0000:00/0000:00:14.0/usb2/2-1/2-1.1/2-1.1:1.0",
+        "sysfs_bus_id": "2-1.1:1.0",
         "unix_device_name": "/dev/input/event0",
         "unix_device_number": {
           "type": 99,
@@ -1313,8 +1485,8 @@
         },
         "unix_device_names": [
           "/dev/input/by-id/usb-Dell_Dell_USB_Keyboard-event-kbd",
-          "/dev/input/by-path/pci-0000:00:14.0-usb-0:2.1:1.0-event-kbd",
-          "/dev/input/by-path/pci-0000:00:14.0-usbv2-0:2.1:1.0-event-kbd",
+          "/dev/input/by-path/pci-0000:00:14.0-usb-0:1.1:1.0-event-kbd",
+          "/dev/input/by-path/pci-0000:00:14.0-usbv2-0:1.1:1.0-event-kbd",
           "/dev/input/event0"
         ],
         "resources": [
@@ -1392,7 +1564,7 @@
           {
             "type": "mem",
             "base": 0,
-            "range": 8218251264,
+            "range": 8218259456,
             "enabled": true,
             "access": "read_write",
             "prefetch": "unknown"
@@ -1652,7 +1824,7 @@
           },
           {
             "type": "irq",
-            "base": 49,
+            "base": 50,
             "triggered": 0,
             "enabled": true
           },
@@ -1757,7 +1929,7 @@
           "command": 1030,
           "header_type": 0,
           "secondary_bus": 0,
-          "irq": 49,
+          "irq": 50,
           "prog_if": 0
         },
         "driver": "iwlwifi",
@@ -1883,8 +2055,8 @@
     ],
     "network_interface": [
       {
-        "index": 36,
-        "attached_to": 0,
+        "index": 39,
+        "attached_to": 13,
         "class_list": [
           "network_interface"
         ],
@@ -1894,19 +2066,38 @@
           "value": 263
         },
         "sub_class": {
-          "hex": "0000",
-          "name": "Loopback",
-          "value": 0
+          "hex": "0001",
+          "name": "Ethernet",
+          "value": 1
         },
-        "model": "Loopback network interface",
-        "sysfs_id": "/class/net/lo",
-        "unix_device_name": "lo",
+        "model": "Ethernet network interface",
+        "sysfs_id": "/class/net/enp1s0",
+        "sysfs_device_link": "/devices/pci0000:00/0000:00:1c.0/0000:01:00.0",
+        "unix_device_name": "enp1s0",
         "unix_device_names": [
-          "lo"
+          "enp1s0"
+        ],
+        "resources": [
+          {
+            "type": "hwaddr",
+            "address": 56
+          },
+          {
+            "type": "phwaddr",
+            "address": 56
+          }
+        ],
+        "driver": "r8169",
+        "driver_module": "r8169",
+        "drivers": [
+          "r8169"
+        ],
+        "driver_modules": [
+          "r8169"
         ]
       },
       {
-        "index": 37,
+        "index": 40,
         "attached_to": 11,
         "class_list": [
           "network_interface"
@@ -1948,8 +2139,8 @@
         ]
       },
       {
-        "index": 38,
-        "attached_to": 13,
+        "index": 41,
+        "attached_to": 0,
         "class_list": [
           "network_interface"
         ],
@@ -1959,34 +2150,15 @@
           "value": 263
         },
         "sub_class": {
-          "hex": "0001",
-          "name": "Ethernet",
-          "value": 1
+          "hex": "0000",
+          "name": "Loopback",
+          "value": 0
         },
-        "model": "Ethernet network interface",
-        "sysfs_id": "/class/net/enp1s0",
-        "sysfs_device_link": "/devices/pci0000:00/0000:00:1c.0/0000:01:00.0",
-        "unix_device_name": "enp1s0",
+        "model": "Loopback network interface",
+        "sysfs_id": "/class/net/lo",
+        "unix_device_name": "lo",
         "unix_device_names": [
-          "enp1s0"
-        ],
-        "resources": [
-          {
-            "type": "hwaddr",
-            "address": 56
-          },
-          {
-            "type": "phwaddr",
-            "address": 56
-          }
-        ],
-        "driver": "r8169",
-        "driver_module": "r8169",
-        "drivers": [
-          "r8169"
-        ],
-        "driver_modules": [
-          "r8169"
+          "lo"
         ]
       }
     ],
@@ -2384,8 +2556,8 @@
     },
     "usb": [
       {
-        "index": 24,
-        "attached_to": 35,
+        "index": 26,
+        "attached_to": 37,
         "class_list": [
           "usb",
           "unknown"
@@ -2476,8 +2648,8 @@
         "module_alias": "usb:v0BDAp0129d3960dcFFdscFFdpFFicFFisc06ip50in00"
       },
       {
-        "index": 25,
-        "attached_to": 35,
+        "index": 29,
+        "attached_to": 37,
         "class_list": [
           "usb",
           "unknown"
@@ -2522,8 +2694,8 @@
         },
         "serial": "41500A69",
         "model": "Silicon HubZ Smart Home Controller",
-        "sysfs_id": "/devices/pci0000:00/0000:00:14.0/usb2/2-3/2-3:1.1",
-        "sysfs_bus_id": "2-3:1.1",
+        "sysfs_id": "/devices/pci0000:00/0000:00:14.0/usb2/2-5/2-5:1.0",
+        "sysfs_bus_id": "2-5:1.0",
         "unix_device_name": "/dev/ttyUSB1",
         "unix_device_number": {
           "type": 99,
@@ -2532,120 +2704,10 @@
           "range": 1
         },
         "unix_device_names": [
-          "/dev/serial/by-id/usb-Silicon_Labs_HubZ_Smart_Home_Controller_41500A69-if01-port0",
-          "/dev/serial/by-path/pci-0000:00:14.0-usb-0:3:1.1-port0",
-          "/dev/serial/by-path/pci-0000:00:14.0-usbv2-0:3:1.1-port0",
-          "/dev/ttyUSB1"
-        ],
-        "resources": [
-          {
-            "type": "baud",
-            "speed": 12000000,
-            "bits": 0,
-            "stop_bits": 0,
-            "parity": 0,
-            "handshake": 0
-          }
-        ],
-        "detail": {
-          "device_class": {
-            "hex": "0000",
-            "name": "per_interface",
-            "value": 0
-          },
-          "device_subclass": {
-            "hex": "0000",
-            "name": "per_interface",
-            "value": 0
-          },
-          "device_protocol": 0,
-          "interface_class": {
-            "hex": "00ff",
-            "name": "vendor_spec",
-            "value": 255
-          },
-          "interface_subclass": {
-            "hex": "0000",
-            "name": "per_interface",
-            "value": 0
-          },
-          "interface_protocol": 0,
-          "interface_number": 1,
-          "interface_alternate_setting": 0
-        },
-        "hotplug": "usb",
-        "driver": "cp210x",
-        "driver_module": "cp210x",
-        "drivers": [
-          "cp210x"
-        ],
-        "driver_modules": [
-          "cp210x",
-          "usbserial"
-        ],
-        "module_alias": "usb:v10C4p8A2Ad0100dc00dsc00dp00icFFisc00ip00in01"
-      },
-      {
-        "index": 28,
-        "attached_to": 35,
-        "class_list": [
-          "usb",
-          "unknown"
-        ],
-        "bus_type": {
-          "hex": "0086",
-          "name": "USB",
-          "value": 134
-        },
-        "slot": {
-          "bus": 0,
-          "number": 0
-        },
-        "base_class": {
-          "hex": "0007",
-          "name": "Communication controller",
-          "value": 7
-        },
-        "sub_class": {
-          "hex": "0000",
-          "name": "Serial controller",
-          "value": 0
-        },
-        "pci_interface": {
-          "hex": "0080",
-          "value": 128
-        },
-        "vendor": {
-          "hex": "10c4",
-          "name": "Nabu Casa",
-          "value": 4292
-        },
-        "device": {
-          "hex": "ea60",
-          "name": "SkyConnect v1.0",
-          "value": 60000
-        },
-        "revision": {
-          "hex": "0000",
-          "name": "1.00",
-          "value": 0
-        },
-        "serial": "18263614ab14ed118a04bc8be054580b",
-        "model": "Nabu Casa SkyConnect v1.0",
-        "sysfs_id": "/devices/pci0000:00/0000:00:14.0/usb2/2-5/2-5:1.0",
-        "sysfs_bus_id": "2-5:1.0",
-        "unix_device_name": "/dev/ttyUSB2",
-        "unix_device_number": {
-          "type": 99,
-          "major": 188,
-          "minor": 2,
-          "range": 1
-        },
-        "unix_device_names": [
-          "/dev/serial/by-id/usb-Nabu_Casa_SkyConnect_v1.0_18263614ab14ed118a04bc8be054580b-if00-port0",
+          "/dev/serial/by-id/usb-Silicon_Labs_HubZ_Smart_Home_Controller_41500A69-if00-port0",
           "/dev/serial/by-path/pci-0000:00:14.0-usb-0:5:1.0-port0",
           "/dev/serial/by-path/pci-0000:00:14.0-usbv2-0:5:1.0-port0",
-          "/dev/ttyUSB2"
+          "/dev/ttyUSB1"
         ],
         "resources": [
           {
@@ -2693,11 +2755,11 @@
           "cp210x",
           "usbserial"
         ],
-        "module_alias": "usb:v10C4pEA60d0100dc00dsc00dp00icFFisc00ip00in00"
+        "module_alias": "usb:v10C4p8A2Ad0100dc00dsc00dp00icFFisc00ip00in00"
       },
       {
-        "index": 32,
-        "attached_to": 30,
+        "index": 30,
+        "attached_to": 27,
         "class_list": [
           "usb",
           "unknown"
@@ -2737,8 +2799,8 @@
           "value": 0
         },
         "model": "Dell USB Keyboard",
-        "sysfs_id": "/devices/pci0000:00/0000:00:14.0/usb2/2-2/2-2.1/2-2.1:1.1",
-        "sysfs_bus_id": "2-2.1:1.1",
+        "sysfs_id": "/devices/pci0000:00/0000:00:14.0/usb2/2-1/2-1.1/2-1.1:1.1",
+        "sysfs_bus_id": "2-1.1:1.1",
         "unix_device_name": "/dev/input/event1",
         "unix_device_number": {
           "type": 99,
@@ -2748,8 +2810,8 @@
         },
         "unix_device_names": [
           "/dev/input/by-id/usb-Dell_Dell_USB_Keyboard-event-if01",
-          "/dev/input/by-path/pci-0000:00:14.0-usb-0:2.1:1.1-event",
-          "/dev/input/by-path/pci-0000:00:14.0-usbv2-0:2.1:1.1-event",
+          "/dev/input/by-path/pci-0000:00:14.0-usb-0:1.1:1.1-event",
+          "/dev/input/by-path/pci-0000:00:14.0-usbv2-0:1.1:1.1-event",
           "/dev/input/event1"
         ],
         "resources": [
@@ -2801,7 +2863,7 @@
       },
       {
         "index": 33,
-        "attached_to": 35,
+        "attached_to": 37,
         "class_list": [
           "usb",
           "unknown"
@@ -2846,6 +2908,116 @@
         },
         "serial": "41500A69",
         "model": "Silicon HubZ Smart Home Controller",
+        "sysfs_id": "/devices/pci0000:00/0000:00:14.0/usb2/2-5/2-5:1.1",
+        "sysfs_bus_id": "2-5:1.1",
+        "unix_device_name": "/dev/ttyUSB2",
+        "unix_device_number": {
+          "type": 99,
+          "major": 188,
+          "minor": 2,
+          "range": 1
+        },
+        "unix_device_names": [
+          "/dev/serial/by-id/usb-Silicon_Labs_HubZ_Smart_Home_Controller_41500A69-if01-port0",
+          "/dev/serial/by-path/pci-0000:00:14.0-usb-0:5:1.1-port0",
+          "/dev/serial/by-path/pci-0000:00:14.0-usbv2-0:5:1.1-port0",
+          "/dev/ttyUSB2"
+        ],
+        "resources": [
+          {
+            "type": "baud",
+            "speed": 12000000,
+            "bits": 0,
+            "stop_bits": 0,
+            "parity": 0,
+            "handshake": 0
+          }
+        ],
+        "detail": {
+          "device_class": {
+            "hex": "0000",
+            "name": "per_interface",
+            "value": 0
+          },
+          "device_subclass": {
+            "hex": "0000",
+            "name": "per_interface",
+            "value": 0
+          },
+          "device_protocol": 0,
+          "interface_class": {
+            "hex": "00ff",
+            "name": "vendor_spec",
+            "value": 255
+          },
+          "interface_subclass": {
+            "hex": "0000",
+            "name": "per_interface",
+            "value": 0
+          },
+          "interface_protocol": 0,
+          "interface_number": 1,
+          "interface_alternate_setting": 0
+        },
+        "hotplug": "usb",
+        "driver": "cp210x",
+        "driver_module": "cp210x",
+        "drivers": [
+          "cp210x"
+        ],
+        "driver_modules": [
+          "cp210x",
+          "usbserial"
+        ],
+        "module_alias": "usb:v10C4p8A2Ad0100dc00dsc00dp00icFFisc00ip00in01"
+      },
+      {
+        "index": 34,
+        "attached_to": 37,
+        "class_list": [
+          "usb",
+          "unknown"
+        ],
+        "bus_type": {
+          "hex": "0086",
+          "name": "USB",
+          "value": 134
+        },
+        "slot": {
+          "bus": 0,
+          "number": 0
+        },
+        "base_class": {
+          "hex": "0007",
+          "name": "Communication controller",
+          "value": 7
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Serial controller",
+          "value": 0
+        },
+        "pci_interface": {
+          "hex": "0080",
+          "value": 128
+        },
+        "vendor": {
+          "hex": "10c4",
+          "name": "Nabu Casa",
+          "value": 4292
+        },
+        "device": {
+          "hex": "ea60",
+          "name": "SkyConnect v1.0",
+          "value": 60000
+        },
+        "revision": {
+          "hex": "0000",
+          "name": "1.00",
+          "value": 0
+        },
+        "serial": "18263614ab14ed118a04bc8be054580b",
+        "model": "Nabu Casa SkyConnect v1.0",
         "sysfs_id": "/devices/pci0000:00/0000:00:14.0/usb2/2-3/2-3:1.0",
         "sysfs_bus_id": "2-3:1.0",
         "unix_device_name": "/dev/ttyUSB0",
@@ -2856,7 +3028,7 @@
           "range": 1
         },
         "unix_device_names": [
-          "/dev/serial/by-id/usb-Silicon_Labs_HubZ_Smart_Home_Controller_41500A69-if00-port0",
+          "/dev/serial/by-id/usb-Nabu_Casa_SkyConnect_v1.0_18263614ab14ed118a04bc8be054580b-if00-port0",
           "/dev/serial/by-path/pci-0000:00:14.0-usb-0:3:1.0-port0",
           "/dev/serial/by-path/pci-0000:00:14.0-usbv2-0:3:1.0-port0",
           "/dev/ttyUSB0"
@@ -2907,7 +3079,7 @@
           "cp210x",
           "usbserial"
         ],
-        "module_alias": "usb:v10C4p8A2Ad0100dc00dsc00dp00icFFisc00ip00in00"
+        "module_alias": "usb:v10C4pEA60d0100dc00dsc00dp00icFFisc00ip00in00"
       }
     ],
     "usb_controller": [

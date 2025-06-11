@@ -47,6 +47,7 @@
     # opt-out from declarative configuration management
     config = null;
     lovelaceConfig = null;
+    openFirewall = true;
     # configure the path to your config directory
     configDir = "/var/lib/home-assistant";
     # specify list of components required by your configuration
@@ -70,4 +71,6 @@
   #     }
   #   ];
   # };
+
+  home-manager.users.strass.programs.starship.settings.hostname.ssh_symbol = "🏠 ";
 }
