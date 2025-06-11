@@ -6,7 +6,7 @@
   # fqdn,
   ...
 }: let
-  mkTraefikService = import ../util/mkTraefikService.nix;
+  mkTraefikService = import ../../util/mkTraefikService.nix;
 in {
   imports = [
     inputs.nixos-facter-modules.nixosModules.facter
