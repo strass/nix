@@ -72,4 +72,6 @@ in {
   modules = {
     ssh.enable = true;
   };
+
+  home-manager.users.strass.programs.starship.settings.hostname.ssh_symbol = "⚙️ ";
 }
