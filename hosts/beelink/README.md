@@ -1,4 +1,0 @@
-- home assistant
-- backup duplicate
-- healthchecks
-- high availability?
