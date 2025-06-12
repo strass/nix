@@ -66,7 +66,7 @@ in {
     #   "met"
     #   "radio_browser"
     # ];
-
+    extraComponents = ["backup"];
     # extraPackages = ps: with ps; [psycopg2];
     # config.recorder.db_url = "postgresql://@/hass";
   };
