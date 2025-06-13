@@ -42,4 +42,9 @@
 
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/atelier-estuary.yaml";
   home-manager.users.strass.programs.starship.settings.hostname.ssh_symbol = "📡 ";
+
+  # services.tftpd = {
+  #   enable = true;
+  #   path = "/srv/tftp";
+  # };
 }
