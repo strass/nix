@@ -15,12 +15,13 @@ in {
 
   system.primaryUser = "zakstrassberg";
   home-manager.users.zakstrassberg.home = {
-    homeDirectory = "/Users/${config.system.primaryUser}";
+    shell = pkgs.fish;
     packages = with pkgs; [
       moonlight-qt
       # steam
     ];
   };
+  home-manager.users.zakstrassberg.programs.starship.settings.hostname.ssh_symbol = "🍏 ";
 
   networking.hostName = "mac-mini";
   networking.wakeOnLan.enable = true;
@@ -47,9 +48,8 @@ in {
 
   programs.fish.enable = true;
   programs.nix-index.enable = true;
-  programs.ssh.knownHosts = builtins.attrValues (hosts.knownHosts);
+  # programs.ssh.knownHosts = builtins.attrValues (hosts.knownHosts);
 
   ids.gids.nixbld = 30000; # because my nix version was out of date
-
   system.stateVersion = 6;
 }
