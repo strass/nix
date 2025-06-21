@@ -26,6 +26,7 @@
     agenix.url = "github:ryantm/agenix";
     impermanence.url = "github:nix-community/impermanence";
     lutgen-rs.url = "github:ozwaldorf/lutgen-rs";
+    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
 
     # mac
     nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
