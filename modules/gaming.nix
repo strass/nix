@@ -21,7 +21,7 @@
       jvmOpts = "-Xmx4G -Xms2G";
 
       # Specify the custom minecraft server package
-      package = pkgs.minecraftServers.vanilla-server;
+      # package = pkgs.minecraftServers.vanilla-server;
     };
   };
 
