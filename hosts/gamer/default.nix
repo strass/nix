@@ -17,6 +17,7 @@
     ../../modules/podman.nix
 
     # ./backup.nix
+    ./minecraft.nix
   ];
 
   facter.reportPath = ./facter.json;
@@ -59,9 +60,6 @@
     pkgs-unstable.ghostty
     gnome-tweaks
   ];
-
-  # Minecraft launcher
-  home-manager.users.strass.home.packages = with pkgs; [prismlauncher];
 
   modules = {
     ssh.enable = true;

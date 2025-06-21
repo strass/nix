@@ -5,25 +5,9 @@
   inputs,
   ...
 }: {
-  # Minecraft
-  nixpkgs.overlays = [inputs.nix-minecraft.overlay];
   imports = [
     ../services/gaming.sunshine.nix
-    inputs.nix-minecraft.nixosModules.minecraft-servers
   ];
-
-  services.minecraft-servers = {
-    enable = true;
-    eula = true;
-    openFirewall = true;
-    servers.vanilla = {
-      enable = true;
-      jvmOpts = "-Xmx4G -Xms2G";
-
-      # Specify the custom minecraft server package
-      # package = pkgs.minecraftServers.vanilla-server;
-    };
-  };
 
   hardware = {
     graphics = {
