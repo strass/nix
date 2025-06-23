@@ -566,7 +566,7 @@
         "type": "github"
       }
     },
-    "niri-flake": {
+    "niri": {
       "inputs": {
         "niri-stable": "niri-stable",
         "niri-unstable": "niri-unstable",
@@ -907,7 +907,7 @@
         "home-manager": "home-manager_3",
         "impermanence": "impermanence",
         "lutgen-rs": "lutgen-rs",
-        "niri-flake": "niri-flake",
+        "niri": "niri",
         "nix-darwin": "nix-darwin",
         "nix-minecraft": "nix-minecraft",
         "nixos-facter-modules": "nixos-facter-modules",
