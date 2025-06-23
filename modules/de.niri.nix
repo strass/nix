@@ -8,7 +8,7 @@
 in {
   services.displayManager.defaultSession = "niri";
   # qt wayland: https://discourse.nixos.org/t/problem-with-qt-apps-styling/29450/8
-  qt.platformTheme.name = "qt5ct";
+  qt.platformTheme = "qt5ct";
   systemd.user.services.xwayland-satellite.wantedBy = ["graphical-session.target"];
 
   xdg.portal = {
