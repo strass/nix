@@ -27,7 +27,7 @@
     impermanence.url = "github:nix-community/impermanence";
     lutgen-rs.url = "github:ozwaldorf/lutgen-rs";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
-    niri-flake.url = "github:sodiboo/niri-flake";
+    niri.url = "github:sodiboo/niri-flake";
 
     # mac
     nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
