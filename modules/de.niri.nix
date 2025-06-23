@@ -24,10 +24,10 @@ in {
 
   # enable and configure niri in hm
   home-manager.users.strass = {config, ...}: {
-    imports = [
-      # inputs.niri.homeModules.config
-      inputs.niri.homeModules.stylix # optional: stylix integration
-    ];
+    # imports = [
+    #   inputs.niri.homeModules.config
+    #   inputs.niri.homeModules.stylix # optional: stylix integration
+    # ];
     programs.niri = {
       package = niri;
       settings = {
