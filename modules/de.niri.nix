@@ -21,38 +21,38 @@ in {
     enable = true;
     package = niri;
   };
-  # enable and configure niri in hm
-  home-manager.users.strass = {config, ...}: {
-    imports = [
-      inputs.niri.homeModules.config
-      inputs.niri.homeModules.stylix # optional: stylix integration
-    ];
-    programs.niri = {
-      package = niri;
-      # settings = {
-      #   environment = {
-      #     NIXOS_OZONE_WL = "1"; # support electron and chromium based apps
-      #     DISPLAY = ":0"; # important for xwayland-satellite
-      #     # QT_QPA_PLATFORM = "wayland"; # optional: force QT apps to always use wayland
-      #   };
-      #   spawn-at-startup = [
-      #     {command = ["xwayland-satellite"];}
-      #   ];
-      #   # use niri actions
-      #   binds = with config.lib.niri.actions; {
-      #     # example binding to a niri action
-      #     "Mod+Ctrl+Left".action = move-column-left;
-      #     "Mod+Ctrl+Right".action = move-column-right;
-      #     # example binding to a custom command
-      #     "Mod+H".action.spawn = [
-      #       "firefox"
-      #       "https://github.com/YaLTeR/niri/wiki/Getting-Started"
-      #       "https://github.com/sodiboo/niri-flake"
-      #       "https://github.com/sodiboo/niri-flake/blob/main/docs.md"
-      #     ];
-      #   };
-      #   # hotkey-overlay.skip-at-startup = true; # optional: hide the keybinding popup
-      # };
-    };
-  };
+  # # enable and configure niri in hm
+  # home-manager.users.strass = {config, ...}: {
+  #   imports = [
+  #     inputs.niri.homeModules.config
+  #     inputs.niri.homeModules.stylix # optional: stylix integration
+  #   ];
+  #   programs.niri = {
+  #     package = niri;
+  #     settings = {
+  #       environment = {
+  #         NIXOS_OZONE_WL = "1"; # support electron and chromium based apps
+  #         DISPLAY = ":0"; # important for xwayland-satellite
+  #         # QT_QPA_PLATFORM = "wayland"; # optional: force QT apps to always use wayland
+  #       };
+  #       spawn-at-startup = [
+  #         {command = ["xwayland-satellite"];}
+  #       ];
+  #       # use niri actions
+  #       binds = with config.lib.niri.actions; {
+  #         # example binding to a niri action
+  #         "Mod+Ctrl+Left".action = move-column-left;
+  #         "Mod+Ctrl+Right".action = move-column-right;
+  #         # example binding to a custom command
+  #         "Mod+H".action.spawn = [
+  #           "firefox"
+  #           "https://github.com/YaLTeR/niri/wiki/Getting-Started"
+  #           "https://github.com/sodiboo/niri-flake"
+  #           "https://github.com/sodiboo/niri-flake/blob/main/docs.md"
+  #         ];
+  #       };
+  #       # hotkey-overlay.skip-at-startup = true; # optional: hide the keybinding popup
+  #     };
+  #   };
+  # };
 }
