@@ -6,6 +6,19 @@
   # ensure you use the same package in hm and nixos
   niri = pkgs.niri-unstable;
 in {
+  services.displayManager.defaultSession = "niri";
+  # qt wayland: https://discourse.nixos.org/t/problem-with-qt-apps-styling/29450/8
+  qt.platformTheme.name = "qt5ct";
+  systemd.user.services.xwayland-satellite.wantedBy = ["graphical-session.target"];
+
+  xdg.portal = {
+    enable = true;
+    lxqt = {
+      enable = true;
+      styles = [pkgs.libsForQt5.qtstyleplugin-kvantum];
+    };
+  };
+
   # use the overlay
   nixpkgs.overlays = [
     inputs.niri.overlays.niri
