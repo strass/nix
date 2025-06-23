@@ -155,6 +155,8 @@
           quadlet-nix.nixosModules.quadlet
           vscode-server.nixosModules.default
           agenix.nixosModules.default
+
+          niri.nixosModules.niri # It would be nice to move this to the niri config file
         ];
       };
       gamer = nixpkgs.lib.nixosSystem {
