@@ -52,6 +52,7 @@
     agenix,
     nix-darwin,
     impermanence,
+    niri,
     ...
   }: let
     # dnsConfig = {
