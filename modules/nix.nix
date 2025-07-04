@@ -43,6 +43,7 @@
       warn-dirty = false;
       # Builders should substitute from cache.nixos.org
       builders-use-substitutes = true;
+      download-buffer-size = 524288000;
     };
 
     # daemonCPUSchedPolicy = "batch";
