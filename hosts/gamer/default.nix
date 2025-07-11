@@ -21,7 +21,7 @@
 
     # hive services
     ../../services/p2p/rtorrent.nix
-    ../../services/p2p/rutorrent.nix
+    # ../../services/p2p/rutorrent.nix
   ];
 
   facter.reportPath = ./facter.json;
