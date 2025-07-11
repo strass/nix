@@ -6,15 +6,9 @@
 }: {
   services.rtorrent = {
     enable = true;
-    port = 25000;
+    port = 50000;
     dataDir = "/var/lib/rtorrent";
-    openFirewall = false;
+    openFirewall = true;
     downloadDir = "/var/lib/rtorrent/download";
-  };
-
-  networking.firewall = {
-    allowedTCPPorts = [
-      25000
-    ];
   };
 }
