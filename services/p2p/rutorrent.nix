@@ -5,7 +5,7 @@
   ...
 }: let
   name = "rtorrent";
-  port = 132012;
+  port = 13212;
 
   mkTraefikService = import ../util/mkTraefikService.nix;
 in {
