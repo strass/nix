@@ -8,7 +8,13 @@
     enable = true;
     port = 50000;
     dataDir = "/var/lib/rtorrent";
-    openFirewall = true;
+    # openFirewall = true;
     downloadDir = "/var/lib/rtorrent/download";
+  };
+
+  networking.firewall = {
+    allowedTCPPorts = [
+      50000
+    ];
   };
 }
