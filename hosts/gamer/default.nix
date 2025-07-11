@@ -20,6 +20,7 @@
     ./minecraft.nix
 
     # hive services
+    ../../services/traefik.nix
     ../../services/p2p/rtorrent.nix
     ../../services/p2p/rutorrent.nix
   ];
