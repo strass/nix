@@ -7,7 +7,7 @@
   name = "rtorrent";
   port = 13212;
 
-  mkTraefikService = import ../util/mkTraefikService.nix;
+  mkTraefikService = import ../../util/mkTraefikService.nix;
 in {
   services.rutorrent = {
     enable = true;
