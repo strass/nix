@@ -9,6 +9,6 @@
     port = 50000;
     dataDir = "/var/lib/rtorrent";
     openFirewall = true;
-    downloadDir = "${services.rtorrent.dataDir}/download";
+    downloadDir = "/var/lib/rtorrent/download";
   };
 }
