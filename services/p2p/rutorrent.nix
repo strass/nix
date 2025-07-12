@@ -9,6 +9,7 @@
 
   mkTraefikService = import ../../util/mkTraefikService.nix;
 in {
+  # Currently serving over a socket, which traefik doesn't like
   services.rutorrent = {
     enable = true;
     dataDir = "/var/lib/rutorrent";
