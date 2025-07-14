@@ -21,8 +21,8 @@
 
     # hive services
     ../../services/traefik.nix
-    # ../../services/p2p/rtorrent.nix
-    # ../../services/p2p/rutorrent.nix
+    ../../services/p2p/rtorrent.nix
+    ../../services/p2p/flood.nix
   ];
 
   facter.reportPath = ./facter.json;
