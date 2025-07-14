@@ -6,7 +6,7 @@
 }: {
   services.rtorrent = {
     enable = true;
-    package = pkgs.jesec-rtorrent;
+    # package = pkgs.jesec-rtorrent;
     port = 50000;
     dataDir = "/var/lib/rtorrent";
     openFirewall = true;
