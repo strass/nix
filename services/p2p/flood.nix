@@ -11,7 +11,7 @@
 in {
   services.flood = {
     enable = true;
-    host = "${name}.${fqdn}";
+    host = "localhost";
     port = port;
     openFirewall = true;
   };
