@@ -18,6 +18,8 @@
     pkgs.nerd-fonts.fira-code
     pkgs.nerd-fonts.meslo-lg
   ];
+
+  # These need to be disabled on darwin
   fonts.fontconfig.enable = true;
   fonts.fontconfig.defaultFonts = {
     serif = ["Liberation Serif" "Vazirmatn"];

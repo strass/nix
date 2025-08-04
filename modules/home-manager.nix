@@ -88,6 +88,7 @@ in {
         enable = true;
         enableFishIntegration = true;
       };
+      # disable on darwin
       ghostty = {
         enable = true;
         enableFishIntegration = true;

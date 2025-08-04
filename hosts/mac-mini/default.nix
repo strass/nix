@@ -10,18 +10,20 @@ in {
     ../../modules/stylix.nix
     ../../modules/home-manager.nix
     # ../../modules/nix.nix
-    ../../modules/fonts.nix
+    # ../../modules/fonts.nix
   ];
 
   system.primaryUser = "zakstrassberg";
   home-manager.users.zakstrassberg.home = {
-    shell = pkgs.fish;
     packages = with pkgs; [
       moonlight-qt
       # steam
     ];
   };
-  home-manager.users.zakstrassberg.programs.starship.settings.hostname.ssh_symbol = "🍏 ";
+  home-manager.users.zakstrassberg.programs.starship.settings.hostname = {
+    ssh_only = false;
+    ssh_symbol = "🍏 ";
+  };
 
   networking.hostName = "mac-mini";
   networking.wakeOnLan.enable = true;
@@ -37,8 +39,8 @@ in {
     description = "zak";
     name = config.system.primaryUser;
     home = "/Users/${config.system.primaryUser}";
-    shell = pkgs.fish;
   };
+
   environment.systemPackages = with pkgs; [
     alejandra
     git
