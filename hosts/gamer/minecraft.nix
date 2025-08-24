@@ -20,10 +20,12 @@
     servers.vanilla = {
       enable = true;
       jvmOpts = "-Xmx4G -Xms2G";
-      serverProperties = {
-        enable-rcon = true;
-        "rcon.password" = "ari&toby";
-      };
+      # managed imperatively via /whitelist command
+      # whitelist = {
+      #   overshee = "";
+      #   malaug = "";
+      #   ibsailn = "";
+      # };
       # Specify the custom minecraft server package
       # package = pkgs.minecraftServers.vanilla-server;
     };
