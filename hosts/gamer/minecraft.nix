@@ -20,7 +20,10 @@
     servers.vanilla = {
       enable = true;
       jvmOpts = "-Xmx4G -Xms2G";
-
+      serverProperties = {
+        enable-rcon = true;
+        "rcon.password" = "ari&toby";
+      };
       # Specify the custom minecraft server package
       # package = pkgs.minecraftServers.vanilla-server;
     };
