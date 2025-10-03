@@ -13,6 +13,7 @@
 
     ../../modules/de.gnome.nix
     ../../modules/gaming.nix
+    ../../modules/gaming.nvidia.nix
     ../../modules/stylix.nix
     ../../modules/podman.nix
 
@@ -23,6 +24,7 @@
     ../../services/traefik.nix
     ../../services/p2p/rtorrent.nix
     ../../services/p2p/flood.nix
+    ../../services/gaming.sunshine.nix
   ];
 
   facter.reportPath = ./facter.json;

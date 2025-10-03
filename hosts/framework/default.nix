@@ -17,6 +17,7 @@ in {
 
     # Modules
     ../../modules/de.gnome.nix
+    ../../modules/gaming.nix
     ../../modules/stylix.nix
     ../../modules/vscode.nix
     ../../modules/podman.nix
