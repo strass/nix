@@ -27,7 +27,7 @@
       #   ibsailn = "";
       # };
       # Specify the custom minecraft server package
-      package = pkgs.minecraftServers.vanillaServers.vanilla-1_21_11;
+      package = pkgs.minecraftServers.legacyPackages.vanillaServers.vanilla-1_21_11;
     };
   };
 
