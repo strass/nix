@@ -28,8 +28,8 @@
       #   ibsailn = "";
       # };
       # Specify the custom minecraft server package
-        package = pkgs.vanillaServers.vanilla-1_21_11;
-      };
+      package = pkgs.vanillaServers.vanilla-1_21_10;
+    };
   };
 
   # TODO: server backups
