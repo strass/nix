@@ -7,7 +7,7 @@
 }: {
   nixpkgs.overlays = [inputs.nix-minecraft.overlay];
   imports = [
-    inputs.nix-minecraft.nixosModules.minecraft-servers.vanillaServers.vanilla-1_21_11
+    inputs.nix-minecraft.nixosModules.minecraft-servers
   ];
 
   # launcher
