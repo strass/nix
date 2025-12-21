@@ -17,6 +17,7 @@
     enable = true;
     eula = true;
     openFirewall = true;
+
     servers.vanilla = {
       enable = true;
       jvmOpts = "-Xmx4G -Xms2G";
@@ -27,8 +28,8 @@
       #   ibsailn = "";
       # };
       # Specify the custom minecraft server package
-      package = pkgs.minecraft-server-1-21;
-    };
+        package = pkgs.vanillaServers.vanilla-1_21
+      };
   };
 
   # TODO: server backups
