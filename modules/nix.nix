@@ -55,7 +55,8 @@
   environment.variables = {
     NIXPKGS_ALLOW_UNFREE = "1";
   };
-  programs.command-not-found.dbPath = "/nix/var/nix/programs.sqlite";
+  # Replace command-not-found with nix-index
+  # programs.command-not-found.dbPath = "/nix/var/nix/programs.sqlite";
 
   # programs.nh = {
   #   enable = true;

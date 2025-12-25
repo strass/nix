@@ -49,6 +49,10 @@ in {
           url."https://github.com/strass/".insteadOf = "strass:";
         };
       };
+      nix-index = {
+        enable = true;
+        enableFishIntegration = true;
+      };
       fish = {
         enable = true;
 
